@@ -1,0 +1,38 @@
+.profile-card {
+  border: 1px solid var(--light-color);
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+}
+
+.avatar-name {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  column-gap: 20px;
+}
+
+.avatar-name__avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.avatar-name__name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-card-description {
+  font-size: 14px;
+}
+
+.skill-tag {
+  border: 1px solid var(--light-color);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 2px;
+  padding: 4px 8px;
+  margin-right: 4px;
+}
