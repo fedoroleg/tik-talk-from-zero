@@ -4,7 +4,7 @@
   --dark-color: #0b0b0b;
   --light-color: #ececec;
   --primary-color: #ae7aff;
-
+  --grey-color: #5f646d;
 }
 
 body {
@@ -14,7 +14,8 @@ body {
 }
 
 .btn {
-  border: none;
+  width: 100%;
+  border: 1px solid var(--dark-color);
   background-color: var(--primary-color);
   cursor: pointer;
   color: var(--dark-color);
@@ -23,6 +24,22 @@ body {
   font-weight: 700;
   line-height: 24px;
   font-family: "JetBrainsMono", sans-serif;
+}
+
+.btn-shadow {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: var(--grey-color);
+    bottom: -4px;
+    right:  -4px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 2px;
+  }
 }
 
 .h6 {
@@ -34,4 +51,28 @@ body {
 .subtitle {
   font-weight: 300;
   opacity: 80%;
+}
+
+.login-heading {
+  font-size: 24px;
+  margin-bottom: 60px;
+}
+
+.tt-control-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.tt-input {
+  border: 1px solid var(--light-color);
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  margin-top: 12px;
 }
