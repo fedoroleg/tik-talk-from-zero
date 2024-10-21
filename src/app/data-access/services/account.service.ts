@@ -6,10 +6,10 @@ import { environments } from '../../environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AccountsService {
   http = inject(HttpClient)
 
-  getTestProfiles() {
+  getTestAccounts() {
     return this.http.get<Account[]>(`${environments.api_url}account/test_accounts`)
   }
 }

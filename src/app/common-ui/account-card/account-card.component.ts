@@ -4,12 +4,12 @@ import { Account } from '../../data-access/interfaces/account.interface';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 
 @Component({
-  selector: 'app-profile-card',
+  selector: 'app-account-card',
   standalone: true,
   imports: [ImgUrlPipe, CommonModule, NgFor],
-  templateUrl: './profile-card.component.html',
-  styleUrl: './profile-card.component.scss'
+  templateUrl: './account-card.component.html',
+  styleUrl: './account-card.component.scss'
 })
-export class ProfileCardComponent {
+export class AccountCardComponent {
   @Input({required: true}) account!: Account
 }
