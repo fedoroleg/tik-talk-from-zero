@@ -1,4 +1,4 @@
-export interface Profile {
+export interface Account {
   id: number,
   username: string,
   description: string,

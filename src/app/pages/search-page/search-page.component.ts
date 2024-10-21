@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
-import { ProfilesService } from '../../data-access/services/profiles.service';
+import { AccountService } from '../../data-access/services/account.service';
 import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.component";
 
 
@@ -12,12 +12,12 @@ import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.
   styleUrl: './search-page.component.scss'
 })
 export class SearchPageComponent {
-  private readonly profilesService = inject(ProfilesService)
+  private readonly accountService = inject(AccountService)
   
-  public profiles$ = this.profilesService.getTestProfiles()
+  public profiles$ = this.accountService.getTestProfiles()
 
   constructor() {
-    this.profilesService.getTestProfiles().subscribe(profiles => {
+    this.accountService.getTestProfiles().subscribe(profiles => {
       console.log(profiles);
     })
   }

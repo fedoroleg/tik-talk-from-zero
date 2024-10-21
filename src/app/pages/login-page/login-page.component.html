@@ -12,10 +12,14 @@
       <input class="tt-input" type="password" placeholder="Введите пароль" formControlName="password">
     </label>
   
-    <button class="btn btn-shadow" [disabled]="loginForm.invalid" type="submit">Войти</button>
-
+    <button class="btn btn-shadow" [disabled]="!loginForm.valid" type="submit">Войти</button>
+    
+    <button >Залогиниться</button>
+    
+    <a routerLink="/">На главную</a>
   </form>
 
-  
+
+
 
 <img src="assets/svg/logo-big.svg" alt="">

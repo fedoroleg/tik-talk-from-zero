@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Profile } from '../../data-access/interfaces/profile.interface';
+import { Account } from '../../data-access/interfaces/account.interface';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 
 @Component({
@@ -11,5 +11,5 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
   styleUrl: './profile-card.component.scss'
 })
 export class ProfileCardComponent {
-  @Input({required: true}) profile!: Profile
+  @Input({required: true}) account!: Account
 }

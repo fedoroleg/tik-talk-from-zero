@@ -1,11 +1,11 @@
 <p>search page comp</p>
-@if(profiles$ | async; as profiles){
+<!-- @if(profiles$ | async; as profiles){
   @for(profile of profiles; track profile.id) {
     <app-profile-card [profile]="profile"/>
   }
 } @else {
-  <h1>Ошибка в первом выражении</h1>
-}
+  <h1>Загрузка...</h1>
+} -->
 
 <!-- *nfIf + *ngFor
 <ng-content *ngIf="(profiles$ | async) as profiles; else error">

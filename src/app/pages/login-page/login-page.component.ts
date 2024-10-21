@@ -1,16 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
   private readonly authService = inject(AuthService)
+  private readonly router = inject(Router)
+
 
   public loginForm = new FormBuilder().group({
     username: ['', Validators.required],
@@ -23,7 +27,11 @@ export class LoginPageComponent {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
       }
-      this.authService.login(loginData).subscribe(res => console.log('res', res))
+      this.authService.login(loginData).subscribe(
+        res => {
+          console.log('res', res)
+          this.router.navigate([''])
+        })
     }
   }
   

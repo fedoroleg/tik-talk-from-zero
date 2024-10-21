@@ -1,18 +1,18 @@
 <div class="profile-card"> 
   <div class="avatar-name">
-    <img class="avatar-name__avatar" [src]="profile.avatarUrl | imgUrl" alt="" >
+    <img class="avatar-name__avatar" [src]="account.avatarUrl | imgUrl" alt="" >
     <div class="avatar-name__name">
-      <strong class="h6">{{profile.firstName}} {{profile.lastName}}</strong>
-      <small class="subtitle">{{profile.username}}</small>
+      <strong class="h6">{{account.firstName}} {{account.lastName}}</strong>
+      <small class="subtitle">{{account.username}}</small>
     </div>
   </div>
 
   <div class="profile-card-description">
-  {{profile.description}}
+  {{account.description}}
   </div>
 
   <div class="profile-card__tags">
-    <span class="skill-tag" *ngFor="let skill of profile.stack">{{skill}}</span>
+    <span class="skill-tag" *ngFor="let skill of account.stack">{{skill}}</span>
   </div>
   <div class="profile-card__action-buttons">
 
