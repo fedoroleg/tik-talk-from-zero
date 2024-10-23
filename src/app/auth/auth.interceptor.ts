@@ -41,6 +41,7 @@ const refreshAndProceed = (authService: AuthService, req: HttpRequest<any>, next
           return next(addToken(req, res.access_token))
         })
       )
+      isRefreshing = false
   }
   return next(addToken(req, authService.accessToken!))
 }

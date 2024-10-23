@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ export class LoginPageComponent {
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
 
+  isPasswordVisible = signal<boolean>(false)
 
   public loginForm = new FormBuilder().group({
     username: ['', Validators.required],
