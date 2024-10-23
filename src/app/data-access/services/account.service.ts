@@ -7,9 +7,13 @@ import { environments } from '../../environments/environments';
   providedIn: 'root'
 })
 export class AccountsService {
-  http = inject(HttpClient)
+  private readonly http = inject(HttpClient)
 
-  getTestAccounts() {
+  public getMe() {
+    return this.http.get<Account>(`${environments.api_url}account/me`)
+  }
+
+  public getTestAccounts() {
     return this.http.get<Account[]>(`${environments.api_url}account/test_accounts`)
   }
 }
