@@ -9,7 +9,8 @@ export class IsLoggedInGuardService implements CanActivate {
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {    
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {  
+
     return this.authService.isLoggedIn
   }
 }

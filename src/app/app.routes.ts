@@ -17,16 +17,18 @@ export const routes: Routes = [
         path: '',
         component: SearchPageComponent,
       },
+      {
+        path: 'account',
+        component: AccountPageComponent,
+        canActivate: [isLoggedInGuardFn],
+      },
     ]
   },
   {
     path: 'login',
     component: LoginPageComponent,
   },
-  {
-    path: 'account',
-    component: AccountPageComponent,
-  },
+
   {
     path: 'test',
     component: TestPageComponent,

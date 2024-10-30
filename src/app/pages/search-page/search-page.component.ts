@@ -18,11 +18,5 @@ export class SearchPageComponent {
   public me$ = this.accountsService.getMe()
 
   constructor() {
-    // this.accountsService.getTestAccounts().subscribe(testAccounts => {
-    //   console.log('testAccounts', testAccounts);
-    // })
-
-    // this.accountsService.getMe().subscribe(me => console.log('me', me)
-    // )
   }
 }
