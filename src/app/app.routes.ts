@@ -18,7 +18,7 @@ export const routes: Routes = [
         component: SearchPageComponent,
       },
       {
-        path: 'account',
+        path: 'account/:id',
         component: AccountPageComponent,
         canActivate: [isLoggedInGuardFn],
       },

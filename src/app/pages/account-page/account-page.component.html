@@ -1,1 +1,30 @@
 <p>account-page works!</p>
+@if (account$ | async; as account) {
+  <header class="account-page-header">
+    <app-account-header [account]="account"/>
+    <a class="btn to-settings-btn" routerLink="/settings">
+      <span>Редактировать</span>
+      <svg icon="settings" class="header-settings-icon"></svg>
+    </a>
+  </header>
+
+  <main class="account-page-body">
+    <p>Левая часть 1фр</p>
+    <div>
+      Правая часть 350 пикс
+      <h3 class="h3">Подписчики</h3>
+      <div class="subscribers-wrapper">
+        @if(subscribers$ | async; as subscribers) {
+          @for(subscriber of subscribers; track subscriber.id) {
+            <a [routerLink]="['/account', subscriber.id]">
+              <img class="subscriber-avatar-btn" [src]="subscriber.avatarUrl | imgUrl" [alt]="subscriber.firstName">
+            </a>
+          }
+        }
+        <a class="to-subscribers-search-btn"></a>
+      </div>
+    </div>
+  
+  </main>
+  
+}

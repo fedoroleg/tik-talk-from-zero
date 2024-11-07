@@ -2,7 +2,8 @@
 @import "margins";
 
 :root {
-  --dark-color: #0b0b0b;
+  --sidebar-color: #070707;
+  --dark-color: #101010;
   --light-color: #ececec;
   --primary-color: #ae7aff;
   --grey-color: #5f646d;
@@ -20,6 +21,7 @@ body {
   font-family: "JetBrainsMono", sans-serif;
   background-color: var(--dark-color);
   color: var(--light-color);
+  height: 100dvh;
 }
 
 .btn {
@@ -33,7 +35,6 @@ body {
   font-weight: 700;
   line-height: 24px;
   font-family: "JetBrainsMono", sans-serif;
-  margin-bottom: 20px;
 
   &:disabled {
     background-color: var(--grey-color);
@@ -59,6 +60,17 @@ body {
     z-index: -1;
     border-radius: 2px;
   }
+}
+
+.h3 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.h5 {
+  margin-bottom: 14px;
 }
 
 .h6 {

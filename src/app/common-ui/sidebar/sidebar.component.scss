@@ -1,20 +1,24 @@
 :host {
   display: block;
+  height: 100vh;
   padding: 20px 12px;
+  background-color: var(--sidebar-color);
+  position: relative;
 }
 
 .main-menu-list {
   list-style: none;
-
+  margin-bottom: 32px;
 }
 
 .menu-item {
+  width: 100%;
   display: grid;
   grid-template-columns: 16px 1fr max-content;
   column-gap: 12px;
   padding: 8px 16px;
   cursor: pointer;
-  border: 1px solid rgb(69, 69, 69);
+  border: none;
   border-radius: 4px;
   font-family: inherit;
   background: none;
@@ -23,7 +27,8 @@
   font-weight: 600;
   line-height: 24px;
   align-items: center;
-
+  text-align: left;
+  margin-bottom: 8px;
 
   &:hover,
   &:focus-visible {
@@ -35,6 +40,67 @@
 .menu-item-svg {
   width: 16px;
   height: 16px;
-  color: red;
 }
 
+.to-subscribers {
+  cursor: pointer;
+  align-items: center;
+  margin-top: 14px;
+
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}
+
+.to-subscribers-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.to-subscribers-link {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-footer {
+  display: grid;
+  width: calc(100% - 20px);
+  grid-template-columns: 32px 1fr 16px;
+  column-gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none;
+  color: var(--light-color);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 20px;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--primary-color);
+    background-color: #161616;
+  }
+}
+
+.sidebar-footer-avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.sidebar-footer-username {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sidebar-footer-icon {
+  width: 16px;
+  height: 16px;
+}

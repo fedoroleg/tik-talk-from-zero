@@ -15,7 +15,6 @@ export class SearchPageComponent {
   private readonly accountsService = inject(AccountsService)
   
   public accounts$ = this.accountsService.getTestAccounts()
-  public me$ = this.accountsService.getMe()
 
   constructor() {
   }

@@ -6,10 +6,7 @@
 } @else {
   <h1>Загрузка...</h1>
 }
-<h2>Me</h2>
-@if(me$ | async; as me) {
-  {{me | json}}
-}
+
 
 <!-- *nfIf + *ngFor
 <ng-content *ngIf="(profiles$ | async) as profiles; else error">
