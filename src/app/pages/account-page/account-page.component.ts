@@ -7,11 +7,12 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { AccountsService } from '../../data-access/services/account.service';
 import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component'
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
+import { PostsFeedComponent } from "./posts-feed/posts-feed.component";
 
 @Component({
   selector: 'app-account-page',
   standalone: true,
-  imports: [AccountHeaderComponent, AsyncPipe, RouterLink, SvgIconComponent, ImgUrlPipe],
+  imports: [AccountHeaderComponent, AsyncPipe, RouterLink, SvgIconComponent, ImgUrlPipe, PostsFeedComponent],
   templateUrl: './account-page.component.html',
   styleUrl: './account-page.component.scss'
 })

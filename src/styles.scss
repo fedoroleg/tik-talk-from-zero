@@ -127,3 +127,11 @@ body {
     outline: 1px solid var(--primary-color);
   }
 }
+
+.skill-tag {
+  border: 1px solid var(--light-color);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 2px;
+  padding: 4px 8px;
+}

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 24px;
 }
 
 .to-settings-btn {
@@ -26,12 +27,14 @@
 .account-page-body {
   display: grid;
   grid-template-columns: 1fr 350px;
+  padding: 24px;
 }
 
 .subscribers-wrapper {
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-bottom: 32px;
 }
 
 .subscriber-avatar-btn {
@@ -72,4 +75,17 @@
   &:hover {
     opacity: 80%;
   }
+}
+
+.skill-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  height: min-content;
+  margin-bottom: 32px;
+}
+
+.about-text {
+  font-size: 12px;
+  font-weight: 400;
 }

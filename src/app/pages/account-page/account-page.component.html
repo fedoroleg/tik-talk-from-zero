@@ -9,9 +9,8 @@
   </header>
 
   <main class="account-page-body">
-    <p>Левая часть 1фр</p>
+    <app-posts-feed/>
     <div>
-      Правая часть 350 пикс
       <h3 class="h3">Подписчики</h3>
       <div class="subscribers-wrapper">
         @if(subscribers$ | async; as subscribers) {
@@ -21,8 +20,19 @@
             </a>
           }
         }
-        <a class="to-subscribers-search-btn"></a>
+        <a class="to-subscribers-search-btn" routerLink="/search"></a>
       </div>
+
+      <h3 class="h3">Навыки</h3>
+      <div class="skill-tags-wrapper">
+        @for (skill of account.stack; track skill) {
+          <div class="skill-tag">{{skill}}</div>
+        }
+      </div>
+
+      <h3 class="h3">О себе</h3>
+      <p class="about-text">{{account.description}}</p>
+
     </div>
   
   </main>
