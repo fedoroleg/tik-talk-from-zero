@@ -34,8 +34,8 @@ export class AccountsService {
   }
 
   public patchAccount(account: Partial<Account>) {
-    console.log('account in patchAccount', account);
+    console.log('account in patch', account);
     
-    this.http.patch(`${environments.api_url}account/me`, account)
+    return this.http.patch<Account>(`${environments.api_url}account/me`, account)
   }
 }

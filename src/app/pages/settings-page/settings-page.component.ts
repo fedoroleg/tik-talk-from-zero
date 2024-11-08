@@ -4,6 +4,7 @@ import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { AccountsService } from '../../data-access/services/account.service';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-settings-page',
@@ -27,14 +28,33 @@ export class SettingsPageComponent {
   constructor() {
     effect(() => {
       //@ts-ignore
-      this.form.patchValue(this.accountService.me())    
+      this.form.patchValue({
+        ...this.accountService.me(),
+        stack: this.mergeStack(this.accountService.me()?.stack)
+      })    
     })
   }
 
   onSubmit() {
     if (this.form.valid) {
+      const account = {
+        ...this.form.value,
+        stack: this.splitStack(this.form.value.stack)
+      }
       //@ts-ignore
-      this.accountService.patchAccount(this.form.value)
+      firstValueFrom(this.accountService.patchAccount(account))
     }
+  }
+
+  private splitStack(stack: string | null | undefined): string[] {
+    if (!stack) return []
+    if (Array.isArray(stack)) return stack
+    
+    return stack.split(',').map(item => item.trim())
+  }
+
+  private mergeStack(stack: string[] | null | undefined): string {
+    if (!stack) return ''
+    return stack.join(', ')
   }
 }
