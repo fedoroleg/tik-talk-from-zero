@@ -32,4 +32,10 @@ export class AccountsService {
       map(res => res.items.slice(0, amount))
     )
   }
+
+  public patchAccount(account: Partial<Account>) {
+    console.log('account in patchAccount', account);
+    
+    this.http.patch(`${environments.api_url}account/me`, account)
+  }
 }

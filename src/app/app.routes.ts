@@ -6,23 +6,18 @@ import { LayoutComponent } from './common-ui/layout/layout.component';
 import { isLoggedInGuardFn } from './auth/is-logged-in.guard';
 import { TestPageComponent } from './pages/test-page/test-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [isLoggedInGuardFn],
     children: [
-      {
-        path: '',
-        component: SearchPageComponent,
-      },
-      {
-        path: 'account/:id',
-        component: AccountPageComponent,
-        canActivate: [isLoggedInGuardFn],
-      },
-    ]
+      { path: '', component: SearchPageComponent},
+      { path: 'account/:id', component: AccountPageComponent },
+      { path: 'settings', component: SettingsPageComponent }
+    ],
+    canActivate: [isLoggedInGuardFn]
   },
   {
     path: 'login',

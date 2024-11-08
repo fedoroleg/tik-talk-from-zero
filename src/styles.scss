@@ -7,6 +7,7 @@
   --light-color: #ececec;
   --primary-color: #ae7aff;
   --grey-color: #5f646d;
+  --light-transparent-color: rgba(255, 255, 255, 0.75);
 }
 
 *,
@@ -46,6 +47,67 @@ body {
   }
 }
 
+.btn-form-primary {
+  border: 1px solid var(--dark-color);
+  background-color: var(--primary-color);
+  cursor: pointer;
+  color: var(--dark-color);
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: 700;
+  line-height: 24px;
+  font-family: "JetBrainsMono", sans-serif;
+
+  &:disabled {
+    background-color: var(--grey-color);
+    cursor: not-allowed;
+  }
+
+  &:active {
+    scale: 96%;
+  }
+
+  &:hover,
+  &:focus-visible {
+    opacity: 90%;
+    
+  }
+}
+
+.btn-form-transparent {
+  border: 1px solid var(--light-color);
+  background: none;
+  cursor: pointer;
+  color: var(--light-color);
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: 500;
+  line-height: 24px;
+  font-family: "JetBrainsMono", sans-serif;
+  
+
+  &:disabled {
+    background-color: var(--grey-color);
+    cursor: not-allowed;
+  }
+
+  &:active {
+    scale: 96%;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--primary-color);
+    background-color: #161616;
+  }
+}
+
+.btn-form-icon {
+  width: 12px;
+  height: 12px;
+  scale: 110%;
+}
+
 .btn-shadow {
   position: relative;
 
@@ -67,16 +129,6 @@ body {
   line-height: 24px;
   font-weight: 600;
   margin-bottom: 14px;
-}
-
-.h5 {
-  margin-bottom: 14px;
-}
-
-.h6 {
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 800;
 }
 
 .subtitle {
@@ -134,4 +186,32 @@ body {
   font-weight: 600;
   border-radius: 2px;
   padding: 4px 8px;
+}
+
+.tt-form-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.tt-form-label-title {
+  color: var(--light-transparent-color);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.tt-form-label-input {
+  padding: 12px 0; 
+  color: var(--light-color);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--light-color);
+}
+
+.tt-form-label-textarea {
+  height: 84px;
+  resize: none;
 }
