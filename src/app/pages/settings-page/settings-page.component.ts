@@ -5,11 +5,12 @@ import { AccountsService } from '../../data-access/services/account.service';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
+import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
-  imports: [AccountHeaderComponent, SvgIconComponent, RouterLink, ReactiveFormsModule],
+  imports: [AccountHeaderComponent, SvgIconComponent, RouterLink, ReactiveFormsModule, AvatarUploadComponent],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss'
 })

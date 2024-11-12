@@ -1,0 +1,41 @@
+:host {
+  display: grid;
+  grid-template-columns: 123px 1fr;
+  column-gap: 32px;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--light-color);
+}
+
+.avatar {
+  width: 123px;
+  height: 123px;
+  border-radius: 50%;
+}
+
+.dropzone {
+  border: 1px dashed var(--light-color);
+  border-radius: 2px;
+  display: grid;
+  place-content: center;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-input {
+  display: none;
+}
+
+.dropzone-upload-icon {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 18px;
+}
+
+.dropzone-content-text {
+
+}

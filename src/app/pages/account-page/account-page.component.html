@@ -2,10 +2,14 @@
 @if (account$ | async; as account) {
   <header class="account-page-header">
     <app-account-header [account]="account"/>
-    <a class="btn to-settings-btn" routerLink="/settings">
-      <span>Редактировать</span>
-      <svg icon="settings" class="header-settings-icon"></svg>
-    </a>
+    
+    @if (isMyPage()) {
+      <a class="btn to-settings-btn" routerLink="/settings">
+        <span>Редактировать</span>
+        <svg icon="settings" class="header-settings-icon"></svg>
+      </a>
+    }
+
   </header>
 
   <main class="account-page-body">
@@ -36,5 +40,5 @@
     </div>
   
   </main>
-  
+
 }

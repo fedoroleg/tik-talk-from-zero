@@ -25,6 +25,13 @@ body {
   height: 100dvh;
 }
 
+.medium-text {
+  font-family: "JetBrainsMono", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
 .btn {
   width: 100%;
   border: 1px solid var(--dark-color);

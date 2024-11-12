@@ -3,7 +3,7 @@ import { inject, Injectable, signal} from '@angular/core';
 import { Account } from '../interfaces/account.interface';
 import { environments } from '../../environments/environments';
 import { Pageble } from '../interfaces/pageble.type';
-import { map, tap } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class AccountsService {
   private readonly http = inject(HttpClient)
 
   public me = signal<Account | null>(null) 
+  public value$ = new BehaviorSubject<string>('строка вот тут')
 
   public getMe() {
     return this.http.get<Account>(`${environments.api_url}account/me`).pipe(

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import { AccountHeaderComponent } from "../../common-ui/account-header/account-header.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -21,12 +21,16 @@ export class AccountPageComponent {
   private readonly accountService = inject(AccountsService)
 
   me$ = toObservable(this.accountService.me)
+  public isMyPage = signal(false)
 
   public readonly subscribers$ = this.accountService.getSubscribersShortList(5)
 
   public readonly account$ = this.route.params.pipe(
     switchMap(({id}) => {
-      if (id === 'me') return this.me$
+      this.isMyPage.set(id === 'me')
+      if (id === 'me') {
+        return this.me$
+      }
 
       return this.accountService.getAccount(id)
     })
