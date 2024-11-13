@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, ViewChild } from '@angular/core';
 import { AccountHeaderComponent } from "../../common-ui/account-header/account-header.component";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { AccountsService } from '../../data-access/services/account.service';
@@ -17,6 +17,12 @@ import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 export class SettingsPageComponent {
   private readonly accountService = inject(AccountsService)
   private readonly fb = inject(FormBuilder)
+  public actualAvatar: string = 'assets/images/avatar-placeholder.png'
+
+
+
+
+  @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent
 
   public form = this.fb.group({
     firstName: ['', Validators.required],
@@ -34,6 +40,9 @@ export class SettingsPageComponent {
         stack: this.mergeStack(this.accountService.me()?.stack)
       })    
     })
+
+    console.log('actualAvatar in settings', this.actualAvatar);
+    
   }
 
   onSubmit() {
@@ -44,6 +53,9 @@ export class SettingsPageComponent {
       }
       //@ts-ignore
       firstValueFrom(this.accountService.patchAccount(account))
+      if (this.avatarUploader.avatar) {
+        firstValueFrom(this.accountService.uploadAvatar(this.avatarUploader.avatar))
+      }
     }
   }
 

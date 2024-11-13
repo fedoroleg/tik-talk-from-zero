@@ -34,9 +34,13 @@ export class AccountsService {
     )
   }
 
-  public patchAccount(account: Partial<Account>) {
-    console.log('account in patch', account);
-    
+  public patchAccount(account: Partial<Account>) {  
     return this.http.patch<Account>(`${environments.api_url}account/me`, account)
+  }
+
+  public uploadAvatar(avatar: File) {
+    const fd = new FormData()
+    fd.append('image', avatar)
+    return this.http.post<Account>(`${environments.api_url}account/upload_image`, fd)
   }
 }

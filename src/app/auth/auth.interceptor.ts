@@ -13,10 +13,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const refreshToken = authService.refreshToken
   const cookieService = inject(CookieService)
 
-  console.log('authInterceptor runs, REQ = ', req.url);
-  console.log('accessToken in interceptor = ', accessToken);
-  console.log('refreshToken in interceptor = ', refreshToken);
-  console.log(`refreshToken in cookies = `, cookieService.get('refreshToken'));
+  // console.log('authInterceptor runs, REQ = ', req.url);
+  // console.log('accessToken in interceptor = ', accessToken);
+  // console.log('refreshToken in interceptor = ', refreshToken);
+  // console.log(`refreshToken in cookies = `, cookieService.get('refreshToken'));
   
   
   

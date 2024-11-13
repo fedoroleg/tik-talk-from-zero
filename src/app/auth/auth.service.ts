@@ -18,18 +18,18 @@ export class AuthService {
   public refreshToken: string | null = null
 
   public get isLoggedIn() {
-    console.log('isLoggedIn run');
-    console.log('access in IsLoggedIn on start = ', this.accessToken);
-    console.log('refresh in IsLoggedIn on start = ', this.refreshToken);
+    // console.log('isLoggedIn run');
+    // console.log('access in IsLoggedIn on start = ', this.accessToken);
+    // console.log('refresh in IsLoggedIn on start = ', this.refreshToken);
     
     if(!this.accessToken && !this.refreshToken) {
-      console.log('getting tokens from cookies...');
-      console.log('cookies.getAll = ', this.cookieService.getAll());
+      // console.log('getting tokens from cookies...');
+      // console.log('cookies.getAll = ', this.cookieService.getAll());
       
       this.accessToken = this.cookieService.get('accessToken')
       this.refreshToken = this.cookieService.get('refreshToken')
-      console.log('access after get from cookies =', this.accessToken);
-      console.log('refresh after get from cookies =', this.refreshToken);
+      // console.log('access after get from cookies =', this.accessToken);
+      // console.log('refresh after get from cookies =', this.refreshToken);
     }
     
     return Boolean(this.accessToken)
@@ -46,9 +46,9 @@ export class AuthService {
   }
 
   public refreshAuthToken() {
-    console.log('refreshAuthToken runs');
-    console.log('refreshAuthToken = ', this.refreshToken);
-    console.log('AuthToken = ', this.accessToken);
+    // console.log('refreshAuthToken runs');
+    // console.log('refreshAuthToken = ', this.refreshToken);
+    // console.log('AuthToken = ', this.accessToken);
     
     return this.http.post<TokenResponse>(
       `${environments.api_url}auth/refresh`,
@@ -81,8 +81,8 @@ export class AuthService {
     this.cookieService.set('accessToken', this.accessToken)
     this.cookieService.set('refreshToken', this.refreshToken)
 
-    console.log('accessToken in SaveTokens = ', this.accessToken);
-    console.log('refreshToken in SaveTokens = ', this.refreshToken);
+    // console.log('accessToken in SaveTokens = ', this.accessToken);
+    // console.log('refreshToken in SaveTokens = ', this.refreshToken);
     
   }
 }
