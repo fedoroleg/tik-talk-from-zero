@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: SearchPageComponent},
+      { path: '', redirectTo: 'account/me', pathMatch: 'full'},
       { path: 'account/:id', component: AccountPageComponent },
       { path: 'settings', component: SettingsPageComponent }
     ],
