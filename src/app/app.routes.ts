@@ -15,7 +15,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'account/me', pathMatch: 'full'},
       { path: 'account/:id', component: AccountPageComponent },
-      { path: 'settings', component: SettingsPageComponent }
+      { path: 'settings', component: SettingsPageComponent },
+      { path: 'search', component: SearchPageComponent},
     ],
     canActivate: [isLoggedInGuardFn]
   },
