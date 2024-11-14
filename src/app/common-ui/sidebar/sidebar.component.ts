@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from "./subscriber-card/subscriber-card.component";
 import { AccountsService } from '../../data-access/services/account.service';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { firstValueFrom, map } from 'rxjs';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, SvgIconComponent, RouterLink, SubscriberCardComponent, ImgUrlPipe],
+  imports: [CommonModule, SvgIconComponent, RouterLink, RouterLinkActive,SubscriberCardComponent, ImgUrlPipe],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
     {
       label: 'Чаты',
       icon: 'chats',
-      link: '/account'
+      link: '/chats'
     },
     {
       label: 'Поиск',

@@ -36,7 +36,14 @@
     color: var(--primary-color);
     background-color: #161616;
   }
+
+  &.active {
+    color: var(--primary-color);
+    background-color: #161616;
+  }
 }
+
+
 
 .menu-item-svg {
   width: 16px;
