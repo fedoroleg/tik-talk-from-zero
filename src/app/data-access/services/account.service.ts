@@ -43,4 +43,10 @@ export class AccountsService {
     fd.append('image', avatar)
     return this.http.post<Account>(`${environments.api_url}account/upload_image`, fd)
   }
+
+  public filterAccounts(params: Record<string, any>) {
+    console.log('params in service get == ', params );
+    
+    // return this.http.get<Pageble<Account>>(`${environments.api_url}account/accounts`)
+  }
 }
