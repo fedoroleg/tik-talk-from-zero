@@ -12,7 +12,7 @@ export class AccountsService {
   private readonly http = inject(HttpClient)
 
   public me = signal<Account | null>(null) 
-  public value$ = new BehaviorSubject<string>('строка вот тут')
+  public filteredAccounts$ = new BehaviorSubject<Account[] | null>(null)
 
   public getMe() {
     return this.http.get<Account>(`${environments.api_url}account/me`).pipe(
@@ -45,8 +45,9 @@ export class AccountsService {
   }
 
   public filterAccounts(params: Record<string, any>) {
-    console.log('params in service get == ', params );
-    
-    // return this.http.get<Pageble<Account>>(`${environments.api_url}account/accounts`)
+    return this.http.get<Pageble<Account>>(`${environments.api_url}account/accounts`, { params: params })
+      .pipe(
+        tap(res => this.filteredAccounts$.next(res.items))
+      )
   }
 }

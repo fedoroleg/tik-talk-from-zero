@@ -15,7 +15,7 @@ import { AccountFiltersComponent } from "./account-filters/account-filters.compo
 export class SearchPageComponent {
   private readonly accountsService = inject(AccountsService)
   
-  public accounts$ = this.accountsService.getTestAccounts()
+  public accounts$ = this.accountsService.filteredAccounts$
 
   constructor() {
   }

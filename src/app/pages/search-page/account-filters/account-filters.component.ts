@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, switchMap, tap } from 'rxjs';
+import { debounceTime, startWith, switchMap, tap } from 'rxjs';
 import { AccountsService } from '../../../data-access/services/account.service';
 
 @Component({
@@ -22,10 +22,11 @@ export class AccountFiltersComponent {
 
   constructor() {
     this.searchForm.valueChanges.pipe(
+      startWith({}),
       debounceTime(300),
-      switchMap(formValue => {
-        return this.accountService.filterAccounts(formValue)
-      })
-    ).subscribe()
+      switchMap(value => {
+        return this.accountService.filterAccounts(value)}
+      )
+    ).subscribe(res => console.log('switchMap returns = ', res))
   }
 }
