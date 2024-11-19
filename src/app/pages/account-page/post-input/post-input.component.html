@@ -1,1 +1,11 @@
-<p>post-input works!</p>
+<app-avatar-circle class="size32"/>
+
+<textarea 
+  class="post-input" 
+  type="text" placeholder="Напишите что-нибудь..." 
+  formControlName="firstName" 
+  (input)="onTextAreaInput($event)"
+></textarea>
+<button class="btn-send-message">
+  <svg icon="send-message" class="send-message-icon"/>
+</button>

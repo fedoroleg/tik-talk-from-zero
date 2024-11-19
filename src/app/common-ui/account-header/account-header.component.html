@@ -1,8 +1,5 @@
-@if (account.avatarUrl) {
-  <img class="account-header-avatar" [src]="account.avatarUrl | imgUrl" alt="account.srcimg">
-} @else {
-  <img class="account-header-avatar" src="/assets/images/avatar-placeholder.png" alt="account.srcimg">
-}
+<app-avatar-circle [avatarSrc]="account.avatarUrl"/>
+
 <div class="account-header-name">
   <h3 class="account-header-name">{{account.firstName}} {{account.lastName}}</h3>
   <span class="account-header-username">{{account.username}}</span>

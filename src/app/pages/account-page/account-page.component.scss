@@ -28,6 +28,7 @@
   display: grid;
   grid-template-columns: 1fr 350px;
   padding: 24px;
+  column-gap: 32px;
 }
 
 .subscribers-wrapper {
