@@ -1,6 +1,6 @@
 <div class="profile-card"> 
   <div class="avatar-name">
-    <img class="avatar-name__avatar" [src]="account.avatarUrl | imgUrl" alt="" >
+    <app-avatar-circle [avatarSrc]="account.avatarUrl" class="size70"/>
     <div class="avatar-name__name">
       <strong class="h3">{{account.firstName}} {{account.lastName}}</strong>
       <small class="subtitle">{{account.username}}</small>

@@ -1,12 +1,12 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Account } from '../../data-access/interfaces/account.interface';
-import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
+import { AvatarCircleComponent } from "../avatar-circle/avatar-circle.component";
 
 @Component({
   selector: 'app-account-card',
   standalone: true,
-  imports: [ImgUrlPipe, CommonModule, NgFor],
+  imports: [ CommonModule, AvatarCircleComponent],
   templateUrl: './account-card.component.html',
   styleUrl: './account-card.component.scss'
 })
