@@ -3,9 +3,9 @@
 <textarea 
   class="post-input" 
   type="text" placeholder="Напишите что-нибудь..." 
-  formControlName="firstName" 
   (input)="onTextAreaInput($event)"
+  [(ngModel)]="postText"
 ></textarea>
 <button class="btn-send-message">
-  <svg icon="send-message" class="send-message-icon"/>
+  <svg icon="send-message" class="send-message-icon" (click)="onCreatePost()"/>
 </button>
