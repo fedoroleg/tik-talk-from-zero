@@ -1,38 +1,40 @@
-  <img class="ml16 mb20" src="/assets/svg/logo-small.svg" alt="">
-
-    <nav>
-    <ul class="main-menu-list">
-      @for(menuItem of menuItems; track menuItem.icon){
-        <li>
-          <a class="menu-item" [routerLink]="menuItem.link" routerLinkActive="active">
-            <svg [icon]="menuItem.icon" class="menu-item-svg"></svg>
-            <span>{{menuItem.label}}</span>
-          </a>
-        </li>
+  <div class="sidebar-main">
+    <img class="ml16 mb20 main-logo" src="/assets/svg/logo-small.svg" alt="">
+  
+      <nav>
+      <ul class="main-menu-list">
+        @for(menuItem of menuItems; track menuItem.icon){
+          <li>
+            <a class="menu-item" [routerLink]="menuItem.link" routerLinkActive="active">
+              <svg [icon]="menuItem.icon" class="menu-item-svg"></svg>
+              <span>{{menuItem.label}}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    
+    <h3 class="h3">Подписчики</h3>
+    
+    @if(subscribers$ | async; as subscribers) {
+      @for(subscriber of subscribers; track subscriber.id) {
+        <app-subscriber-card [subscriber]="subscriber"/>
       }
-    </ul>
-  </nav>
-  
-  <h3 class="h3">Подписчики</h3>
-  
-  @if(subscribers$ | async; as subscribers) {
-    @for(subscriber of subscribers; track subscriber.id) {
-      <app-subscriber-card [subscriber]="subscriber"/>
     }
-  }
-
-  <!-- <ng-container *ngIf="(subscribers$ | async) as subscribers">
-      <app-subscriber-card *ngFor="let subscriber of subscribers" [subscriber]="subscriber"/>
-  </ng-container> -->
   
-  <div class="mt-20 to-subscribers">
-    <svg icon="arrow" class="to-subscribers-icon"></svg>
-    <a routerLink="/subscribers" class="to-subscribers-link">Все подписчики</a>
-  </div>
+    <!-- <ng-container *ngIf="(subscribers$ | async) as subscribers">
+        <app-subscriber-card *ngFor="let subscriber of subscribers" [subscriber]="subscriber"/>
+    </ng-container> -->
+    
+    <div class="mt-20 to-subscribers">
+      <svg icon="arrow" class="to-subscribers-icon"></svg>
+      <a routerLink="/subscribers" class="to-subscribers-link">Все подписчики</a>
+    </div>
+
+  </div>  
 
 
-
-<footer >
+<footer>
   <a class="sidebar-footer" routerLink="/settings">
     @if(me(); as me){
       @if(me.avatarUrl) {
