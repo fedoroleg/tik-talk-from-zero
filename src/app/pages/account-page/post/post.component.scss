@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  column-gap: 16px;
+  border: 1px solid var(--grey-color);
+  margin-bottom: 20px;
+  padding: 12px;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 32px 1fr 16px;
+  column-gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.post-date {
+  font-size: 12px;
+  font-weight: 300px;
+}
+
+.post-text {
+  white-space: pre-line;
+}
+
+.three-dots-button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  color: var(--light-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-color)
+  }
+
+  &:active,
+  &:focus-visible {
+    scale: 95%;
+  }
+}

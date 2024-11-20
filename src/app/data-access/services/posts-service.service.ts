@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environments } from '../../environments/environments'
-import { PostCreateDTO } from '../interfaces/post.interfaces';
+import { Post, PostCreateDTO } from '../interfaces/post.interfaces';
+import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,24 @@ import { PostCreateDTO } from '../interfaces/post.interfaces';
 export class PostsService {
   private readonly http = inject(HttpClient)
   
-  
+  public posts = signal<Post[]>([])
+
   public createPost(post: PostCreateDTO) {
-    return this.http.post(`${environments.api_url}post/`, post )
+    return this.http.post<Post>(`${environments.api_url}post/`, post ).pipe(
+      switchMap(() => {
+        return this.getPosts()
+      })
+    )
+  }
+
+  public getPosts() {
+    return this.http.get<Post[]>(`${environments.api_url}post/`).pipe(
+      tap(posts => {
+        this.posts.set(posts)  
+        console.log(this.posts());
+            
+      })
+    )
   }
 
 }

@@ -1,1 +1,19 @@
-<p>post works!</p>
+@if (post) {
+  <div class="post-header">
+    <app-avatar-circle [avatarSrc]="post.author.avatarUrl" class="size32" />
+    <div class="author-name">
+      <strong>{{post.author.firstName}} {{post.author.lastName}}  </strong>
+      <span class="post-date">{{post.createdAt | date: 'h:mm d MMM y'}}</span>
+    </div>
+    <button class="three-dots-button">
+      <svg icon="three-dots" class="size16"></svg>
+    </button>
+  </div>
+
+  <main class="post-body">
+    <p class="post-text medium-text">{{post.content}}</p>
+  </main>
+}
+
+
+

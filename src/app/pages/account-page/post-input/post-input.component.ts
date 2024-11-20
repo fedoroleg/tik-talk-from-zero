@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountsService } from '../../../data-access/services/account.service';
 import { PostCreateDTO } from '../../../data-access/interfaces/post.interfaces';
 import { PostsService } from '../../../data-access/services/posts-service.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-post-input',
@@ -15,7 +16,7 @@ import { PostsService } from '../../../data-access/services/posts-service.servic
 })
 export class PostInputComponent {
   private readonly r2 = inject(Renderer2)
-  private readonly me = inject(AccountsService).me()
+  public me = inject(AccountsService).me
   private readonly postsService = inject(PostsService)
 
   public postText = ''
@@ -30,14 +31,13 @@ export class PostInputComponent {
     if (!this.postText) return
 
     const post: PostCreateDTO = {
-      title: '',
+      title: 'Пока без названия...',
       content: this.postText,
-      authorId: this.me!.id,
+      authorId: this.me()!.id,
       communityId: 0,
     }
 
-    this.postsService.createPost(post).subscribe(res => {console.log('res', res);
-    })
+    firstValueFrom(this.postsService.createPost(post)).then(() => { this.postText = ''})
     
   }
 }
