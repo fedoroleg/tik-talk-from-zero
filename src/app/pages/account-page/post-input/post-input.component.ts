@@ -1,9 +1,8 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, inject, input, Input, Renderer2 } from '@angular/core';
 import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { FormsModule } from '@angular/forms';
 import { AccountsService } from '../../../data-access/services/account.service';
-import { PostCreateDTO } from '../../../data-access/interfaces/post.interfaces';
 import { PostsService } from '../../../data-access/services/posts-service.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -15,6 +14,9 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './post-input.component.scss'
 })
 export class PostInputComponent {
+  @Input() isCommentInput!: boolean;
+  postId = input<number>()
+
   private readonly r2 = inject(Renderer2)
   public me = inject(AccountsService).me
   private readonly postsService = inject(PostsService)
@@ -30,14 +32,22 @@ export class PostInputComponent {
   onCreatePost() {
     if (!this.postText) return
 
-    const post: PostCreateDTO = {
-      title: 'Пока без названия...',
-      content: this.postText,
-      authorId: this.me()!.id,
-      communityId: 0,
+    if (this.isCommentInput) {
+      firstValueFrom(this.postsService.createComment({
+        text: this.postText,
+        authorId: this.me()!.id,
+        postId: this.postId()!,
+        commentId: 0 //надо разобраться
+      })).then(() => { this.postText = ''})
+      return
     }
 
-    firstValueFrom(this.postsService.createPost(post)).then(() => { this.postText = ''})
+    firstValueFrom(this.postsService.createPost({
+        title: 'Пока без названия...',
+        content: this.postText,
+        authorId: this.me()!.id,
+        communityId: 0,
+      })).then(() => { this.postText = ''})
     
   }
 }

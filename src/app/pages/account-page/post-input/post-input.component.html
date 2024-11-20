@@ -3,7 +3,7 @@
 }
 
 <textarea 
-  class="post-input" 
+  class="post-input-textarea" 
   type="text" placeholder="Напишите что-нибудь..." 
   (input)="onTextAreaInput($event)"
   [(ngModel)]="postText"
@@ -11,3 +11,4 @@
 <button class="btn-send-message">
   <svg icon="send-message" class="send-message-icon" (click)="onCreatePost()"/>
 </button>
+

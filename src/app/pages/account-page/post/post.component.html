@@ -9,10 +9,21 @@
       <svg icon="three-dots" class="size16"></svg>
     </button>
   </div>
+  
+  <p class="post-text medium-text">{{post.content}}</p>
 
-  <main class="post-body">
-    <p class="post-text medium-text">{{post.content}}</p>
-  </main>
+  <div class="post-counters">
+    <span class="comments-counter">
+      <svg icon="comment" class="size16"></svg>
+      <span class="commonts-amount">{{post.comments.length}}</span>
+    </span>
+  </div>
+
+  <div class="comments">
+    Здесь будут комментарии
+  </div>
+
+  <app-post-input [postId]="post.id" [isCommentInput]="true"/>
 }
 
 

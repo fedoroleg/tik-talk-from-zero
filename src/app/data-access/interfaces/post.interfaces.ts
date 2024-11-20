@@ -15,27 +15,27 @@ export interface Post {
     images: string[];
     createdAt: string;
     updatedAt: string;
-    comments: PostComment[];
+    comments: Comment[];
   }
   
-  export interface PostComment {
-    id: number;
-    text: string;
-    author: {
-      id: 0;
-      username: string;
-      avatarUrl: string;
-      subscribersAmount: 0;
-    },
-    postId: number;
-    commentId: number;
-    createdAt: string;
-    updatedAt: string;
-  }
-  
-  
-  export interface CommentCreateDto {
-    text: string;
-    authorId: number;
-    postId: number;
-  }
+export interface Comment {
+  id: number;
+  text: string;
+  author: {
+    id: 0;
+    username: string;
+    avatarUrl: string;
+    subscribersAmount: 0;
+  },
+  postId: number;
+  commentId: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CommentCreateDto {
+  text: string;
+  authorId: number;
+  postId: number;
+  commentId: number;
+} 
