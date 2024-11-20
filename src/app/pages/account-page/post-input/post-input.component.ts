@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, Renderer2 } from '@angular/core';
+import { Component, HostBinding, inject, input, Input, Renderer2 } from '@angular/core';
 import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { FormsModule } from '@angular/forms';
@@ -22,6 +22,11 @@ export class PostInputComponent {
   private readonly postsService = inject(PostsService)
 
   public postText = ''
+
+  @HostBinding ('class.comment-input')
+  get isComment() {
+    return this.isCommentInput
+  }
 
   onTextAreaInput(event: Event ) {
     const textArea = event.target as HTMLTextAreaElement

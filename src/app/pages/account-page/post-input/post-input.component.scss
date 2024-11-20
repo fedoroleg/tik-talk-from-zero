@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns: 32px 1fr 44px;
   column-gap: 12px;
-  margin-bottom: 20px;
   padding: 16px  20px;
   border: 1px solid var(--grey-color);
   align-items: center;
 }
+
+
 
 .btn-send-message {
   background-color: var(--primary-color);
@@ -45,4 +46,9 @@
   &:focus-visible {
     outline: var(--primary-color);
   }
+}
+
+:host.comment-input {
+  border: 2px dashed var(--grey-color);
+  padding: 6px 12px;
 }
