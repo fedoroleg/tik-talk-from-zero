@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, input, Input, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, HostBinding, inject, input, Input, Output, Renderer2 } from '@angular/core';
 import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class PostInputComponent {
   @Input() isCommentInput!: boolean;
+  @Output() commentCreated = new EventEmitter()
   postId = input<number>()
 
   private readonly r2 = inject(Renderer2)
@@ -44,7 +45,10 @@ export class PostInputComponent {
         authorId: this.me()!.id,
         postId: this.postId()!,
         commentId: 0 //надо разобраться
-      })).then(() => { this.postText = ''})
+      })).then(() => { 
+        this.postText = ''
+        this.commentCreated.emit()
+      })
       return
     }
 

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environments } from '../../environments/environments'
 import { Comment, CommentCreateDto, Post, PostCreateDTO } from '../interfaces/post.interfaces';
-import { switchMap, tap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,12 @@ export class PostsService {
         this.posts.set(posts)  
         console.log(this.posts());    
       })
+    )
+  }
+
+  public getCommentsByPostId(postId: number) {
+    return this.http.get<Post>(`${environments.api_url}post/${postId}`).pipe(
+      map(post => post.comments)
     )
   }
 
