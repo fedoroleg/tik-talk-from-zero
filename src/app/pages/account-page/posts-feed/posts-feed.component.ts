@@ -24,11 +24,11 @@ export class PostsFeedComponent {
     firstValueFrom(this.postsService.getPosts())
   }
 
-  onPostCreated(post: CreatePost) {
+  onPostCreated({postText, id}: CreatePost) {
     firstValueFrom(this.postsService.createPost({
       title: 'Из универсального инпута',
-      content: post.postText,
-      authorId: post.id,
+      content: postText,
+      authorId: id,
       communityId: 0,
     }))
   }
