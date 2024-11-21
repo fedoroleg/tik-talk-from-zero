@@ -26,13 +26,9 @@ export class PostComponent {
     this.comments.set(this.post()!.comments) 
   }
 
-  async onCommentCreated() {
-    console.log('comment created run in post comp');
-    
-    await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id)).then(
-          
+  async onCommentCreated() {  
+    await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id)).then(          
       comments => {
-        console.log('получил комменты обратно в post-comp = ', comments)
         this.comments.set(comments)}
     )
   }
