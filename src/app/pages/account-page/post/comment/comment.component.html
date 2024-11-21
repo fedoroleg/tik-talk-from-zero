@@ -2,7 +2,8 @@
 <div class="comment-body">
   <div class="comment-header">
     <span class="author-name">{{comment.author.username}}</span>
-    <span class="date">{{comment.createdAt | date: 'h:mm d MMM y' :'+0530'}}</span>
+    <!-- <span class="date">{{comment.createdAt | date: 'h:mm d MMM y' :'-0600'}}</span> -->
+    <span class="date">{{comment.createdAt | customDate}}</span>
   </div>
   <p class="medium-text">{{comment.text}}</p>
 </div>

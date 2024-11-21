@@ -1,9 +1,10 @@
-@if (post) {
+@if (post(); as post) {
   <div class="post-header">
     <app-avatar-circle [avatarSrc]="post.author.avatarUrl" class="size32" />
     <div class="author-name">
       <strong>{{post.author.firstName}} {{post.author.lastName}}  </strong>
-      <span class="post-date">{{post.createdAt | date: 'h:mm d MMM y'}}</span>
+      <!-- <span class="post-date">{{post.createdAt | date: 'h:mm d MMM y'}}</span> -->
+      <span class="post-date">{{post.createdAt | customDate}}</span>
     </div>
     <button class="three-dots-button">
       <svg icon="three-dots" class="size16"></svg>
@@ -20,12 +21,12 @@
   </div>
 
   <div class="comments-container">
-    <ng-container *ngIf="post.comments as comments">
+    <ng-container *ngIf="comments() as comments">
       <app-comment *ngFor="let comment of comments" [comment]="comment"/>    
     </ng-container>
   </div>
 
-  <app-post-input [postId]="post.id" [isCommentInput]="true"/>
+  <app-post-input [postId]="post.id" [isCommentInput]="true" (commentCreated)="onCommentCreated()"/>
 }
 
 
