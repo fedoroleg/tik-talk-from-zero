@@ -31,7 +31,9 @@ export class PostComponent {
   async onCommentCreated() {  
     await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id)).then(          
       comments => {
-        this.comments.set(comments)}
+        this.comments.set(comments)
+        this.expandComments = true
+      }
     )
   }
 
