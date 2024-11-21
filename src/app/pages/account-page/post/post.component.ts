@@ -1,5 +1,7 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Comment, Post } from '../../../data-access/interfaces/post.interfaces';
+import { Component, inject, input, signal } from '@angular/core';
+import { Comment, Post } from '../../../data-access/interfaces/post.interfaces';
 import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { CommonModule } from '@angular/common';
@@ -8,11 +10,15 @@ import { CommentComponent } from "./comment/comment.component";
 import { CustomDate } from "../../../helpers/pipes/custom-date.pipe";
 import { PostsService } from '../../../data-access/services/posts-service.service';
 import { firstValueFrom } from 'rxjs';
+import { CustomDate } from "../../../helpers/pipes/custom-date.pipe";
+import { PostsService } from '../../../data-access/services/posts-service.service';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
   selector: 'app-post',
   standalone: true,
+  imports: [AvatarCircleComponent, SvgIconComponent, CommonModule, PostInputComponent, CommentComponent, CustomDate],
   imports: [AvatarCircleComponent, SvgIconComponent, CommonModule, PostInputComponent, CommentComponent, CustomDate],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
