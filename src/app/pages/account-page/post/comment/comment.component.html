@@ -1,0 +1,8 @@
+<app-avatar-circle [avatarSrc]="comment.author.avatarUrl" class="size32"/>
+<div class="comment-body">
+  <div class="comment-header">
+    <span class="author-name">{{comment.author.username}}</span>
+    <span class="date">{{comment.createdAt | date: 'h:mm d MMM y' :'+0530'}}</span>
+  </div>
+  <p class="medium-text">{{comment.text}}</p>
+</div>

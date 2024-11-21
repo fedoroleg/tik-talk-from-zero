@@ -19,8 +19,10 @@
     </span>
   </div>
 
-  <div class="comments">
-    Здесь будут комментарии
+  <div class="comments-container">
+    <ng-container *ngIf="post.comments as comments">
+      <app-comment *ngFor="let comment of comments" [comment]="comment"/>    
+    </ng-container>
   </div>
 
   <app-post-input [postId]="post.id" [isCommentInput]="true"/>

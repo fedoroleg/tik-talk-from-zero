@@ -4,12 +4,13 @@ import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-c
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { CommonModule } from '@angular/common';
 import { PostInputComponent } from "../post-input/post-input.component";
+import { CommentComponent } from "./comment/comment.component";
 
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [AvatarCircleComponent, SvgIconComponent, CommonModule, PostInputComponent],
+  imports: [AvatarCircleComponent, SvgIconComponent, CommonModule, PostInputComponent, CommentComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })

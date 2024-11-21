@@ -23,6 +23,7 @@ export class PostInputComponent {
 
   public postText = ''
 
+  // Здесь мы ставим класс comment-input, если поле this.isCommentInput вернет true
   @HostBinding ('class.comment-input')
   get isComment() {
     return this.isCommentInput

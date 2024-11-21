@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   border: 1px solid var(--grey-color);
   border-radius: 2px;
   padding: 16px;
@@ -40,6 +40,11 @@
   &:focus-visible {
     scale: 95%;
   }
+}
+
+.comments-container {
+  display: grid;
+  row-gap: 14px;
 }
 
 .comments-counter {
