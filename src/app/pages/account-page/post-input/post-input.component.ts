@@ -16,6 +16,8 @@ import { firstValueFrom } from 'rxjs';
 export class PostInputComponent {
   @Input() isCommentInput!: boolean;
   @Output() commentCreated = new EventEmitter()
+  @Output() postCreated = new EventEmitter()
+
   postId = input<number>()
 
   private readonly r2 = inject(Renderer2)
@@ -51,13 +53,9 @@ export class PostInputComponent {
       })
       return
     }
-
-    firstValueFrom(this.postsService.createPost({
-        title: 'Пока без названия...',
-        content: this.postText,
-        authorId: this.me()!.id,
-        communityId: 0,
-      })).then(() => { this.postText = ''})
     
+    this.postCreated.emit({postText: this.postText, id: this.me()!.id})
+    this.postText = ''
+
   }
 }

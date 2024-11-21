@@ -4,6 +4,11 @@ import { PostComponent } from "../post/post.component";
 import { PostsService } from '../../../data-access/services/posts-service.service';
 import { firstValueFrom } from 'rxjs';
 
+export type CreatePost = {
+  postText: string;
+  id: number;
+}
+
 @Component({
   selector: 'app-posts-feed',
   standalone: true,
@@ -17,5 +22,14 @@ export class PostsFeedComponent {
 
   constructor() {
     firstValueFrom(this.postsService.getPosts())
+  }
+
+  onPostCreated(post: CreatePost) {
+    firstValueFrom(this.postsService.createPost({
+      title: 'Из универсального инпута',
+      content: post.postText,
+      authorId: post.id,
+      communityId: 0,
+    }))
   }
 }
