@@ -22,6 +22,7 @@ export class PostComponent {
   public post = input<Post>()
   public comments = signal<Comment[]>([])
   private readonly postService = inject(PostsService)
+  public expandComments = false
 
   ngOnInit() {
     this.comments.set(this.post()!.comments) 
@@ -32,5 +33,9 @@ export class PostComponent {
       comments => {
         this.comments.set(comments)}
     )
+  }
+
+  showMoreComments() {
+    this.expandComments = true
   }
 }

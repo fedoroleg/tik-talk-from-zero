@@ -57,3 +57,19 @@
   font-size: 14px;
   color: var(--primary-color)
 }
+
+.btn-show-more-comments {
+  background: none;
+  border: none;
+  color: var(--light-color);
+  cursor: pointer;
+  width: fit-content;
+  font-family: inherit;
+  padding: 8px 0;
+  line-height: 20px;
+
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}
