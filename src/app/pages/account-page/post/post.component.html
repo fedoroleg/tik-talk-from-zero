@@ -45,7 +45,7 @@
     </ng-container>
   </div>
 
-  <app-post-input [postId]="post.id" [isCommentInput]="true" (commentCreated)="onCommentCreated()"/>
+  <app-post-input [postId]="post.id" [isCommentInput]="true" (commentCreated)="onCommentCreated($event)"/>
 }
 
 

@@ -1,5 +1,5 @@
-<app-post-input (postCreated)="onPostCreated($event)"/>
+<app-post-input (postCreated)="onPostCreated($event)" />
 @for (post of posts(); track post.id) {
-    <app-post [post]="post"/>
+    <app-post [post]="post" (commentCreated)="onCommentCreated($event)"/>
   }
 

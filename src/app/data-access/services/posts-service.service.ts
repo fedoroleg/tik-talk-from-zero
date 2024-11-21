@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environments } from '../../environments/environments'
-import { Comment, CommentCreateDto, Post, PostCreateDTO } from '../interfaces/post.interfaces';
+import { PostComment, PostCommentCreateDto, Post, PostCreateDTO } from '../interfaces/post.interfaces';
 import { map, switchMap, tap } from 'rxjs';
 
 @Injectable({
@@ -19,10 +19,13 @@ export class PostsService {
       })
     )
   }
-  public createComment(comment: CommentCreateDto) {
-    return this.http.post<Comment>(`${environments.api_url}comment/`, comment ).pipe(
-      tap(res => console.log(res)
-      )
+  public createComment(comment: PostCommentCreateDto) {
+    return this.http.post<PostComment>(`${environments.api_url}comment/`, comment ).pipe(
+      tap(res => {
+        console.log('comment created, res from server: ', res)
+        this.updatePostComments(res)
+      }),
+
     )
   }
 
@@ -39,6 +42,18 @@ export class PostsService {
     return this.http.get<Post>(`${environments.api_url}post/${postId}`).pipe(
       map(post => post.comments)
     )
+  }
+
+  private updatePostComments(postComment: PostComment) {
+    console.log('updatePostComments run');
+    
+    this.posts.update(posts => posts.map(post => {
+      if (post.id == postComment.postId) return {
+        ...post,
+        comments: [...post.comments, postComment]
+      }
+      return post
+    }))
   }
 
 }

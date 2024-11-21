@@ -1,5 +1,5 @@
-import { Component, inject, input, signal } from '@angular/core';
-import { Comment, Post } from '../../../data-access/interfaces/post.interfaces';
+import { Component, EventEmitter, inject, input, Output, signal } from '@angular/core';
+import { PostComment, Post } from '../../../data-access/interfaces/post.interfaces';
 import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { CommonModule } from '@angular/common';
@@ -20,19 +20,23 @@ import { firstValueFrom } from 'rxjs';
 })
 export class PostComponent {
   public post = input<Post>()
-  public comments = signal<Comment[]>([])
+  public comments = signal<PostComment[]>([])
   private readonly postService = inject(PostsService)
+  @Output() commentCreated = new EventEmitter()
   public expandComments = false
 
   ngOnInit() {
     this.comments.set(this.post()!.comments) 
   }
 
-  async onCommentCreated() {  
-    await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id)).then(          
-      comments => {
-        this.comments.set(comments)}
-    )
+  onCommentCreated(comment: Comment) {  
+    // await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id)).then(          
+    //   comments => {
+    //     this.comments.set(comments)}
+    // )
+    console.log('comment', comment);
+    
+    this.commentCreated.emit(comment)
   }
 
   showMoreComments() {

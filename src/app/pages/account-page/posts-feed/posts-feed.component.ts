@@ -3,6 +3,7 @@ import { PostInputComponent } from "../post-input/post-input.component";
 import { PostComponent } from "../post/post.component";
 import { PostsService } from '../../../data-access/services/posts-service.service';
 import { firstValueFrom } from 'rxjs';
+import { PostComment, PostCommentCreateDto } from '../../../data-access/interfaces/post.interfaces';
 
 export type CreatePost = {
   postText: string;
@@ -31,5 +32,10 @@ export class PostsFeedComponent {
       authorId: id,
       communityId: 0,
     }))
+  }
+
+  onCommentCreated(comment: PostCommentCreateDto) {
+    console.log(comment);
+    firstValueFrom(this.postsService.createComment(comment))
   }
 }

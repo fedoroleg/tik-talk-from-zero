@@ -15,10 +15,10 @@ export interface Post {
     images: string[];
     createdAt: string;
     updatedAt: string;
-    comments: Comment[];
+    comments: PostComment[];
   }
   
-export interface Comment {
+export interface PostComment {
   id: number;
   text: string;
   author: {
@@ -33,9 +33,9 @@ export interface Comment {
   updatedAt: string;
 }
 
-export interface CommentCreateDto {
+export interface PostCommentCreateDto {
   text: string;
   authorId: number;
   postId: number;
-  commentId: number;
+  commentId?: number;
 } 

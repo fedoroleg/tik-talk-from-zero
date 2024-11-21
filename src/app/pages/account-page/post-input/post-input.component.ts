@@ -3,8 +3,6 @@ import { AvatarCircleComponent } from "../../../common-ui/avatar-circle/avatar-c
 import { SvgIconComponent } from "../../../common-ui/svg-icon/svg-icon.component";
 import { FormsModule } from '@angular/forms';
 import { AccountsService } from '../../../data-access/services/account.service';
-import { PostsService } from '../../../data-access/services/posts-service.service';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-post-input',
@@ -22,7 +20,6 @@ export class PostInputComponent {
 
   private readonly r2 = inject(Renderer2)
   public me = inject(AccountsService).me
-  private readonly postsService = inject(PostsService)
 
   public postText = ''
 
@@ -42,20 +39,16 @@ export class PostInputComponent {
     if (!this.postText) return
 
     if (this.isCommentInput) {
-      firstValueFrom(this.postsService.createComment({
+      this.commentCreated.emit({
         text: this.postText,
         authorId: this.me()!.id,
-        postId: this.postId()!,
-        commentId: 0 //надо разобраться
-      })).then(() => { 
-        this.postText = ''
-        this.commentCreated.emit()
+        postId: this.postId(),
       })
+      this.postText = ''
       return
     }
     
     this.postCreated.emit({postText: this.postText, id: this.me()!.id})
     this.postText = ''
-
   }
 }
