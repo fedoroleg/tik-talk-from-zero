@@ -29,7 +29,7 @@ export interface Comment {
   },
   postId: number;
   commentId: number;
-  createdAt: string;
+  createdAt: string; 
   updatedAt: string;
 }
 
