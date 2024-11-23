@@ -12,5 +12,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InnerComponent {
-  @Input() count: number = 0
+  @Input({transform: multiply}) count: number = 0
+}
+
+function multiply(value: number) {
+  console.log('multiply run');
+  
+  return value * 1000
 }
