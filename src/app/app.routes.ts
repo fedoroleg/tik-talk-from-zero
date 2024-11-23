@@ -7,6 +7,8 @@ import { isLoggedInGuardFn } from './auth/is-logged-in.guard';
 import { TestPageComponent } from './pages/test-page/test-page.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { ChatsPageComponent } from './pages/chats-page/chats-page.component';
+import { chatsRoutes } from './pages/chats-page/chats.routes';
 
 export const routes: Routes = [
   {
@@ -17,6 +19,7 @@ export const routes: Routes = [
       { path: 'account/:id', component: AccountPageComponent },
       { path: 'settings', component: SettingsPageComponent },
       { path: 'search', component: SearchPageComponent},
+      { path: 'chats', loadChildren: () => chatsRoutes},
     ],
     canActivate: [isLoggedInGuardFn]
   },
