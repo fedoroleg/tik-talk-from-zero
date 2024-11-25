@@ -35,6 +35,12 @@ body {
   white-space: pre-line;
 }
 
+.small-text {
+  font-family: "JetBrainsMono", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
 .btn {
   width: 100%;
   border: 1px solid var(--dark-color);
