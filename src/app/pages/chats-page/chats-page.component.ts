@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ChatsListComponent } from "./chats-list/chats-list.component";
 import { RouterModule } from '@angular/router';
 

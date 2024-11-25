@@ -5,6 +5,9 @@
   </label>
 </div>
 
-<app-chats-list-item />
-<app-chats-list-item />
-<app-chats-list-item />
+@if (chats$ | async; as chats) {
+  @for (chat of chats; track chat.id ) {
+    <app-chats-list-item [chat]="chat" [routerLink]="[chat.id]"/>
+  }
+}
+

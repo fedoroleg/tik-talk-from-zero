@@ -24,6 +24,6 @@ export class CustomDate implements PipeTransform {
 
     if (commentDateTS > (nowTS - 3600000 * 48) && commentDateTS < (nowTS - 3600000 * 24)) return `Вчера, в ${commentTime}`
  
-    return date
+    return '00:00 27 марта 1987'
   }
 }   

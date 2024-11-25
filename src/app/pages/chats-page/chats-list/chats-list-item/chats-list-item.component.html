@@ -1,10 +1,15 @@
-<app-avatar-circle class="size32" />
-<div class="content">
-  <div class="content-header">
-    <span>Петя Иванов</span>
-    <span>2 часа назад</span>
+@if (chat) {
+
+  <app-avatar-circle [avatarSrc]="chat.userFrom.avatarUrl" class="size42" />
+  <div class="content">
+    <div class="content-header">
+      <span class="header-name">{{chat.userFrom.firstName}} {{chat.userFrom.lastName}}</span>
+      <span class="small-text">{{chat.createdAt | customDate}}</span>
+    </div>
+    <span class="content-last-message medium-text">
+      {{chat.message}}
+    </span>
+
   </div>
-  <div class="content-last-message medium-text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit...
-  </div>
-</div>
+}
+  
