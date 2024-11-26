@@ -1,5 +1,5 @@
 @if (chat$ | async; as chat) {
   <app-chats-messages-header [chat]="chat"/>
-  <app-chats-messages-feed />
+  <app-chats-messages-feed [messages]="chat.messages"/>
 }
 

@@ -1,7 +1,7 @@
 <div class="messages-container">
-  <app-chats-messages-message class="is-mine"/>
-  <app-chats-messages-message />
-  <app-chats-messages-message />
+  @for(message of messages; track message.id) {
+    <app-chats-messages-message [message]="message" />
+  }  
 </div>
 <div class="messages-input">
   <app-chats-message-input />

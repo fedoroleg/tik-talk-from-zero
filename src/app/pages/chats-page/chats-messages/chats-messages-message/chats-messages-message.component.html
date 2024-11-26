@@ -1,6 +1,8 @@
-<div class="message-body">
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos fuga quisquam. Cupiditate culpa consectetur molestiae quam dignissimos?</p>
-</div>
-<div class="message-controls small-text">
-  <span>11:43</span>
-</div>
+@if(message) {
+  <div class="message-body">
+    <p>{{message.text}} {{message.isMine}}</p>
+  </div>
+  <div class="message-controls small-text">
+    <span>{{message.createdAt | date :''}}</span>
+  </div>
+}
