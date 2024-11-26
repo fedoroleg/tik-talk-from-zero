@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  background-color: var(--message-color);
+  padding: 16px;
+  width: 400px;
+  border-radius: 2px;
+  mask: linear-gradient(#000 0 0), linear-gradient(-228deg, #000 47%, rgba(0, 0, 0, 0) 0) border-box 100% 108% / 21% 205% no-repeat;
+  mask-composite: exclude;
+  mask-position: 0% 116%;
+  mask-composite: exclude;
+  mask-position: 0% 114%;
+}
+
+.message-body {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--light-color)
+}
+
+.message-controls {
+  text-align: right;
+}
+
+:host.is-mine {
+  background-color: var(--primary-color);
+  mask: linear-gradient(#000 0 0), linear-gradient(-140deg, #000 47%, rgba(0, 0, 0, 0) 0) border-box 100% 100% / 200% 200% no-repeat;
+  mask-composite: exclude;
+  mask-position: 10% 94%;
+}

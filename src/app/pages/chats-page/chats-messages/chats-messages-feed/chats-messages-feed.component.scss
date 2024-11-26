@@ -5,3 +5,12 @@
   justify-content: space-between;
   padding: 20px;
 }
+
+.messages-container {
+  display: grid;
+  row-gap: 8px;
+}
+
+.is-mine {
+  justify-self: right;
+}
