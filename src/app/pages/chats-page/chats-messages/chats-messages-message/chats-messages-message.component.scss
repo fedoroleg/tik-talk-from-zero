@@ -15,7 +15,8 @@
 .message-body {
   font-size: 13px;
   font-weight: 400;
-  color: var(--light-color)
+  color: var(--light-color);
+  white-space: pre-line;
 }
 
 .message-controls {
