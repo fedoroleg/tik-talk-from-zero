@@ -22,6 +22,11 @@
   &:active {
     scale: 98%; 
   }
+
+  &:disabled {
+    cursor:not-allowed;
+    opacity: 80%;
+  }
 }
 
 .send-message-icon {

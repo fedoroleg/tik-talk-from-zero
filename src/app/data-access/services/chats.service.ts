@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { environments } from '../../environments/environments';
-import { Chat, LastMessageRes } from "../interfaces/chats.interfaces";
 import { map } from "rxjs";
+
+import { environments } from '../../environments/environments';
+import { Chat, LastMessageRes, Message } from "../interfaces/chats.interfaces";
 import { AccountsService } from "./account.service";
 
 @Injectable({
@@ -11,6 +12,7 @@ import { AccountsService } from "./account.service";
 export class ChatsService {
   private readonly http = inject(HttpClient)
   private readonly CHATS_URL = `${environments.api_url}chat`
+  private readonly MESSAGE_URL = `${environments.api_url}message`
   private readonly accountService = inject(AccountsService)
   private readonly me = this.accountService.me
 
@@ -33,5 +35,13 @@ export class ChatsService {
         }
       })
     )
+  }
+
+  public sendMessage(chatId: number, message: string) {
+    return this.http.post<Message>(`${this.MESSAGE_URL}/send/${chatId}`, {}, {
+      params: {
+        message: message
+      }
+    })
   }
 }

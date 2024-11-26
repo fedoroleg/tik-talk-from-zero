@@ -4,7 +4,8 @@
   class="hidden-textarea" 
   type="text" placeholder="Сообщение..." 
   (input)="onTextAreaInput($event)"
+  [formControl]="messageInput"
 ></textarea>
-<button class="btn-send-message">
-  <svg icon="send-message" class="send-message-icon" />
+<button class="btn-send-message" [disabled]="!this.messageInput.valid">
+  <svg icon="send-message" class="send-message-icon" (click)="onSendMessage()"/>
 </button>
