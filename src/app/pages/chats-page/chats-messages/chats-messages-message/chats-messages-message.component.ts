@@ -1,11 +1,11 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Message } from '../../../../data-access/interfaces/chats.interfaces';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-chats-messages-message',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, NgIf],
   templateUrl: './chats-messages-message.component.html',
   styleUrl: './chats-messages-message.component.scss'
 })

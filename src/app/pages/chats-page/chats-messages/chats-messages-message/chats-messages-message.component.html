@@ -3,6 +3,18 @@
     <p>{{message.text}} {{message.isMine}}</p>
   </div>
   <div class="message-controls small-text">
-    <span>{{message.createdAt | date :''}}</span>
+    <span>{{message.createdAt | date :'HH:mm'}}</span>
+   
+    @if (message.isRead) {
+      <img  class="is-read-icon" src="assets/png/check-mark.png" alt="">
+    } @else {
+      <img  class="is-read-icon" src="assets/png/checkmark.png" alt="">
+    }    
   </div>
 }
+
+<!-- <img *ngIf="message.isRead; else notRead" class="is-read-icon" src="assets/png/check-mark.png" alt="">
+
+<ng-template #notRead>
+  <img class="is-read-icon" src="/assets/png/checkmark.png" alt="">
+</ng-template> -->
