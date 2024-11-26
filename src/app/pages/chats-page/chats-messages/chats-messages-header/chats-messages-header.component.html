@@ -1,1 +1,4 @@
-<p>chats-messages-header works!</p>
+@if (chat) {
+  <app-avatar-circle class="size42" [avatarSrc]="chat.userFirst.avatarUrl"/>
+  <span>{{chat.userFirst.firstName}} {{chat.userFirst.lastName}} <small>({{chat.userFirst.username}})</small> </span>
+}

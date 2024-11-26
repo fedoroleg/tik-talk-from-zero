@@ -1,3 +1,5 @@
-<app-chats-messages-header />
-<app-chats-messages-feed />
+@if (chat$ | async; as chat) {
+  <app-chats-messages-header [chat]="chat"/>
+  <app-chats-messages-feed />
+}
 
