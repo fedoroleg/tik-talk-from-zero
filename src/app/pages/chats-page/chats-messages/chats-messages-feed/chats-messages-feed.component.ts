@@ -11,5 +11,6 @@ import { Chat, Message } from '../../../../data-access/interfaces/chats.interfac
   styleUrl: './chats-messages-feed.component.scss'
 })
 export class ChatsMessagesFeedComponent {
-  @Input() messages!: Message[]
+  // @Input() messages!: Message[]
+  @Input() chat!: Chat
 }

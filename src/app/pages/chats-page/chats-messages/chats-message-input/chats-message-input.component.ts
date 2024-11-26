@@ -1,4 +1,4 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, inject, Input, Renderer2 } from '@angular/core';
 import { AvatarCircleComponent } from "../../../../common-ui/avatar-circle/avatar-circle.component";
 import { SvgIconComponent } from '../../../../common-ui/svg-icon/svg-icon.component';
 
@@ -11,6 +11,7 @@ import { SvgIconComponent } from '../../../../common-ui/svg-icon/svg-icon.compon
 })
 export class ChatsMessageInputComponent {
   private readonly r2 = inject(Renderer2)
+  @Input() avatarUrl!: string | null
 
   onTextAreaInput(event: Event ) {
     const textArea = event.target as HTMLTextAreaElement
