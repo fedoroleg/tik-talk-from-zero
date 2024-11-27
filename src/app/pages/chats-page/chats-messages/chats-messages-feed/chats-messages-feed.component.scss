@@ -1,14 +1,33 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-  padding: 20px;
+}
+
+// :host {
+//   display: grid;
+//   grid-template-rows: 70px 1fr 70px;
+//   max-height: 100%;
+// }
+
+.header {
+  height: 70px;
+  background-color: var(--dark-active-color);
 }
 
 .messages-container {
   display: grid;
+  grid-auto-rows: max-content;
   row-gap: 8px;
+  overflow-y: auto;
+  padding: 20px;
+  height: calc(100dvh - 48px - 202px);
+}
+
+.footer {
+  height: 130px;
+  padding: 20px;
+  //border-top: var(--light-border)
+  // background-color: var(--dark-active-color);
 }
 
 .is-mine {

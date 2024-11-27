@@ -4,11 +4,12 @@ import { ChatsMessageInputComponent } from "../chats-message-input/chats-message
 import { Chat } from '../../../../data-access/interfaces/chats.interfaces';
 import { ChatsService } from '../../../../data-access/services/chats.service';
 import { firstValueFrom } from 'rxjs';
+import { ChatsMessagesHeaderComponent } from "../chats-messages-header/chats-messages-header.component";
 
 @Component({
   selector: 'app-chats-messages-feed',
   standalone: true,
-  imports: [ChatsMessagesMessageComponent, ChatsMessageInputComponent],
+  imports: [ChatsMessagesMessageComponent, ChatsMessageInputComponent, ChatsMessagesHeaderComponent],
   templateUrl: './chats-messages-feed.component.html',
   styleUrl: './chats-messages-feed.component.scss'
 })

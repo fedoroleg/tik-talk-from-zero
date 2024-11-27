@@ -1,8 +1,11 @@
+<app-chats-messages-header class="header" [chat]="chat"/>
+
 <div class="messages-container">
   @for(message of chat.messages; track message.id) {
     <app-chats-messages-message [message]="message" />
   }  
 </div>
-<div class="messages-input">
+
+<div class="footer messages-input">
   <app-chats-message-input [avatarUrl]="chat.userSecond.avatarUrl" (sendMessage)="onSendMessage($event)"/>
 </div>
