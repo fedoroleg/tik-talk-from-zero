@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { ChatsMessagesMessageComponent } from "../chats-messages-message/chats-messages-message.component";
 import { ChatsMessageInputComponent } from "../chats-message-input/chats-message-input.component";
-import { Chat, Message } from '../../../../data-access/interfaces/chats.interfaces';
+import { Chat } from '../../../../data-access/interfaces/chats.interfaces';
 import { ChatsService } from '../../../../data-access/services/chats.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -19,6 +19,8 @@ export class ChatsMessagesFeedComponent {
   async onSendMessage(message: string) {
     await firstValueFrom(this.chatsService.sendMessage(this.chat.id, message)).then(res => console.log('res', res)
     )
-    await firstValueFrom(this.chatsService.getChatById(this.chat.id))
+    await firstValueFrom(this.chatsService.getChatById(this.chat.id)).then(updatedChat => {
+      this.chat = updatedChat
+    })
   }
 }
