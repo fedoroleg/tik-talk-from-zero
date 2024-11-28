@@ -1,11 +1,12 @@
 :host {
   display: block;
   background-color: var(--message-color);
-  padding: 16px;
+  padding: 16px 16px 22px 16px;
   width: max-content;
   max-height: fit-content;
   max-width: 400px;
   border-radius: 2px;
+  position: relative;
   // mask: linear-gradient(#000 0 0), linear-gradient(-228deg, #000 47%, rgba(0, 0, 0, 0) 0) border-box 100% 108% / 21% 205% no-repeat;
   // mask-composite: exclude;
   // mask-position: 0% 116%;
@@ -22,6 +23,10 @@
 
 .message-controls {
   text-align: right;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  opacity: 60%;
   }
 
 :host.is-mine {
