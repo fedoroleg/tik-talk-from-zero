@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, tap } from "rxjs";
 
 import { environments } from '../../environments/environments';
 import { Chat, LastMessageRes, Message } from "../interfaces/chats.interfaces";
@@ -15,6 +15,12 @@ export class ChatsService {
   private readonly MESSAGE_URL = `${environments.api_url}message`
   private readonly accountService = inject(AccountsService)
   private readonly me = this.accountService.me
+
+  public createChat(id: number) {
+    return this.http.post<Chat>(`${this.CHATS_URL}/${id}`, {}).pipe(
+      tap(res => console.log('new chat res in serv = ', res))
+    )
+  }
 
   public getMyChats() {
     return this.http.get<LastMessageRes[]>(`${this.CHATS_URL}/get_my_chats/`)

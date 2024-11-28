@@ -7,6 +7,11 @@
         <span>Редактировать</span>
         <svg icon="settings" class="header-settings-icon"></svg>
       </a>
+    } @else {
+      <a class="btn to-settings-btn" (click)="sendMessage(account.id)">
+        <span>Написать</span>
+        <svg icon="send-message" class="header-settings-icon"></svg>
+      </a>
     }
   </header>
 

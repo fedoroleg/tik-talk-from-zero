@@ -3,7 +3,7 @@ import { ChatsMessagesHeaderComponent } from "./chats-messages-header/chats-mess
 import { ChatsMessagesFeedComponent } from "./chats-messages-feed/chats-messages-feed.component";
 import { ChatsService } from '../../../data-access/services/chats.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
+import { catchError, switchMap, tap, throwError } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -18,9 +18,10 @@ export class ChatsMessagesComponent {
   private readonly route = inject(ActivatedRoute)
 
   public chat$ = this.route.params.pipe(
-    switchMap(({id}) => this.chatsService.getChatById(id)),
-    tap(chat => console.log('chat', chat))
+    switchMap(({id}) => this.chatsService.getChatById(id).pipe(
+        tap(chat => console.log('chat = ', chat))
+    )),
   )
 
-
+  
 }
