@@ -3,7 +3,7 @@
     <p>{{message.text}}</p>
   </div>
   <div class="message-controls small-text">
-    <span>{{message.createdAt | date :'HH:mm'}}</span>
+    <span>{{message.createdAt | date :'HH:mm' : '+0600'}}</span>
    
     @if (message.isRead) {
       <img  class="is-read-icon" src="assets/png/check-mark.png" alt="">
