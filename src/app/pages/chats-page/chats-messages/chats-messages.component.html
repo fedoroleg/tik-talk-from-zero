@@ -1,7 +1,6 @@
 @if (chatVM$ | async; as chatVM) {
-  @if (chat$ | async; as chat) {
-    <app-chats-messages-feed [chat]="chat" [chatVM]="chatVM"/>
-  }
+  <app-chats-messages-feed [chatVM]="chatVM"/>
+
 }
 
 
