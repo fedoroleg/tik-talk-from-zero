@@ -23,5 +23,18 @@ export class ChatsMessagesComponent {
     )),
   )
 
+  public chatVM$ = this.route.params.pipe(
+    switchMap(({id}) => this.chatsService.getChatByIdVM(id).pipe(
+    )),
+  )
+  constructor() {
+    this.route.params.pipe(
+      switchMap(({id}) => this.chatsService.getChatByIdVM(id).pipe(
+          // tap(chat => console.log('chatVM = ', chat))
+      )),
+    ).subscribe(chatVM => console.log('chatVM = ', chatVM)
+    )
+  }
+
   
 }

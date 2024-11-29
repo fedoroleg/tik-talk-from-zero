@@ -28,9 +28,10 @@
   padding: 20px;
 }
 
-.is-mine {
-  justify-self: right;
-}
+.date-groups{
+  display: grid;
+  row-gap: 20px;
+}   
 
 /* width */
 ::-webkit-scrollbar {

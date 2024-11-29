@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { map, tap } from "rxjs";
 
 import { environments } from '../../environments/environments';
-import { Chat, LastMessageRes, Message } from "../interfaces/chats.interfaces";
+import { Chat, ChatVM, LastMessageRes, Message, MessagesDateGroup } from "../interfaces/chats.interfaces";
 import { AccountsService } from "./account.service";
 
 @Injectable({
@@ -26,6 +26,21 @@ export class ChatsService {
     return this.http.get<LastMessageRes[]>(`${this.CHATS_URL}/get_my_chats/`)
   }
 
+  public getChatByIdVM(id: number) {
+    return this.http.get<Chat>(`${this.CHATS_URL}/${id}`).pipe(
+      map(chat => {
+        return {
+          ...chat,
+          messages: this.getMessagesDateGroups(chat.messages)
+        }
+      }),
+    )
+  }
+
+
+
+  //Работающая старая версия
+  
   public getChatById(id: number) {
     return this.http.get<Chat>(`${this.CHATS_URL}/${id}`).pipe(
       map(chat => {
@@ -39,7 +54,7 @@ export class ChatsService {
           })
           
         }
-      })
+      }),
     )
   }
 
@@ -50,4 +65,39 @@ export class ChatsService {
       }
     })
   }
-}
+
+  private getMessagesDateGroups(messages: Message[]): MessagesDateGroup[] {
+    const today = new Date().toLocaleDateString()
+    // let dateGroups = [ {date: '01.01.2024', messages: []}, {date: '25.11.2024', messages: [{},]}]
+    let dateGroups: MessagesDateGroup[] = []
+  
+    messages.forEach(message => {
+      // console.log('today = ', today);
+      // console.log('message.createdAt = ', new Date(message.createdAt).toLocaleDateString() === today);
+  
+      // Дальше для каждого месседжа делаю эти операции
+      message = this.setIsMineForMessage(message)
+      const messageDate = new Date(message.createdAt).toLocaleDateString()
+  
+      const dateGroupExist = dateGroups.find(dateGroup => dateGroup.date === messageDate)
+  
+      if (dateGroupExist) {     
+        dateGroupExist.messages.push(message)
+      }
+  
+      if (!dateGroupExist) {
+        dateGroups.push({date: messageDate, messages: [message]})
+      }
+  
+    });
+  
+    return dateGroups
+  }
+
+  private setIsMineForMessage (message: Message) {
+    return {
+      ...message,
+      isMine: message.userFromId === this.me()?.id
+    }
+  }
+} 

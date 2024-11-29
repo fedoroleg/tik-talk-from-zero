@@ -8,6 +8,19 @@ export interface Chat {
   companion?: Account
 }
 
+export interface ChatVM {
+  id: number
+  userFirst: Account
+  userSecond: Account
+  messages: MessagesDateGroup[] 
+  companion?: Account
+}
+
+export interface MessagesDateGroup {
+  date: string, 
+  messages: Message[]
+}
+
 export interface Message {
   id: number
   userFromId: number

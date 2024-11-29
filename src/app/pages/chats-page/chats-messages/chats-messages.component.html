@@ -1,5 +1,8 @@
-@if (chat$ | async; as chat) {
-  <!-- <app-chats-messages-header [chat]="chat"/> -->
-  <app-chats-messages-feed [chat]="chat"/>
+@if (chatVM$ | async; as chatVM) {
+  @if (chat$ | async; as chat) {
+    <app-chats-messages-feed [chat]="chat" [chatVM]="chatVM"/>
+  }
 }
+
+
 

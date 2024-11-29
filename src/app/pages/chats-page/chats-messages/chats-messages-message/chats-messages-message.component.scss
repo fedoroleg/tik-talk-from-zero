@@ -7,6 +7,10 @@
   max-width: 400px;
   border-radius: 2px;
   position: relative;
+  
+  &.is-mine {
+    justify-self: right;
+  }
   // mask: linear-gradient(#000 0 0), linear-gradient(-228deg, #000 47%, rgba(0, 0, 0, 0) 0) border-box 100% 108% / 21% 205% no-repeat;
   // mask-composite: exclude;
   // mask-position: 0% 116%;

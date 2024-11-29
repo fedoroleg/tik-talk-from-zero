@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Chat } from '../../../../data-access/interfaces/chats.interfaces';
+import { Chat, ChatVM } from '../../../../data-access/interfaces/chats.interfaces';
 import { AvatarCircleComponent } from "../../../../common-ui/avatar-circle/avatar-circle.component";
 
 @Component({
@@ -10,5 +10,5 @@ import { AvatarCircleComponent } from "../../../../common-ui/avatar-circle/avata
   styleUrl: './chats-messages-header.component.scss'
 })
 export class ChatsMessagesHeaderComponent{
-  @Input() chat!: Chat;
+  @Input() chat!: ChatVM;
 }
