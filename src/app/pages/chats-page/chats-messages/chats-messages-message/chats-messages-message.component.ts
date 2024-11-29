@@ -7,14 +7,13 @@ import { DatePipe } from '@angular/common';
   standalone: true,
   imports: [DatePipe],
   templateUrl: './chats-messages-message.component.html',
-  styleUrl: './chats-messages-message.component.scss'
+  styleUrl: './chats-messages-message.component.scss',
 })
 export class ChatsMessagesMessageComponent {
   @Input() message!: Message;
 
-  @HostBinding('class.is-mine') 
+  @HostBinding('class.is-mine')
   get isMine() {
-    return this.message.isMine
+    return this.message.isMine;
   }
-  
 }

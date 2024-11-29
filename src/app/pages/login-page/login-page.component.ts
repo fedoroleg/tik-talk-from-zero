@@ -2,38 +2,36 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
-  private readonly authService = inject(AuthService)
-  private readonly router = inject(Router)
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
-  isPasswordVisible = signal<boolean>(false)
+  isPasswordVisible = signal<boolean>(false);
 
   public loginForm = new FormBuilder().group({
     username: ['', Validators.required],
-    password: ['', Validators.required]
-  })
+    password: ['', Validators.required],
+  });
 
   onSubmit() {
-    if(this.loginForm.value.username && this.loginForm.value.password){
+    if (this.loginForm.value.username && this.loginForm.value.password) {
       const loginData = {
         username: this.loginForm.value.username,
-        password: this.loginForm.value.password
-      }
-      this.authService.login(loginData).subscribe(
-        res => {
-          console.log('res', res)
-          this.router.navigate([''])
-        })
+        password: this.loginForm.value.password,
+      };
+      this.authService.login(loginData).subscribe((res) => {
+        console.log('res', res);
+        this.router.navigate(['']);
+      });
     }
   }
-  
 }

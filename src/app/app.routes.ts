@@ -15,13 +15,13 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: 'account/me', pathMatch: 'full'},
+      { path: '', redirectTo: 'account/me', pathMatch: 'full' },
       { path: 'account/:id', component: AccountPageComponent },
       { path: 'settings', component: SettingsPageComponent },
-      { path: 'search', component: SearchPageComponent},
-      { path: 'chats', loadChildren: () => chatsRoutes},
+      { path: 'search', component: SearchPageComponent },
+      { path: 'chats', loadChildren: () => chatsRoutes },
     ],
-    canActivate: [isLoggedInGuardFn]
+    canActivate: [isLoggedInGuardFn],
   },
   {
     path: 'login',
@@ -31,5 +31,5 @@ export const routes: Routes = [
   {
     path: 'test',
     component: TestPageComponent,
-  }
+  },
 ];
