@@ -5,7 +5,6 @@ import { map, tap } from 'rxjs';
 import { environments } from '../../environments/environments';
 import {
   Chat,
-  ChatVM,
   LastMessageRes,
   Message,
   MessagesDateGroup,
@@ -43,24 +42,6 @@ export class ChatsService {
     );
   }
 
-  //Работающая старая версия
-
-  public getChatById(id: number) {
-    return this.http.get<Chat>(`${this.CHATS_URL}/${id}`).pipe(
-      map((chat) => {
-        return {
-          ...chat,
-          messages: chat.messages.map((message) => {
-            return {
-              ...message,
-              isMine: message.userFromId === this.me()?.id,
-            };
-          }),
-        };
-      })
-    );
-  }
-
   public sendMessage(chatId: number, message: string) {
     return this.http.post<Message>(
       `${this.MESSAGE_URL}/send/${chatId}`,
@@ -85,7 +66,6 @@ export class ChatsService {
 
     messages.forEach((message) => {
       message = this.setIsMineForMessage(message);
-      // const messageDate = new Date(message.createdAt).toLocaleDateString();
       const messageDate = getMessageDate(message.createdAt);
       const dateGroupExist = dateGroups.find(
         (dateGroup) => dateGroup.date === messageDate
