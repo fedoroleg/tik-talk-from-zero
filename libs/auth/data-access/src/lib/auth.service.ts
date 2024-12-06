@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environments } from '../environments/environments';
+import { environments } from '@env';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { LoginData, TokenResponse } from './auth.models';
 import { CookieService } from 'ngx-cookie-service';

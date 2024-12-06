@@ -13,12 +13,16 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "lib": ["ES2022", "dom"],
-    "paths": {},
+    "paths": {
+      "@env": ["apps/tik-talk-from-zero/src/environments/environments.ts"],
+      "@tt/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@tt/feature-login-page": ["libs/auth/feature-login-page/src/index.ts"]
+    },
     "baseUrl": ".",
     "rootDir": "."
   },

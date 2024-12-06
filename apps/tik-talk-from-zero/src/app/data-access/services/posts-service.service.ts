@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { environments } from '../../environments/environments';
+import { environments } from '../../../environments/environments';
 import {
   Comment,
   CommentCreateDto,

@@ -22,7 +22,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
-  }, 
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.7",
     "@angular-devkit/core": "^18.2.7",
@@ -31,6 +31,8 @@
     "@angular/compiler-cli": "^18.2.0",
     "@eslint/js": "^9.15.0",
     "@nx/angular": "20.2.0",
+    "@nx/eslint": "20.2.0",
+    "@nx/eslint-plugin": "20.2.0",
     "@nx/js": "20.2.0",
     "@nx/workspace": "20.2.0",
     "@schematics/angular": "^18.2.7",
@@ -38,7 +40,10 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/utils": "^8.13.0",
+    "angular-eslint": "^18.3.0",
     "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.0.0",
     "globals": "^15.12.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
