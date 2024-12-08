@@ -1,0 +1,22 @@
+<div class="profile-card">
+  <div class="avatar-name">
+    <app-avatar-circle [avatarSrc]="account.avatarUrl" class="size70" />
+    <div class="avatar-name__name">
+      <strong class="h3">{{ account.firstName }} {{ account.lastName }}</strong>
+      <small class="subtitle">{{ account.username }}</small>
+    </div>
+  </div>
+
+  <div class="profile-card-description">
+    {{ account.description }}
+  </div>
+
+  <div class="profile-card__tags">
+    <span class="skill-tag" *ngFor="let skill of account.stack">{{
+      skill
+    }}</span>
+  </div>
+  <div class="profile-card__action-buttons">
+    <button class="btn">Подписаться</button>
+  </div>
+</div>

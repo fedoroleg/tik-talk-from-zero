@@ -1,0 +1,30 @@
+:host {
+  display: grid;
+  grid-template-columns: 322px 1fr;
+  column-gap: 48px;
+}
+
+.account-edit-form {
+  border: 1px solid var(--light-color);
+  padding: 32px;
+  background-color: var(--dark-color);
+  display: grid;
+  row-gap: 20px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+}
+
+.form-buttons-wrapper {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-section {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,16 @@
+<app-avatar-circle [avatarSrc]="avatarUrl" class="size32" />
+
+<textarea
+  class="hidden-textarea"
+  type="text"
+  placeholder="Сообщение..."
+  (input)="onTextAreaInput($event)"
+  [formControl]="messageInput"
+></textarea>
+<button class="btn-send-message" [disabled]="!this.messageInput.valid">
+  <svg
+    icon="send-message"
+    class="send-message-icon"
+    (click)="onSendMessage()"
+  />
+</button>
