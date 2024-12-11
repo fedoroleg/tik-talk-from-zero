@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environments } from '../../../../../apps/tik-talk-from-zero/src/app/environments/environments';
+// import { environments } from '../../../../../apps/tik-talk-from-zero/src/app/environments/environments';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { LoginData, TokenResponse } from './auth.models';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { API_URL } from './api-url.token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private apiUrl = inject(API_URL)
+
   private readonly http = inject(HttpClient);
   private readonly cookieService = inject(CookieService);
   private readonly router = inject(Router);
@@ -31,13 +34,14 @@ export class AuthService {
     fd.append('username', username);
     fd.set('password', password);
     return this.http
-      .post<TokenResponse>(`${environments.api_url}auth/token`, fd)
+      // .post<TokenResponse>(`${environments.api_url}auth/token`, fd)
+      .post<TokenResponse>(`${this.apiUrl}auth/token`, fd)
       .pipe(tap((response) => this.saveTokens(response)));
   }
 
   public refreshAuthToken() {
     return this.http
-      .post<TokenResponse>(`${environments.api_url}auth/refresh`, {
+      .post<TokenResponse>(`${this.apiUrl}auth/refresh`, {
         refresh_token: this.refreshToken,
       })
       .pipe(
@@ -65,3 +69,8 @@ export class AuthService {
     this.cookieService.set('refreshToken', this.refreshToken);
   }
 }
+
+
+// const environments = {
+//   api_url: 'https://icherniakov.ru/yt-course/'
+// }

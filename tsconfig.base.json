@@ -1,8 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "rootDir": ".",
-    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -16,14 +16,15 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "lib": ["ES2022", "dom"],
-    "paths": {
-      "@tt/auth": ["libs/auth/src/index.ts"],
-      "@tt/auth2": ["libs/auth2/src/index.ts"]
-    },
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "baseUrl": ".",
+    "paths": {
+      "@tt/auth2": ["libs/auth2/src/index.ts"],
+      "account": ["libs/account/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -31,5 +32,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AuthService } from '@tt/auth';
+import { AuthService } from '@tt/auth2';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { InnerComponent } from './inner/inner.component';

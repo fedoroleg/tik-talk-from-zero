@@ -1,3 +1,3 @@
-# auth
+# account
 
 This library was generated with [Nx](https://nx.dev).

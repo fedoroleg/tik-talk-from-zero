@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { AuthService } from '@tt/auth'
+import { AuthService } from '@tt/auth2';
 
 @Component({
   selector: 'app-login-page',
