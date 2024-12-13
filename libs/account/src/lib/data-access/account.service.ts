@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Account } from '../interfaces/account.interface';
-import { environments } from '../../environments/environments';
-import { Pageble } from '../interfaces/pageble.type';
+import { Account } from '@tt/common-models';
+import { environments } from '@tt/env';
+import { Pageble } from '@tt/common-models';
 import { BehaviorSubject, map, tap } from 'rxjs';
 
 @Injectable({

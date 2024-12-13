@@ -1,7 +1,7 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
 import { AccountHeaderComponent } from '../../common-ui/account-header/account-header.component';
 import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component';
-import { AccountsService } from '../../data-access/services/account.service';
+import { AccountsService } from '@tt/account';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
@@ -23,7 +23,7 @@ import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 export class SettingsPageComponent {
   private readonly accountService = inject(AccountsService);
   private readonly fb = inject(FormBuilder);
-  public actualAvatar: string = 'assets/images/avatar-placeholder.png';
+  public actualAvatar = 'assets/images/avatar-placeholder.png';
 
   @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
