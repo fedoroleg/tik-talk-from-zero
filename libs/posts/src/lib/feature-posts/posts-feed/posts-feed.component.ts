@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { PostInputComponent } from '../post-input/post-input.component';
 import { PostComponent } from '../post/post.component';
-import { PostsService } from '../../../data-access/services/posts-service.service';
+import { PostsService } from '../../data-access/posts-service.service';
 import { firstValueFrom } from 'rxjs';
 
 @Component({

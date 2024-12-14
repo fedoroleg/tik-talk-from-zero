@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ChatsMessagesFeedComponent } from './chats-messages-feed/chats-messages-feed.component';
-import { ChatsService } from '../../../data-access/services/chats.service';
+import { ChatsService } from '@tt/chats/data-access';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';

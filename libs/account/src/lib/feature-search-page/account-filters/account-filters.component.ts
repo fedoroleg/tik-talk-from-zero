@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, startWith, switchMap } from 'rxjs';
-import { AccountsService } from '../../../data-access/services/account.service';
+import { AccountsService } from '../../data-access/account.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

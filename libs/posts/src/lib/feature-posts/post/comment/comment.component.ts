@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { AvatarCircleComponent } from '../../../../common-ui/avatar-circle/avatar-circle.component';
-import { Comment } from '../../../../data-access/interfaces/post.interfaces';
 import { CommonModule } from '@angular/common';
-import { CustomDate } from '../../../../helpers/pipes/custom-date.pipe';
+import { Component, Input } from '@angular/core';
+import { AvatarCircleComponent } from '@tt/common-ui';
+import { Comment } from '@tt/common-models';
+import { CustomDate } from '@tt/common-ui';
 
 @Component({
   selector: 'app-comment',

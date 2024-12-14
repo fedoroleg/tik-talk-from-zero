@@ -8,12 +8,13 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
 import { FormsModule } from '@angular/forms';
-import { AccountsService } from '../../../data-access/services/account.service';
-import { PostsService } from '../../../data-access/services/posts-service.service';
 import { firstValueFrom } from 'rxjs';
+import { AvatarCircleComponent } from '@tt/common-ui';
+import { SvgIconComponent } from '@tt/common-ui';
+//circullar
+import { AccountsService } from '@tt/account';
+import { PostsService } from '../../data-access/posts-service.service';
 
 @Component({
   selector: 'app-post-input',

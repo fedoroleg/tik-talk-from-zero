@@ -7,8 +7,8 @@ import {
   Renderer2,
 } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { AvatarCircleComponent } from '../../../../common-ui/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../../common-ui/svg-icon/svg-icon.component';
+import { AvatarCircleComponent } from '@tt/common-ui';
+import { SvgIconComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-chats-message-input',

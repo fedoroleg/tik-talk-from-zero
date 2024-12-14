@@ -3,8 +3,8 @@ import { ChatsMessageInputComponent } from '../chats-message-input/chats-message
 import {
   Chat,
   ChatVM,
-} from '../../../../data-access/interfaces/chats.interfaces';
-import { ChatsService } from '../../../../data-access/services/chats.service';
+} from '@tt/common-models';
+import { ChatsService } from '@tt/chats/data-access';
 import { firstValueFrom } from 'rxjs';
 import { ChatsMessagesHeaderComponent } from '../chats-messages-header/chats-messages-header.component';
 import { ChatsMessagesDateGroupComponent } from '../chats-messages-date-group/chats-messages-date-group.component';

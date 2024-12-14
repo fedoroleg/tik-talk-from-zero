@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
-import { AccountsService } from '../../data-access/services/account.service';
-import { AccountCardComponent } from '../../common-ui/account-card/account-card.component';
+import { AccountsService } from '../data-access/account.service';
+import { AccountCardComponent } from '@tt/common-ui';
 import { AccountFiltersComponent } from './account-filters/account-filters.component';
 
 @Component({
@@ -16,5 +16,4 @@ export class SearchPageComponent {
 
   public accounts$ = this.accountsService.filteredAccounts$;
 
-  constructor() {}
 }

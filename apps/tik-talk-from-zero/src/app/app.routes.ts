@@ -1,14 +1,12 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '@tt/auth2';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
-import { LayoutComponent } from './common-ui/layout/layout.component';
+import { SearchPageComponent } from '@tt/account';
+import { LayoutComponent } from '@tt/common-ui';
 
 import { isLoggedInGuardFn } from '@tt/auth2';
-import { TestPageComponent } from './pages/test-page/test-page.component';
-import { AccountPageComponent } from './pages/account-page/account-page.component';
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
-import { ChatsPageComponent } from './pages/chats-page/chats-page.component';
-import { chatsRoutes } from './pages/chats-page/chats.routes';
+import { AccountPageComponent } from '@tt/account';
+import { SettingsPageComponent } from '@tt/account';
+import { chatsRoutes } from '@tt/chats/feature-chats-page';
 
 export const routes: Routes = [
   {
@@ -26,10 +24,5 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
-  },
-
-  {
-    path: 'test',
-    component: TestPageComponent,
   },
 ];

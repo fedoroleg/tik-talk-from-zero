@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { environments } from '../../environments/environments';
+import { environments } from '@tt/environments';
 
 @Pipe({
   name: 'imgUrl',
@@ -9,7 +9,7 @@ import { environments } from '../../environments/environments';
 
 // *** заменить урл на baseApi
 export class ImgUrlPipe implements PipeTransform {
-  transform(imgUrl: String | null): String | null {
+  transform(imgUrl: string | null): string | null {
     if (!imgUrl) return null;
     return `${environments.api_url}${imgUrl}`;
   }

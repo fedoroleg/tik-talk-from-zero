@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, tap } from 'rxjs';
 
-import { environments } from '../../environments/environments';
+import { environments } from '@tt/environments';
 import {
   Chat,
   LastMessageRes,
   Message,
   MessagesDateGroup,
-} from '../interfaces/chats.interfaces';
-import { AccountsService } from './account.service';
+} from '@tt/common-models';
+import { AccountsService } from '@tt/account';
 
 @Injectable({
   providedIn: 'root',

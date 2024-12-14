@@ -15,7 +15,6 @@ export class CustomDate implements PipeTransform {
 
     const nowTS = Date.now();
     const commentDateTS = Date.parse(date);
-    const actualCommentDateTs = commentDateTS + 10800000;
     const commentTime = date.slice(11, 16);
 
     if (commentDateTS > nowTS - 3600000 * 24)

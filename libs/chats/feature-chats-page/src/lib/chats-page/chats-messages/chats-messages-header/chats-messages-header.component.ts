@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import {
   Chat,
   ChatVM,
-} from '../../../../data-access/interfaces/chats.interfaces';
-import { AvatarCircleComponent } from '../../../../common-ui/avatar-circle/avatar-circle.component';
+} from '@tt/common-models';
+import { AvatarCircleComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-chats-messages-header',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MessagesDateGroup } from '../../../../data-access/interfaces/chats.interfaces';
+import { MessagesDateGroup } from '@tt/common-models';
 import { ChatsMessagesMessageComponent } from '../chats-messages-message/chats-messages-message.component';
 
 @Component({

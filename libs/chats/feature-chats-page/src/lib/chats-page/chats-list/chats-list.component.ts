@@ -3,7 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatsListItemComponent } from './chats-list-item/chats-list-item.component';
-import { ChatsService } from '../../../data-access/services/chats.service';
+import { ChatsService } from '@tt/chats/data-access';
 import { map, startWith, switchMap } from 'rxjs';
 
 @Component({

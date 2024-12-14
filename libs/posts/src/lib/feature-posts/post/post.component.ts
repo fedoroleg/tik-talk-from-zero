@@ -1,13 +1,13 @@
-import { Component, inject, input, signal } from '@angular/core';
-import { Comment, Post } from '../../../data-access/interfaces/post.interfaces';
-import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, input, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { Comment, Post } from '@tt/common-models';
+import { AvatarCircleComponent } from '@tt/common-ui';
+import { SvgIconComponent } from '@tt/common-ui';
 import { PostInputComponent } from '../post-input/post-input.component';
 import { CommentComponent } from './comment/comment.component';
-import { CustomDate } from '../../../helpers/pipes/custom-date.pipe';
-import { PostsService } from '../../../data-access/services/posts-service.service';
-import { firstValueFrom } from 'rxjs';
+import { CustomDate } from '@tt/common-ui';
+import { PostsService } from '../../data-access/posts-service.service';
 
 @Component({
   selector: 'app-post',
@@ -23,7 +23,7 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
 })
-export class PostComponent {
+export class PostComponent implements OnInit {
   public post = input<Post>();
   public comments = signal<Comment[]>([]);
   private readonly postService = inject(PostsService);

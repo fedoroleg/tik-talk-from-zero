@@ -1,6 +1,6 @@
-import { Component, Input, input, OnInit, signal } from '@angular/core';
-import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
-import { DragAndDropDirective } from '../../../common-ui/directives/drag-and-drop.directive';
+import { Component, Input, OnInit, signal } from '@angular/core';
+import { SvgIconComponent } from '@tt/common-ui';
+import { DragAndDropDirective } from '@tt/common-ui';
 
 @Component({
   selector: 'app-avatar-upload',

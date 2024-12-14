@@ -2,7 +2,7 @@
   "name": "chats-feature-chats-page",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/chats/feature-chats-page/src",
-  "prefix": "lib",
+  "prefix": "app",
   "projectType": "library",
   "tags": [],
   "targets": {

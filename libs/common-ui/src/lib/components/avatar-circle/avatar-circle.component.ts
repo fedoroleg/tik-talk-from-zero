@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
+import { ImgUrlPipe } from '../../pipes/img-url.pipe';
 
 @Component({
   selector: 'app-avatar-circle',
@@ -9,5 +9,5 @@ import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
   styleUrl: './avatar-circle.component.scss',
 })
 export class AvatarCircleComponent {
-  @Input() avatarSrc!: String | null;
+  @Input() avatarSrc!: string | null;
 }

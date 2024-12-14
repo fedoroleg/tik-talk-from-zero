@@ -1,7 +1,7 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
-import { AccountHeaderComponent } from '../../common-ui/account-header/account-header.component';
-import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component';
-import { AccountsService } from '@tt/account';
+//import { AccountHeaderComponent } from '@tt/common-ui';
+import { SvgIconComponent } from '@tt/common-ui';
+import { AccountsService } from '../data-access/account.service';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
@@ -11,7 +11,7 @@ import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
   selector: 'app-settings-page',
   standalone: true,
   imports: [
-    AccountHeaderComponent,
+   // AccountHeaderComponent,
     SvgIconComponent,
     RouterLink,
     ReactiveFormsModule,
@@ -37,7 +37,6 @@ export class SettingsPageComponent {
 
   constructor() {
     effect(() => {
-      //@ts-ignore
       this.form.patchValue({
         ...this.accountService.me(),
         stack: this.mergeStack(this.accountService.me()?.stack),
@@ -53,7 +52,8 @@ export class SettingsPageComponent {
         ...this.form.value,
         stack: this.splitStack(this.form.value.stack),
       };
-      //@ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       firstValueFrom(this.accountService.patchAccount(account));
       if (this.avatarUploader.avatar) {
         firstValueFrom(

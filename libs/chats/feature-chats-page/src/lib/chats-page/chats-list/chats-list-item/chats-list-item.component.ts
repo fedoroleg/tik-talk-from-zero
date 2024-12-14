@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { AvatarCircleComponent } from '../../../../common-ui/avatar-circle/avatar-circle.component';
-import { LastMessageRes } from '../../../../data-access/interfaces/chats.interfaces';
-import { CustomDate } from '../../../../helpers/pipes/custom-date.pipe';
+import { AvatarCircleComponent } from '@tt/common-ui';
+import { LastMessageRes } from '@tt/common-models';
+import { CustomDate } from '@tt/common-ui';
 
 @Component({
   selector: 'app-chats-list-item',

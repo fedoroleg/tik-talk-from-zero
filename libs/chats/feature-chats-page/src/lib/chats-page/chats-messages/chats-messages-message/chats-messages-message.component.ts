@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { Message } from '../../../../data-access/interfaces/chats.interfaces';
+import { Message } from '@tt/common-models';
 import { DatePipe } from '@angular/common';
 
 @Component({

@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { environments } from '../../environments/environments';
+import { environments } from '@tt/environments';
 import {
   Comment,
   CommentCreateDto,
   Post,
   PostCreateDTO,
-} from '../interfaces/post.interfaces';
+} from '@tt/common-models';
 import { map, switchMap, tap } from 'rxjs';
 
 @Injectable({

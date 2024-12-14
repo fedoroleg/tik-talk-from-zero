@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Account } from '../../data-access/interfaces/account.interface';
+import { Account } from '@tt/common-models';
 import { AvatarCircleComponent } from '../avatar-circle/avatar-circle.component';
 
 @Component({

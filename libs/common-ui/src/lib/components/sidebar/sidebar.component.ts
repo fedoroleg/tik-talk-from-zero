@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import { AccountsService } from '../../data-access/services/account.service';
+//circullar
+import { AccountsService } from '@tt/account';
 import { CommonModule } from '@angular/common';
-import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
-import { firstValueFrom, map } from 'rxjs';
+import { ImgUrlPipe } from '../../pipes/img-url.pipe';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
