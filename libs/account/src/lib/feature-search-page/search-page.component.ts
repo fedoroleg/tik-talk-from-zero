@@ -7,7 +7,7 @@ import { AccountFiltersComponent } from './account-filters/account-filters.compo
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [CommonModule, NgFor, AccountCardComponent, AccountFiltersComponent],
+  imports: [CommonModule, AccountCardComponent, AccountFiltersComponent],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
 })

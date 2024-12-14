@@ -1,11 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import { SvgIconComponent } from '@tt/common-ui';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-//circullar
 import { AccountsService } from '@tt/account';
 import { CommonModule } from '@angular/common';
-import { ImgUrlPipe } from '../../pipes/img-url.pipe';
+import { ImgUrlPipe } from '@tt/common-ui';
 import { firstValueFrom } from 'rxjs';
 
 @Component({

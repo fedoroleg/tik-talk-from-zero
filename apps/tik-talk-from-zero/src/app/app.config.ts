@@ -5,8 +5,8 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environments } from '@tt/environments';
 import { authInterceptor } from '@tt/auth2';
-import { API_URL } from '@tt/auth2'
- 
+import { API_URL } from '@tt/auth2';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
