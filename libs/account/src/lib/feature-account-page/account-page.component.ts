@@ -8,7 +8,7 @@ import { AccountsService } from '../data-access/account.service';
 import { SvgIconComponent } from '@tt/common-ui';
 import { ImgUrlPipe } from '@tt/common-ui';
 import { PostsFeedComponent } from '@tt/posts';
-import { ChatsService } from '@tt/chats/data-access';
+
 
 @Component({
   selector: 'app-account-page',
@@ -28,7 +28,7 @@ export class AccountPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly accountService = inject(AccountsService);
-  private readonly chatsService = inject(ChatsService);
+
 
   me$ = toObservable(this.accountService.me);
   public isMyPage = signal(false);
@@ -46,9 +46,7 @@ export class AccountPageComponent {
     })
   );
 
-  sendMessage(id: number) {
-    firstValueFrom(this.chatsService.createChat(id)).then((chat) =>
-      this.router.navigate(['chats', chat.id])
-    );
-  }
+  sendMessage(userId: number) {
+      this.router.navigate(['/chats', 'new'], {queryParams: {userId}})
+   }
 }

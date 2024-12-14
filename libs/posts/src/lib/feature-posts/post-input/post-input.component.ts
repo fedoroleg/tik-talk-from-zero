@@ -12,9 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { AvatarCircleComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-//circullar
-import { AccountsService } from '@tt/account';
+// //circullar
+// import { AccountsService } from '@tt/account';
 import { PostsService } from '../../data-access/posts-service.service';
+import {GlobalStoreService} from '@tt/shared'
 
 @Component({
   selector: 'app-post-input',
@@ -24,12 +25,13 @@ import { PostsService } from '../../data-access/posts-service.service';
   styleUrl: './post-input.component.scss',
 })
 export class PostInputComponent {
+  private readonly globalStoreService = inject(GlobalStoreService)
   @Input() isCommentInput!: boolean;
   @Output() commentCreated = new EventEmitter();
   postId = input<number>();
 
   private readonly r2 = inject(Renderer2);
-  public me = inject(AccountsService).me;
+  public me = this.globalStoreService.me;
   private readonly postsService = inject(PostsService);
 
   public postText = '';

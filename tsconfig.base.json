@@ -31,8 +31,9 @@
       "@tt/common-models": ["libs/common-models/src/index.ts"],
       "@tt/common-ui": ["libs/common-ui/src/index.ts"],
       "@tt/environments": ["environments/environments.ts"],
+      "@tt/layout": ["libs/layout/src/index.ts"],
       "@tt/posts": ["libs/posts/src/index.ts"],
-      "@tt/layout": ["libs/layout/src/index.ts"]
+      "@tt/shared": ["libs/shared/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

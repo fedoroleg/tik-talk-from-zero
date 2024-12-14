@@ -4,20 +4,24 @@ import { Account } from '@tt/common-models';
 import { environments } from '@tt/environments';
 import { Pageble } from '@tt/common-models';
 import { BehaviorSubject, map, tap } from 'rxjs';
+import { GlobalStoreService } from '@tt/shared';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountsService {
   private readonly http = inject(HttpClient);
-
+  private globalStoreService = inject(GlobalStoreService);
   public me = signal<Account | null>(null);
   public filteredAccounts$ = new BehaviorSubject<Account[] | null>(null);
 
   public getMe() {
     return this.http
       .get<Account>(`${environments.api_url}account/me`)
-      .pipe(tap((res) => this.me.set(res)));
+      .pipe(tap((res) => {
+        this.me.set(res)
+        this.globalStoreService.me.set(res)
+      }));
   }
 
   public getTestAccounts() {
