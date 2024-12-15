@@ -62,7 +62,7 @@ export class ChatsService {
   }
 
   private getMessagesDateGroups(messages: Message[]): MessagesDateGroup[] {
-    let dateGroups: MessagesDateGroup[] = [];
+    const dateGroups: MessagesDateGroup[] = [];
 
     messages.forEach((message) => {
       message = this.setIsMineForMessage(message);
@@ -87,7 +87,7 @@ export class ChatsService {
 function getMessageDate(date: string) {
   const today = new Date().toLocaleDateString();
   const yesterday = getYesterday();
-  let messageDate = new Date(date).toLocaleDateString();
+  const messageDate = new Date(date).toLocaleDateString();
 
   if (messageDate === today) return 'Сегодня';
   if (messageDate === yesterday) return 'Вчера';
