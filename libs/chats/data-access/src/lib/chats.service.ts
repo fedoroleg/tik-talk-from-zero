@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 import { environments } from '@tt/environments';
 import {
   Chat,
-  ChatVM,
+
   LastMessageRes,
   Message,
   MessagesDateGroup,
@@ -38,15 +38,6 @@ export class ChatsService {
       tap((chat) => {
         this.activeChatMessages.set(this.getMessagesDateGroups(chat.messages))
       })
-      // map((chat) => {
-      //   return {
-      //     ...chat,
-      //     messages: this.getMessagesDateGroups(chat.messages),
-      //   };
-      // }),
-      // tap(chatVM => {
-      //   this.activeChatMessages.set(chatVM.messages)
-      // })
     );
   }
 

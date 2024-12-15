@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { ChatsMessageInputComponent } from '../chats-message-input/chats-message-input.component';
-import { Chat, ChatVM } from '@tt/common-models';
+import { Chat} from '@tt/common-models';
 import { ChatsService } from '@tt/chats/data-access';
 import { firstValueFrom } from 'rxjs';
 import { ChatsMessagesHeaderComponent } from '../chats-messages-header/chats-messages-header.component';

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ChatsMessagesFeedComponent } from './chats-messages-feed/chats-messages-feed.component';
 import { ChatsService } from '@tt/chats/data-access';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, of, switchMap, tap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -34,15 +34,4 @@ export class ChatsMessagesComponent {
       return this.chatsService.getChatByIdVM(id);
     })
   );
-
-  // constructor() {
-  //   this.route.params
-  //     .pipe(
-  //       switchMap(({ id }) =>
-  //         this.chatsService
-  //           .getChatByIdVM(id)
-  //       )
-  //     )
-  //     .subscribe((chatVM) => console.log('chatVM = ', chatVM));
-  // }
 }

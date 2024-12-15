@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
   Chat,
-  ChatVM,
 } from '@tt/common-models';
 import { AvatarCircleComponent } from '@tt/common-ui';
 
