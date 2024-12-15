@@ -1,0 +1,47 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowJs": true,
+    "rootDir": ".",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@tt/account": ["libs/account/src/index.ts"],
+      "@tt/auth2": ["libs/auth2/src/index.ts"],
+      "@tt/chats/data-access": ["libs/chats/data-access/src/index.ts"],
+      "@tt/chats/feature-chats-page": [
+        "libs/chats/feature-chats-page/src/index.ts"
+      ],
+      "@tt/common-models": ["libs/common-models/src/index.ts"],
+      "@tt/common-ui": ["libs/common-ui/src/index.ts"],
+      "@tt/environments": ["environments/environments.ts"],
+      "@tt/layout": ["libs/layout/src/index.ts"],
+      "@tt/posts": ["libs/posts/src/index.ts"],
+      "@tt/shared": ["libs/shared/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "tmp"]
+}

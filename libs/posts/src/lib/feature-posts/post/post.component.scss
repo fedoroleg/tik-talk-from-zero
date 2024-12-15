@@ -1,0 +1,74 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--grey-color);
+  border-radius: 2px;
+  padding: 16px;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 32px 1fr 16px;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.post-date {
+  font-size: 12px;
+  font-weight: 300px;
+}
+
+.post-text {
+  white-space: pre-line;
+}
+
+.three-dots-button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  color: var(--light-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &:active,
+  &:focus-visible {
+    scale: 95%;
+  }
+}
+
+.comments-container {
+  display: grid;
+  row-gap: 14px;
+}
+
+.comments-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.commonts-amount {
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+.btn-show-more-comments {
+  background: none;
+  border: none;
+  color: var(--light-color);
+  cursor: pointer;
+  width: fit-content;
+  font-family: inherit;
+  padding: 8px 0;
+  line-height: 20px;
+
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,24 @@
+<app-chats-messages-header class="header" [chat]="chat" />
+
+@if (messagesDateGroups(); as messagesDateGroups) {
+  <div class="messages-container">
+    <div class="date-groups">
+      @for (messagesDateGroup of messagesDateGroups; track messagesDateGroup.date) {
+        <app-chats-messages-date-group [messagesDateGroup]="messagesDateGroup" />
+      }
+    </div>
+  </div>
+}
+
+<!-- <div class="messages-container">
+  @for(message of chat.messages; track message.id) {
+    <app-chats-messages-message [message]="message" />
+  }  
+</div> -->
+
+<div class="footer messages-input">
+  <app-chats-message-input
+    [avatarUrl]="chat.userSecond.avatarUrl"
+    (sendMessage)="onSendMessage($event)"
+  />
+</div>

@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  row-gap: 8px;
+}
+
+.date {
+  background-color: var(--dark-active-color);
+  width: max-content;
+  padding: 4px 16px;
+  margin: auto;
+  font-size: 13px;
+  font-weight: 400;
+}
