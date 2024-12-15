@@ -13,5 +13,5 @@ import { AvatarCircleComponent } from '@tt/common-ui';
   styleUrl: './chats-messages-header.component.scss',
 })
 export class ChatsMessagesHeaderComponent {
-  @Input() chat!: ChatVM;
+  @Input() chat!: Chat;
 }

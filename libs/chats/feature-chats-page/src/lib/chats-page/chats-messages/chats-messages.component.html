@@ -1,4 +1,4 @@
-@if (chatVM$ | async; as chatVM) {
-<app-chats-messages-feed [chatVM]="chatVM" />
+@if (activeChat$ | async; as chat) {
+<app-chats-messages-feed [chat]="chat" />
 
 }

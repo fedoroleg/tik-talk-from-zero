@@ -17,7 +17,7 @@ export class ChatsMessagesComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  public chatVM$ = this.route.params.pipe(
+  public activeChat$ = this.route.params.pipe(
     switchMap(({ id }) => {
       if (id === 'new') {
         return this.route.queryParams.pipe(

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { map, tap } from 'rxjs';
 
 import { environments } from '@tt/environments';
 import {
   Chat,
+  ChatVM,
   LastMessageRes,
   Message,
   MessagesDateGroup,
@@ -20,6 +21,7 @@ export class ChatsService {
   private readonly MESSAGE_URL = `${environments.api_url}message`;
   private readonly accountService = inject(AccountsService);
   private readonly me = this.accountService.me;
+  public activeChatMessages = signal<MessagesDateGroup[] | null>(null)
 
   public createChat(id: number) {
     return this.http
@@ -33,12 +35,18 @@ export class ChatsService {
 
   public getChatByIdVM(id: number) {
     return this.http.get<Chat>(`${this.CHATS_URL}/${id}`).pipe(
-      map((chat) => {
-        return {
-          ...chat,
-          messages: this.getMessagesDateGroups(chat.messages),
-        };
+      tap((chat) => {
+        this.activeChatMessages.set(this.getMessagesDateGroups(chat.messages))
       })
+      // map((chat) => {
+      //   return {
+      //     ...chat,
+      //     messages: this.getMessagesDateGroups(chat.messages),
+      //   };
+      // }),
+      // tap(chatVM => {
+      //   this.activeChatMessages.set(chatVM.messages)
+      // })
     );
   }
 
