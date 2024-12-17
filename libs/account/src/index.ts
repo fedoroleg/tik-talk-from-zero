@@ -3,3 +3,7 @@ export { AccountPageComponent } from './lib/feature-account-page/account-page.co
 export { SearchPageComponent } from './lib/feature-search-page/search-page.component'
 export { SettingsPageComponent } from './lib/feature-settings-page/settings-page.component'
 
+export * as accountEffects from './lib/data-access/account.effects'
+export * from './lib/data-access/account.reducer'
+export { accountsFeature} from './lib/data-access/account.reducer'
+
