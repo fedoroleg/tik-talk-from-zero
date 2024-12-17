@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, startWith, take, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, startWith, take, } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { accountsActions } from '../../data-access/account.actions';
 import { Store } from '@ngrx/store';
@@ -26,8 +26,6 @@ export class AccountFiltersComponent {
   });
 
   constructor() {
-    console.log('formvalue befor patch', this.searchForm.value);
-
     this.searchForm.valueChanges
       .pipe(
         startWith({}),
@@ -45,7 +43,5 @@ export class AccountFiltersComponent {
         console.log('value in searchFormFilters$', value);
         this.searchForm.patchValue(value);
       });
-
-    console.log('formvalue after patch', this.searchForm.value);
   }
 }

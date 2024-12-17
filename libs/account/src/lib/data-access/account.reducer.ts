@@ -18,10 +18,6 @@ export const accountsFeature = createFeature({
   name: accountsFeatureKey,
   reducer: createReducer(
     accountsInitialState,
-    on(accountsActions.initAccountsSuccess, (state, { accounts }) => ({
-      ...state,
-      accounts,
-    })),
     on(accountsActions.filterAccounts, (state, { filters }) => ({
       ...state,
       accountsFilters: filters,
