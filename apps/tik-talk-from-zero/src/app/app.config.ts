@@ -1,9 +1,14 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environments } from '@tt/environments';
 import { authInterceptor } from '@tt/auth2';
 import { API_URL } from '@tt/auth2';
@@ -16,6 +21,13 @@ export const appConfig: ApplicationConfig = {
       [accountsFeature.name]: accountsFeature.reducer,
     }),
     provideEffects(accountEffects),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+    }),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor])),
