@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
-import { AccountsService } from '../data-access/account.service';
 import { AccountCardComponent } from '@tt/common-ui';
 import { AccountFiltersComponent } from './account-filters/account-filters.component';
 import { Store } from '@ngrx/store';
@@ -15,14 +14,11 @@ import { accountsActions } from '../data-access/account.actions';
   styleUrl: './search-page.component.scss',
 })
 export class SearchPageComponent {
-  //private readonly accountsService = inject(AccountsService);
   private readonly store = inject(Store);
-  // public accounts$ = this.accountsService.filteredAccounts$;
   public accounts$ = this.store.select(selectFilteredAccounts);
 
   constructor() {
     this.store.dispatch(accountsActions.initAccounts());
     console.log('constructor');
-    
   }
 }

@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, startWith, switchMap, tap } from 'rxjs';
-import { AccountsService } from '../../data-access/account.service';
+import { debounceTime, startWith, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { accountsActions } from '../../data-access/account.actions';
 import { Store } from '@ngrx/store';
@@ -16,8 +15,6 @@ import { Store } from '@ngrx/store';
 export class AccountFiltersComponent {
   private fb = inject(FormBuilder);
   private readonly store = inject(Store);
-
-  private accountService = inject(AccountsService);
 
   public searchForm = this.fb.group({
     firstName: '',
