@@ -15,7 +15,9 @@ import { SvgIconComponent } from '@tt/common-ui';
 // //circullar
 // import { AccountsService } from '@tt/account';
 import { PostsService } from '../../data-access/posts-service.service';
-import {GlobalStoreService} from '@tt/shared'
+import { GlobalStoreService } from '@tt/shared';
+import { Store } from '@ngrx/store';
+import { postsActions } from '../../data-access/posts.actions';
 
 @Component({
   selector: 'app-post-input',
@@ -25,7 +27,8 @@ import {GlobalStoreService} from '@tt/shared'
   styleUrl: './post-input.component.scss',
 })
 export class PostInputComponent {
-  private readonly globalStoreService = inject(GlobalStoreService)
+  private readonly globalStoreService = inject(GlobalStoreService);
+  private readonly store = inject(Store);
   @Input() isCommentInput!: boolean;
   @Output() commentCreated = new EventEmitter();
   postId = input<number>();
@@ -51,30 +54,32 @@ export class PostInputComponent {
   onCreatePost() {
     if (!this.postText) return;
 
-    if (this.isCommentInput) {
-      firstValueFrom(
-        this.postsService.createComment({
-          text: this.postText,
-          authorId: this.me()!.id,
-          postId: this.postId()!,
-          commentId: 0, //надо разобраться
-        })
-      ).then(() => {
-        this.postText = '';
-        this.commentCreated.emit();
-      });
-      return;
-    }
+    // if (this.isCommentInput) {
+    //   firstValueFrom(
+    //     this.postsService.createComment({
+    //       text: this.postText,
+    //       authorId: this.me()!.id,
+    //       postId: this.postId()!,
+    //       commentId: 0, //надо разобраться
+    //     })
+    //   ).then(() => {
+    //     this.postText = '';
+    //     this.commentCreated.emit();
+    //   });
+    //   return;
+    // }
 
-    firstValueFrom(
-      this.postsService.createPost({
-        title: 'Пока без названия...',
-        content: this.postText,
-        authorId: this.me()!.id,
-        communityId: 0,
+    this.store.dispatch(
+      postsActions.addPost({
+        post: {
+          title: 'Пост эпохи NGRX',
+          content: this.postText,
+          authorId: this.me()!.id,
+          communityId: 0,
+        },
       })
-    ).then(() => {
-      this.postText = '';
-    });
+    );
+
+    this.postText = '';
   }
 }
