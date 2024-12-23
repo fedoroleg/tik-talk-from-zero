@@ -3,7 +3,10 @@
 <app-post [post]="post" />
 } -->
 <app-post-input />
-
-@for (post of (posts$ | async); track post.id) {
-<app-post [post]="post" />
-}
+<ng-container *ngrxLet="{ posts: posts$, loadingStatus: loadingStatus$ } as vm">
+  @if (vm.loadingStatus === 'loading') {
+  <h2>Посты загружаются...</h2>
+  } @else { @for (post of (posts$ | async); track post.id) {
+  <app-post [post]="post" />
+  } }
+</ng-container>
