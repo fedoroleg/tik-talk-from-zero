@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environments } from '@tt/environments';
 import {
-  Comment,
+  PostComment,
   CommentCreateDto,
   Post,
   PostCreateDTO,
@@ -26,7 +26,7 @@ export class PostsService {
   }
   public createComment(comment: CommentCreateDto) {
     return this.http
-      .post<Comment>(`${environments.api_url}comment/`, comment)
+      .post<PostComment>(`${environments.api_url}comment/`, comment)
       .pipe(tap((res) => console.log(res)));
   }
 

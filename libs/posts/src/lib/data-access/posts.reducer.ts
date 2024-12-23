@@ -35,6 +35,16 @@ export const postsFeature = createFeature({
     on(postsActions.addPostSuccess, (state, { post }) => ({
       ...state,
       posts: [post, ...state.posts],
-    }))
+    })),
+    on(postsActions.addCommentSuccess, (state, { comment }) => {
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post.id === comment.postId
+            ? { ...post, comments: [...post.comments, comment] }
+            : post
+        ),
+      };
+    })
   ),
 });
