@@ -14,13 +14,16 @@ import { authInterceptor } from '@tt/auth2';
 import { API_URL } from '@tt/auth2';
 import { accountsFeature } from '@tt/account';
 import { accountEffects } from '@tt/account';
+import { postsFeature } from '@tt/posts';
+import { postsEffects } from '@tt/posts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideStore({
       [accountsFeature.name]: accountsFeature.reducer,
+      [postsFeature.name]: postsFeature.reducer,
     }),
-    provideEffects(accountEffects),
+    provideEffects(accountEffects, postsEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
