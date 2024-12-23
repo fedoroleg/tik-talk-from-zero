@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
-import { Post, PostCreateDTO } from "@tt/common-models";
+import { CommentCreateDto, Post, PostComment, PostCreateDTO } from "@tt/common-models";
 
 export const postsActions = createActionGroup({
   source: 'posts',
@@ -8,5 +8,7 @@ export const postsActions = createActionGroup({
     getPostsSuccess: props<{posts: Post[]}>(),
     addPost: props<{post: PostCreateDTO}>(),
     addPostSuccess: props<{post: Post}>(),
+    addComment: props<{comment: CommentCreateDto}>(),
+    addCommentSuccess: props<{comment: PostComment}>(),
   }
 })

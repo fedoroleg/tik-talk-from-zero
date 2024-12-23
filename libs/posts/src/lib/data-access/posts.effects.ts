@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { map, switchMap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { postsActions } from './posts.actions';
-import { Post } from '@tt/common-models';
+import { Post, PostComment } from '@tt/common-models';
 import { environments } from '@tt/environments';
 
 const API_URL = environments.api_url;
@@ -34,6 +34,20 @@ export const addPostEffect = createEffect(
             return postsActions.addPostSuccess({ post });
           })
         );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const addComment = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(postsActions.addComment),
+      switchMap(({ comment }) => {
+        return http
+          .post<PostComment>(`${environments.api_url}comment/`, comment)
+          .pipe(map((comment) => postsActions.addCommentSuccess({ comment })));
       })
     );
   },

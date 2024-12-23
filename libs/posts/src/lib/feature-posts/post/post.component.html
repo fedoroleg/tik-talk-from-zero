@@ -21,7 +21,7 @@
 </div>
 
 <div class="comments-container">
-  <ng-container *ngIf="comments() as comments">
+  <ng-container *ngIf="(comments$ | async) as comments">
     <!-- <app-comment *ngFor="let comment of comments" [comment]="comment"/>  -->
 
     <!-- Показать два комментария -->

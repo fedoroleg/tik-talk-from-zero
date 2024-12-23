@@ -54,32 +54,46 @@ export class PostInputComponent {
   onCreatePost() {
     if (!this.postText) return;
 
-    // if (this.isCommentInput) {
-    //   firstValueFrom(
-    //     this.postsService.createComment({
-    //       text: this.postText,
-    //       authorId: this.me()!.id,
-    //       postId: this.postId()!,
-    //       commentId: 0, //надо разобраться
-    //     })
-    //   ).then(() => {
-    //     this.postText = '';
-    //     this.commentCreated.emit();
-    //   });
-    //   return;
-    // }
+    if (this.isCommentInput) {
+      this.store.dispatch(
+        postsActions.addComment({
+          comment: {
+            text: this.postText,
+            authorId: this.me()!.id,
+            postId: this.postId()!,
+            commentId: 0,
+          },
+        })
+      );
 
-    this.store.dispatch(
-      postsActions.addPost({
-        post: {
-          title: 'Пост эпохи NGRX',
-          content: this.postText,
-          authorId: this.me()!.id,
-          communityId: 0,
-        },
-      })
-    );
+      this.postText = '';
+      // firstValueFrom(
+      //   this.postsService.createComment({
+      //     text: this.postText,
+      //     authorId: this.me()!.id,
+      //     postId: this.postId()!,
+      //     commentId: 0, //надо разобраться
+      //   })
+      // ).then(() => {
+      //   this.postText = '';
+      //   this.commentCreated.emit();
+      // });
+      // return;
+    }
 
-    this.postText = '';
+    if (!this.isCommentInput) {
+      this.store.dispatch(
+        postsActions.addPost({
+          post: {
+            title: 'Пост эпохи NGRX',
+            content: this.postText,
+            authorId: this.me()!.id,
+            communityId: 0,
+          },
+        })
+      );
+
+      this.postText = '';
+    }
   }
 }

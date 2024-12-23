@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AvatarCircleComponent } from '@tt/common-ui';
-import { Comment } from '@tt/common-models';
+import { PostComment } from '@tt/common-models';
 import { CustomDate } from '@tt/common-ui';
 
 @Component({
@@ -12,5 +12,5 @@ import { CustomDate } from '@tt/common-ui';
   styleUrl: './comment.component.scss',
 })
 export class CommentComponent {
-  @Input() comment!: Comment;
+  @Input() comment!: PostComment;
 }
