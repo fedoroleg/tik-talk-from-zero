@@ -34,7 +34,7 @@ export class PostsService {
     return this.http.get<Post[]>(`${environments.api_url}post/`).pipe(
       tap((posts) => {
         this.posts.set(posts);
-        console.log(this.posts());
+        console.log('posts in posts.service: ', this.posts());
       })
     );
   }
