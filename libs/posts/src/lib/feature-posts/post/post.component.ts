@@ -28,7 +28,6 @@ import { selectPosts } from '../../data-access/posts.selectors';
 export class PostComponent {
   public readonly store = inject(Store);
   public post = input<Post>();
-  // public comments = signal<Comment[]>([]);
   public readonly comments$ = this.store.select(selectPosts).pipe(
     map((posts) => {
       const postComments = posts.find((post) => post.id === this.post()!.id);
@@ -38,18 +37,8 @@ export class PostComponent {
   private readonly postService = inject(PostsService);
   public expandComments = false;
 
-  // ngOnInit() {
-  //   this.comments.set(this.post()!.comments);
-  // }
-
   async onCommentCreated() {
     this.expandComments = true;
-    // await firstValueFrom(
-    //   this.postService.getCommentsByPostId(this.post()!.id)
-    // ).then((comments) => {
-    //   this.comments.set(comments);
-    //   this.expandComments = true;
-    // });
   }
 
   showMoreComments() {
