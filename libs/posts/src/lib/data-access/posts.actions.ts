@@ -10,5 +10,7 @@ export const postsActions = createActionGroup({
     addPostSuccess: props<{post: Post}>(),
     addComment: props<{comment: CommentCreateDto}>(),
     addCommentSuccess: props<{comment: PostComment}>(),
+    deletePost: props<{id: number}>(),
+    deletePostSuccess: props<{id: number}>(),
   }
 })

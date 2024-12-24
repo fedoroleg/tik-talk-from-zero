@@ -29,7 +29,7 @@ export const addPostEffect = createEffect(
     return actions$.pipe(
       ofType(postsActions.addPost),
       switchMap(({ post }) => {
-        return http.post<Post>(`${environments.api_url}post/`, post).pipe(
+        return http.post<Post>(`${API_URL}post/`, post).pipe(
           map((post) => {
             return postsActions.addPostSuccess({ post });
           })
@@ -46,8 +46,24 @@ export const addComment = createEffect(
       ofType(postsActions.addComment),
       switchMap(({ comment }) => {
         return http
-          .post<PostComment>(`${environments.api_url}comment/`, comment)
+          .post<PostComment>(`${API_URL}comment/`, comment)
           .pipe(map((comment) => postsActions.addCommentSuccess({ comment })));
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const deletePost = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(postsActions.deletePost),
+      switchMap(({ id }) => {
+        return http.delete(`${API_URL}post/${id}`).pipe(
+          map(() => {
+            return postsActions.deletePostSuccess({ id });
+          })
+        );
       })
     );
   },

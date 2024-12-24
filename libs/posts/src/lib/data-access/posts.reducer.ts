@@ -45,6 +45,10 @@ export const postsFeature = createFeature({
             : post
         ),
       };
-    })
+    }),
+    on(postsActions.deletePostSuccess, (state, { id }) => ({
+      ...state,
+      posts: state.posts.filter((post) => post.id !== id),
+    }))
   ),
 });

@@ -10,6 +10,7 @@ import { CustomDate } from '@tt/common-ui';
 import { PostsService } from '../../data-access/posts-service.service';
 import { Store } from '@ngrx/store';
 import { selectPosts } from '../../data-access/posts.selectors';
+import { postsActions } from '../../data-access/posts.actions';
 
 @Component({
   selector: 'app-post',
@@ -34,7 +35,7 @@ export class PostComponent {
       return postComments?.comments;
     })
   );
-  private readonly postService = inject(PostsService);
+  // private readonly postService = inject(PostsService);
   public expandComments = false;
 
   async onCommentCreated() {
@@ -43,5 +44,9 @@ export class PostComponent {
 
   showMoreComments() {
     this.expandComments = true;
+  }
+
+  onDeletePost() {
+    this.store.dispatch(postsActions.deletePost({ id: this.post()!.id }));
   }
 }
