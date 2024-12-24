@@ -9,11 +9,8 @@ import {
   Renderer2,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
 import { AvatarCircleComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-// //circullar
-// import { AccountsService } from '@tt/account';
 import { PostsService } from '../../data-access/posts-service.service';
 import { GlobalStoreService } from '@tt/shared';
 import { Store } from '@ngrx/store';
@@ -67,18 +64,7 @@ export class PostInputComponent {
       );
 
       this.postText = '';
-      // firstValueFrom(
-      //   this.postsService.createComment({
-      //     text: this.postText,
-      //     authorId: this.me()!.id,
-      //     postId: this.postId()!,
-      //     commentId: 0, //надо разобраться
-      //   })
-      // ).then(() => {
-      //   this.postText = '';
-      //   this.commentCreated.emit();
-      // });
-      // return;
+      this.commentCreated.emit();
     }
 
     if (!this.isCommentInput) {
