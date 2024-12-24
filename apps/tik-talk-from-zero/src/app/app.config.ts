@@ -12,8 +12,8 @@ import { routes } from './app.routes';
 import { environments } from '@tt/environments';
 import { authInterceptor } from '@tt/auth2';
 import { API_URL } from '@tt/auth2';
-import { accountsFeature } from '@tt/account';
-import { accountEffects } from '@tt/account';
+import { accountsFeature } from '@tt/accounts/data-access';
+import { accountsEffects } from '@tt/accounts/data-access';
 import { postsFeature } from '@tt/posts';
 import { postsEffects } from '@tt/posts';
 
@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
       [accountsFeature.name]: accountsFeature.reducer,
       [postsFeature.name]: postsFeature.reducer,
     }),
-    provideEffects(accountEffects, postsEffects),
+    provideEffects(accountsEffects, postsEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

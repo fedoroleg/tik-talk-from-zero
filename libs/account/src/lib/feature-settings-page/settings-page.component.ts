@@ -1,7 +1,7 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
 //import { AccountHeaderComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-import { AccountsService } from '../data-access/account.service';
+import { AccountsService } from '@tt/accounts/data-access';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';

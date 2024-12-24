@@ -1,9 +1,9 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { Account } from '@tt/common-models';
-import { accountsActions } from './account.actions';
+import { accountsActions } from './accounts.actions';
 
 export type AccountsState = {
-  me: Account | null,
+  me: Account | null;
   accounts: Account[];
   accountsFilters: Record<string, any>;
 };
@@ -31,6 +31,6 @@ export const accountsFeature = createFeature({
         accounts: filteredAccounts,
       })
     ),
-    on(accountsActions.getMeSuccess, (state, {me}) => ({...state, me }))
+    on(accountsActions.getMeSuccess, (state, { me }) => ({ ...state, me }))
   ),
 });

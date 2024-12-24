@@ -10,7 +10,7 @@ import {
   Message,
   MessagesDateGroup,
 } from '@tt/common-models';
-import { AccountsService } from '@tt/account';
+import { AccountsService } from '@tt/accounts/data-access';
 
 @Injectable({
   providedIn: 'root',

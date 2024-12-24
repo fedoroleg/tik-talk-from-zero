@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, startWith, take, } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { accountsActions } from '../../data-access/account.actions';
+import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { Store } from '@ngrx/store';
-import { selectAccountsFilters } from '../../data-access/account.selectors'
+
 
 @Component({
   selector: 'app-account-filters',
@@ -17,7 +17,7 @@ import { selectAccountsFilters } from '../../data-access/account.selectors'
 export class AccountFiltersComponent {
   private fb = inject(FormBuilder);
   private readonly store = inject(Store);
-  private readonly searchFormFilters$ = this.store.select(selectAccountsFilters);
+  private readonly searchFormFilters$ = this.store.select(accountsSelectors.selectAccountsFilters);
 
   public searchForm = this.fb.group({
     firstName: '',
