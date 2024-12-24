@@ -3,7 +3,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { AccountCardComponent } from '@tt/common-ui';
 import { AccountFiltersComponent } from './account-filters/account-filters.component';
 import { Store } from '@ngrx/store';
-import { selectFilteredAccounts } from '../data-access/account.selectors';
+import { selectAccounts } from '../data-access/account.selectors';
 
 @Component({
   selector: 'app-search-page',
@@ -15,6 +15,5 @@ import { selectFilteredAccounts } from '../data-access/account.selectors';
 })
 export class SearchPageComponent {
   private readonly store = inject(Store);
-  public accounts$ = this.store.select(selectFilteredAccounts);
-
+  public accounts$ = this.store.select(selectAccounts);
 }

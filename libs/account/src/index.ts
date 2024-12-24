@@ -4,7 +4,7 @@ export { SearchPageComponent } from './lib/feature-search-page/search-page.compo
 export { SettingsPageComponent } from './lib/feature-settings-page/settings-page.component'
 
 export * as accountEffects from './lib/data-access/account.effects'
-export * from './lib/data-access/account.selectors'
+export * as accountSelectors from './lib/data-access/account.selectors'
 export * from './lib/data-access/account.reducer'
 export { accountsFeature} from './lib/data-access/account.reducer'
 

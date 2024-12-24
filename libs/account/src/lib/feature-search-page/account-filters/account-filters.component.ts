@@ -4,7 +4,7 @@ import { debounceTime, distinctUntilChanged, startWith, take, } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { accountsActions } from '../../data-access/account.actions';
 import { Store } from '@ngrx/store';
-import { selectFilters } from '../../data-access/account.selectors';
+import { selectAccountsFilters } from '../../data-access/account.selectors'
 
 @Component({
   selector: 'app-account-filters',
@@ -17,7 +17,7 @@ import { selectFilters } from '../../data-access/account.selectors';
 export class AccountFiltersComponent {
   private fb = inject(FormBuilder);
   private readonly store = inject(Store);
-  private readonly searchFormFilters$ = this.store.select(selectFilters);
+  private readonly searchFormFilters$ = this.store.select(selectAccountsFilters);
 
   public searchForm = this.fb.group({
     firstName: '',
