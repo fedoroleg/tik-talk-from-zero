@@ -3,11 +3,13 @@ import { Account } from '@tt/common-models';
 import { accountsActions } from './account.actions';
 
 export type AccountsState = {
+  me: Account | null,
   accounts: Account[];
   accountsFilters: Record<string, any>;
 };
 
 export const accountsInitialState: AccountsState = {
+  me: null,
   accounts: [],
   accountsFilters: {},
 };
@@ -28,6 +30,7 @@ export const accountsFeature = createFeature({
         ...state,
         accounts: filteredAccounts,
       })
-    )
+    ),
+    on(accountsActions.getMeSuccess, (state, {me}) => ({...state, me }))
   ),
 });

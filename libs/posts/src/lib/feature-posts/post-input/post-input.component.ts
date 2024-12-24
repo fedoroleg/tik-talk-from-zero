@@ -15,6 +15,8 @@ import { SvgIconComponent } from '@tt/common-ui';
 import { GlobalStoreService } from '@tt/shared';
 import { Store } from '@ngrx/store';
 import { postsActions } from '../../data-access/posts.actions';
+//import { accountSelectors } from '@tt/account';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-post-input',
@@ -32,6 +34,7 @@ export class PostInputComponent {
 
   private readonly r2 = inject(Renderer2);
   public me = this.globalStoreService.me;
+  //  public me = toSignal(this.store.select(accountSelectors.selectMe));
 
   public postText = '';
 

@@ -37,7 +37,7 @@
 
 <footer>
   <a class="sidebar-footer" routerLink="/settings">
-    @if(me(); as me){ @if(me.avatarUrl) {
+    @if((me$ | async); as me){ @if(me.avatarUrl) {
     <img
       class="sidebar-footer-avatar"
       [src]="me.avatarUrl | imgUrl"
@@ -57,3 +57,25 @@
     }
   </a>
 </footer>
+<!-- <footer>
+  <a class="sidebar-footer" routerLink="/settings">
+    @if(me(); as me){ @if(me.avatarUrl) {
+    <img
+      class="sidebar-footer-avatar"
+      [src]="me.avatarUrl | imgUrl"
+      [alt]="me.firstName"
+    />
+    } @else {
+    <img
+      class="sidebar-footer-avatar"
+      src="/assets/imgs/avatar-placeholder.png"
+      alt=""
+    />
+    }
+    <strong class="sidebar-footer-username">{{ me.username }}</strong>
+    <svg icon="settings" class="sidebar-footer-icon"></svg>
+    } @else {
+    <p>Футер не загрузился пока...</p>
+    }
+  </a>
+</footer> -->

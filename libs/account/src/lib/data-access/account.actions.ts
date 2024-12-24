@@ -6,5 +6,7 @@ export const accountsActions = createActionGroup(
   events: {
     filterAccounts: props<{filters: Record<string, any>}>(),
     filterAccountsSuccess: props<{filteredAccounts: Account[]}>(),
+    getMe: emptyProps(),
+    getMeSuccess: props<{me: Account}>(),
   } 
 })
