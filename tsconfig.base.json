@@ -22,7 +22,7 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@tt/account": ["libs/account/src/index.ts"],
+      "@tt/accounts/accounts-pages": ["libs/accounts/accounts-pages/src/index.ts"],
       "@tt/accounts/data-access": ["libs/accounts/data-access/src/index.ts"],
       "@tt/auth2": ["libs/auth2/src/index.ts"],
       "@tt/chats/data-access": ["libs/chats/data-access/src/index.ts"],
@@ -35,7 +35,8 @@
       "@tt/layout": ["libs/layout/src/index.ts"],
       "@tt/posts": ["libs/posts/src/index.ts"],
       "@tt/shared": ["libs/shared/src/index.ts"],
-      "accounts-data-access": ["libs/accounts/data-access/src/index.ts"]
+      "accounts-data-access": ["libs/accounts/data-access/src/index.ts"],
+      "accounts-pages": ["libs/accounts/accounts-pages/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

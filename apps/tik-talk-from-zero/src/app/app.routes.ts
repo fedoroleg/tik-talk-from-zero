@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '@tt/auth2';
-import { SearchPageComponent } from '@tt/account';
+import { SearchPageComponent } from '@tt/accounts/accounts-pages';
 import { LayoutComponent } from '@tt/layout';
 import { isLoggedInGuardFn } from '@tt/auth2';
-import { AccountPageComponent } from '@tt/account';
-import { SettingsPageComponent } from '@tt/account';
+import { AccountPageComponent } from '@tt/accounts/accounts-pages';
+import { SettingsPageComponent } from '@tt/accounts/accounts-pages';
 import { chatsRoutes } from '@tt/chats/feature-chats-page';
 
 export const routes: Routes = [
