@@ -11,7 +11,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AvatarCircleComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-import { PostsService } from '../../data-access/posts-service.service';
+
 import { GlobalStoreService } from '@tt/shared';
 import { Store } from '@ngrx/store';
 import { postsActions } from '../../data-access/posts.actions';
@@ -32,7 +32,6 @@ export class PostInputComponent {
 
   private readonly r2 = inject(Renderer2);
   public me = this.globalStoreService.me;
-  private readonly postsService = inject(PostsService);
 
   public postText = '';
 

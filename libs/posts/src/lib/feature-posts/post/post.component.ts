@@ -7,7 +7,6 @@ import { SvgIconComponent } from '@tt/common-ui';
 import { PostInputComponent } from '../post-input/post-input.component';
 import { CommentComponent } from './comment/comment.component';
 import { CustomDate } from '@tt/common-ui';
-import { PostsService } from '../../data-access/posts-service.service';
 import { Store } from '@ngrx/store';
 import { selectPosts } from '../../data-access/posts.selectors';
 import { postsActions } from '../../data-access/posts.actions';
@@ -35,7 +34,6 @@ export class PostComponent {
       return postComments?.comments;
     })
   );
-  // private readonly postService = inject(PostsService);
   public expandComments = false;
 
   async onCommentCreated() {
