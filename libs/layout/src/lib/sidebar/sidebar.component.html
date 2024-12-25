@@ -20,7 +20,7 @@
 
   <h3 class="h3">Подписчики</h3>
 
-  @if(subscribers$ | async; as subscribers) { @for(subscriber of subscribers;
+  @if(subscribers$ | async | slice : 0 : 5; as subscribers) { @for(subscriber of subscribers;
   track subscriber.id) {
   <app-subscriber-card [subscriber]="subscriber" />
   } }

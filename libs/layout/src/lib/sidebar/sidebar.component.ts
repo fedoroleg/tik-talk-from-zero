@@ -2,12 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SvgIconComponent } from '@tt/common-ui';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import { accountsSelectors, AccountsService } from '@tt/accounts/data-access';
+import { accountsSelectors } from '@tt/accounts/data-access';
 import { CommonModule } from '@angular/common';
 import { ImgUrlPipe } from '@tt/common-ui';
 import { Store } from '@ngrx/store';
 import { accountsActions } from '@tt/accounts/data-access';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -24,11 +23,9 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit {
-  private readonly store = inject(Store)
-  private readonly accountService = inject(AccountsService);
+  private readonly store = inject(Store);
 
-  public me$ = this.store.select(accountsSelectors.selectMe)
-
+  public me$ = this.store.select(accountsSelectors.selectMe);
 
   menuItems = [
     {
@@ -48,10 +45,11 @@ export class SidebarComponent implements OnInit {
     },
   ];
 
-  public readonly subscribers$ = this.accountService.getSubscribersShortList(3);
+  public readonly subscribers$ = this.store.select(
+    accountsSelectors.selectSubscribers
+  );
 
   ngOnInit() {
-    this.store.dispatch(accountsActions.getMe())
-    firstValueFrom(this.accountService.getMe());
+    this.store.dispatch(accountsActions.getMe());
   }
 }
