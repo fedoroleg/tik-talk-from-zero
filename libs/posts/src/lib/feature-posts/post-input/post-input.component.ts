@@ -11,11 +11,9 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AvatarCircleComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-
-import { GlobalStoreService } from '@tt/shared';
 import { Store } from '@ngrx/store';
 import { postsActions } from '../../data-access/posts.actions';
-//import { accountSelectors } from '@tt/account';
+import { accountsSelectors } from '@tt/accounts/data-access';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -26,15 +24,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './post-input.component.scss',
 })
 export class PostInputComponent {
-  private readonly globalStoreService = inject(GlobalStoreService);
   private readonly store = inject(Store);
   @Input() isCommentInput!: boolean;
   @Output() commentCreated = new EventEmitter();
   postId = input<number>();
 
   private readonly r2 = inject(Renderer2);
-  public me = this.globalStoreService.me;
-  //  public me = toSignal(this.store.select(accountSelectors.selectMe));
+  public me = toSignal(this.store.select(accountsSelectors.selectMe));
 
   public postText = '';
 
