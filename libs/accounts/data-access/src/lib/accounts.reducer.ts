@@ -4,12 +4,16 @@ import { accountsActions } from './accounts.actions';
 
 export type AccountsState = {
   me: Account | null;
+  subscribers: Account [] | null;
+  account: Account | null;
   accounts: Account[];
   accountsFilters: Record<string, any>;
 };
 
 export const accountsInitialState: AccountsState = {
   me: null,
+  subscribers: null,
+  account: null,
   accounts: [],
   accountsFilters: {},
 };
@@ -31,6 +35,7 @@ export const accountsFeature = createFeature({
         accounts: filteredAccounts,
       })
     ),
-    on(accountsActions.getMeSuccess, (state, { me }) => ({ ...state, me }))
+    on(accountsActions.getMeSuccess, (state, { me }) => ({ ...state, me })),
+    on(accountsActions.getSubscribersSuccess, (state, {subscribers}) => ({...state, subscribers}))
   ),
 });

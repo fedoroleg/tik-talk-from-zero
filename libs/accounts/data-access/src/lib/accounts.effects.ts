@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { act, Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { accountsActions } from './accounts.actions';
 import { map, switchMap } from 'rxjs';
 import { Account, Pageble } from '@tt/common-models';
@@ -41,3 +41,21 @@ export const getMeEffect = createEffect(
   },
   { functional: true }
 );
+
+export const getSubscribersEffect = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(accountsActions.getSubscribers),
+      switchMap(() => {
+        return http.get<Pageble<Account>>(
+          `${environments.api_url}account/subscribers/?page=1&size=50`
+        ).pipe(
+          map((pagebleSubscribers) => {
+            return accountsActions.getSubscribersSuccess({subscribers: pagebleSubscribers.items}) 
+          })
+        )
+      })
+    )
+  },
+  { functional: true }
+)

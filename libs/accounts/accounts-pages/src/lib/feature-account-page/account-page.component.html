@@ -9,7 +9,11 @@
     <svg icon="settings" class="header-settings-icon"></svg>
   </a>
   } @else {
-  <a class="btn to-settings-btn" (click)="sendMessage(account.id)" aria-hidden="true">
+  <a
+    class="btn to-settings-btn"
+    (click)="sendMessage(account.id)"
+    aria-hidden="true"
+  >
     <span>Написать</span>
     <svg icon="send-message" class="header-settings-icon"></svg>
   </a>
@@ -21,8 +25,8 @@
   <div>
     <h3 class="h3">Подписчики</h3>
     <div class="subscribers-wrapper">
-      @if(subscribers$ | async; as subscribers) { @for(subscriber of
-      subscribers; track subscriber.id) {
+      @if(subscribers$ | async | slice : 0 : 4; as subscribers) {
+      @for(subscriber of subscribers; track subscriber.id) {
       <a [routerLink]="['/account', subscriber.id]">
         <img
           class="subscriber-avatar-btn"

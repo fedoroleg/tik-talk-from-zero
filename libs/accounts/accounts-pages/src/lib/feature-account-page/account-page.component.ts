@@ -1,19 +1,20 @@
 import { Component, inject, signal } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { AccountHeaderComponent } from '@tt/common-ui';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { AccountsService } from '@tt/accounts/data-access';
+import { map, switchMap } from 'rxjs';
+import { accountsActions, accountsSelectors, AccountsService } from '@tt/accounts/data-access';
 import { SvgIconComponent } from '@tt/common-ui';
 import { ImgUrlPipe } from '@tt/common-ui';
 import { PostsFeedComponent } from '@tt/posts';
+import { Store } from '@ngrx/store';
 
 
 @Component({
   selector: 'app-account-page',
   standalone: true,
   imports: [
+    CommonModule,
     AccountHeaderComponent,
     AsyncPipe,
     RouterLink,
@@ -27,13 +28,18 @@ import { PostsFeedComponent } from '@tt/posts';
 export class AccountPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly store = inject(Store);
+
   private readonly accountService = inject(AccountsService);
 
-
-  me$ = toObservable(this.accountService.me);
+  me$ = this.store.select(accountsSelectors.selectMe);
   public isMyPage = signal(false);
 
-  public readonly subscribers$ = this.accountService.getSubscribersShortList(5);
+  constructor() {
+    this.store.dispatch(accountsActions.getSubscribers())
+  }
+
+  public readonly subscribers$ = this.store.select(accountsSelectors.selectSubscribers)
 
   public readonly account$ = this.route.params.pipe(
     switchMap(({ id }) => {

@@ -14,11 +14,11 @@ export class AccountsService {
   public filteredAccounts$ = new BehaviorSubject<Account[] | null>(null);
 
   public getMe() {
-    return this.http
-      .get<Account>(`${environments.api_url}account/me`)
-      .pipe(tap((res) => {
-        this.me.set(res)
-      }));
+    return this.http.get<Account>(`${environments.api_url}account/me`).pipe(
+      tap((res) => {
+        this.me.set(res);
+      })
+    );
   }
 
   public getTestAccounts() {
@@ -31,13 +31,13 @@ export class AccountsService {
     return this.http.get<Account>(`${environments.api_url}account/${id}`);
   }
 
-  public getSubscribersShortList(amount: number) {
-    return this.http
-      .get<Pageble<Account>>(
-        `${environments.api_url}account/subscribers/?page=1&size=50`
-      )
-      .pipe(map((res) => res.items.slice(0, amount)));
-  }
+  // public getSubscribersShortList(amount: number) {
+  //   return this.http
+  //     .get<Pageble<Account>>(
+  //       `${environments.api_url}account/subscribers/?page=1&size=50`
+  //     )
+  //     .pipe(map((res) => res.items.slice(0, amount)));
+  // }
 
   public patchAccount(account: Partial<Account>) {
     return this.http.patch<Account>(
