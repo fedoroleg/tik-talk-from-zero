@@ -5,12 +5,13 @@ import { tap } from 'rxjs';
 import { environments } from '@tt/environments';
 import {
   Chat,
-
   LastMessageRes,
   Message,
   MessagesDateGroup,
 } from '@tt/common-models';
-import { AccountsService } from '@tt/accounts/data-access';
+import { accountsSelectors } from '@tt/accounts/data-access';
+import { Store } from '@ngrx/store';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +20,9 @@ export class ChatsService {
   private readonly http = inject(HttpClient);
   private readonly CHATS_URL = `${environments.api_url}chat`;
   private readonly MESSAGE_URL = `${environments.api_url}message`;
-  private readonly accountService = inject(AccountsService);
-  private readonly me = this.accountService.me;
-  public activeChatMessages = signal<MessagesDateGroup[] | null>(null)
+  private readonly store = inject(Store);
+  private readonly me = toSignal(this.store.select(accountsSelectors.selectMe));
+  public activeChatMessages = signal<MessagesDateGroup[] | null>(null);
 
   public createChat(id: number) {
     return this.http
@@ -36,7 +37,7 @@ export class ChatsService {
   public getChatByIdVM(id: number) {
     return this.http.get<Chat>(`${this.CHATS_URL}/${id}`).pipe(
       tap((chat) => {
-        this.activeChatMessages.set(this.getMessagesDateGroups(chat.messages))
+        this.activeChatMessages.set(this.getMessagesDateGroups(chat.messages));
       })
     );
   }
