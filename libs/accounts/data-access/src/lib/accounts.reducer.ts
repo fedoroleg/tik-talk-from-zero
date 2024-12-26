@@ -43,6 +43,10 @@ export const accountsFeature = createFeature({
     on(accountsActions.getAccountSucces, (state, { account }) => ({
       ...state,
       account,
+    })),
+    on(accountsActions.patchAccountSuccess, (state, { account }) => ({
+      ...state,
+      me: { ...account },
     }))
   ),
 });

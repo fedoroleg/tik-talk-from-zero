@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Account } from '@tt/common-models';
+import { Account, PatchAccountDTO } from '@tt/common-models';
 
 export const accountsActions = createActionGroup({
   source: 'account',
@@ -12,5 +12,7 @@ export const accountsActions = createActionGroup({
     getSubscribersSuccess: props<{ subscribers: Account[] }>(),
     getAccount: props<{id: number}>(),
     getAccountSucces: props<{account: Account}>(),
+    patchAccount: props<{patchedAccount: PatchAccountDTO}>(),
+    patchAccountSuccess: props<{account: Account}>(),
   },
 });

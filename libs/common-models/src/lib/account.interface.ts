@@ -10,3 +10,16 @@ export interface Account {
   stack: string[];
   city: string;
 }
+
+export type PatchAccountDTO = {
+  id?: number;
+  username?: string | null | undefined;
+  description?: string | null | undefined;
+  avatarUrl?: string | null | undefined;
+  subscriptionsAmount?: number;
+  firstName?: string | null | undefined;
+  lastName?: string | null | undefined;
+  isActive?: boolean;
+  stack: string[];
+  city?: string | null | undefined;
+};

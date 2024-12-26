@@ -47,15 +47,19 @@ export const getSubscribersEffect = createEffect(
     return actions$.pipe(
       ofType(accountsActions.getSubscribers),
       switchMap(() => {
-        return http.get<Pageble<Account>>(
-          `${environments.api_url}account/subscribers/?page=1&size=50`
-        ).pipe(
-          map((pagebleSubscribers) => {
-            return accountsActions.getSubscribersSuccess({subscribers: pagebleSubscribers.items}) 
-          })
-        )
+        return http
+          .get<Pageble<Account>>(
+            `${environments.api_url}account/subscribers/?page=1&size=50`
+          )
+          .pipe(
+            map((pagebleSubscribers) => {
+              return accountsActions.getSubscribersSuccess({
+                subscribers: pagebleSubscribers.items,
+              });
+            })
+          );
       })
-    )
+    );
   },
   { functional: true }
 );
@@ -64,11 +68,30 @@ export const getAccountEffect = createEffect(
   (actions$ = inject(Actions), http = inject(HttpClient)) => {
     return actions$.pipe(
       ofType(accountsActions.getAccount),
-      switchMap(({id}) => {
-        return http.get<Account>(`${environments.api_url}account/${id}`).pipe(
-          map(account => accountsActions.getAccountSucces({account}))
-        )
+      switchMap(({ id }) => {
+        return http
+          .get<Account>(`${environments.api_url}account/${id}`)
+          .pipe(
+            map((account) => accountsActions.getAccountSucces({ account }))
+          );
       })
-    )
-  }, {functional: true}
-)
+    );
+  },
+  { functional: true }
+);
+
+export const patchAccountEffect = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(accountsActions.patchAccount),
+      switchMap(({ patchedAccount }) => {
+        return http
+          .patch<Account>(`${environments.api_url}account/me`, patchedAccount)
+          .pipe(
+            map((account) => accountsActions.patchAccountSuccess({ account }))
+          );
+      })
+    );
+  },
+  { functional: true }
+);

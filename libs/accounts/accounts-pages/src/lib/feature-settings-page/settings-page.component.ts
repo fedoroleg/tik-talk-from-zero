@@ -1,17 +1,23 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
 //import { AccountHeaderComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-import { AccountsService } from '@tt/accounts/data-access';
+import {
+  accountsActions,
+  accountsSelectors,
+  AccountsService,
+} from '@tt/accounts/data-access';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
+import { Store } from '@ngrx/store';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
   imports: [
-   // AccountHeaderComponent,
+    // AccountHeaderComponent,
     SvgIconComponent,
     RouterLink,
     ReactiveFormsModule,
@@ -24,6 +30,8 @@ export class SettingsPageComponent {
   private readonly accountService = inject(AccountsService);
   private readonly fb = inject(FormBuilder);
   public actualAvatar = 'assets/images/avatar-placeholder.png';
+  private readonly store = inject(Store);
+  private readonly me = toSignal(this.store.select(accountsSelectors.selectMe));
 
   @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
@@ -38,8 +46,8 @@ export class SettingsPageComponent {
   constructor() {
     effect(() => {
       this.form.patchValue({
-        ...this.accountService.me(),
-        stack: this.mergeStack(this.accountService.me()?.stack),
+        ...this.me(),
+        stack: this.mergeStack(this.me()?.stack),
       });
     });
 
@@ -48,13 +56,16 @@ export class SettingsPageComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      const account = {
+      const patchedAccount = {
         ...this.form.value,
         stack: this.splitStack(this.form.value.stack),
       };
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      firstValueFrom(this.accountService.patchAccount(account));
+      //firstValueFrom(this.accountService.patchAccount(account));
+
+      this.store.dispatch(accountsActions.patchAccount({ patchedAccount }));
+
       if (this.avatarUploader.avatar) {
         firstValueFrom(
           this.accountService.uploadAvatar(this.avatarUploader.avatar)
