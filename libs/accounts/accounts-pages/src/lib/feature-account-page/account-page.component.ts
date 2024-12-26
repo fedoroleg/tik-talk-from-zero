@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { AccountHeaderComponent } from '@tt/common-ui';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { map, switchMap } from 'rxjs';
-import { accountsActions, accountsSelectors, AccountsService } from '@tt/accounts/data-access';
+import { switchMap } from 'rxjs';
+import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { SvgIconComponent } from '@tt/common-ui';
 import { ImgUrlPipe } from '@tt/common-ui';
 import { PostsFeedComponent } from '@tt/posts';
@@ -30,8 +30,6 @@ export class AccountPageComponent {
   private readonly router = inject(Router);
   private readonly store = inject(Store);
 
-  private readonly accountService = inject(AccountsService);
-
   me$ = this.store.select(accountsSelectors.selectMe);
   public isMyPage = signal(false);
 
@@ -48,7 +46,7 @@ export class AccountPageComponent {
         return this.me$;
       }
 
-      return this.accountService.getAccount(id);
+      return this.store.select(accountsSelectors.selectAccount);
     })
   );
 

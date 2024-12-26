@@ -58,4 +58,17 @@ export const getSubscribersEffect = createEffect(
     )
   },
   { functional: true }
+);
+
+export const getAccountEffect = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(accountsActions.getAccount),
+      switchMap(({id}) => {
+        return http.get<Account>(`${environments.api_url}account/${id}`).pipe(
+          map(account => accountsActions.getAccountSucces({account}))
+        )
+      })
+    )
+  }, {functional: true}
 )
