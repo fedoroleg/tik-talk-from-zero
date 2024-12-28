@@ -47,6 +47,10 @@ export const accountsFeature = createFeature({
     on(accountsActions.patchAccountSuccess, (state, { account }) => ({
       ...state,
       me: { ...account },
+    })),
+    on(accountsActions.uploadAvatarSuccess, (state, { account }) => ({
+      ...state,
+      me: { ...account },
     }))
   ),
 });

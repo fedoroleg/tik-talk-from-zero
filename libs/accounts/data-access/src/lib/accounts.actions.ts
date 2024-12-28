@@ -14,5 +14,7 @@ export const accountsActions = createActionGroup({
     getAccountSucces: props<{account: Account}>(),
     patchAccount: props<{patchedAccount: PatchAccountDTO}>(),
     patchAccountSuccess: props<{account: Account}>(),
+    uploadAvatar: props<{avatar: File}>(),
+    uploadAvatarSuccess: props<{account: Account}>(),
   },
 });

@@ -95,3 +95,21 @@ export const patchAccountEffect = createEffect(
   },
   { functional: true }
 );
+
+export const uploadAvatarEffect = createEffect(
+  (actions$ = inject(Actions), http = inject(HttpClient)) => {
+    return actions$.pipe(
+      ofType(accountsActions.uploadAvatar),
+      switchMap(({ avatar }) => {
+        const fd = new FormData();
+        fd.append('image', avatar);
+        return http
+          .post<Account>(`${environments.api_url}account/upload_image`, fd)
+          .pipe(
+            map((account) => accountsActions.uploadAvatarSuccess({ account }))
+          );
+      })
+    );
+  },
+  { functional: true }
+);

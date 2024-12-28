@@ -1,14 +1,9 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
 //import { AccountHeaderComponent } from '@tt/common-ui';
 import { SvgIconComponent } from '@tt/common-ui';
-import {
-  accountsActions,
-  accountsSelectors,
-  AccountsService,
-} from '@tt/accounts/data-access';
+import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
 import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -17,7 +12,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'app-settings-page',
   standalone: true,
   imports: [
-    // AccountHeaderComponent,
     SvgIconComponent,
     RouterLink,
     ReactiveFormsModule,
@@ -27,7 +21,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './settings-page.component.scss',
 })
 export class SettingsPageComponent {
-  private readonly accountService = inject(AccountsService);
   private readonly fb = inject(FormBuilder);
   public actualAvatar = 'assets/images/avatar-placeholder.png';
   private readonly store = inject(Store);
@@ -62,13 +55,12 @@ export class SettingsPageComponent {
       };
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      //firstValueFrom(this.accountService.patchAccount(account));
 
       this.store.dispatch(accountsActions.patchAccount({ patchedAccount }));
 
       if (this.avatarUploader.avatar) {
-        firstValueFrom(
-          this.accountService.uploadAvatar(this.avatarUploader.avatar)
+        this.store.dispatch(
+          accountsActions.uploadAvatar({ avatar: this.avatarUploader.avatar })
         );
       }
     }
