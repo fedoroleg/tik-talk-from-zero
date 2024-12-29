@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+  <h4 class="h4 mb16">Информация о доставке</h4>
+  <label class="tt-control-label mb16">
+    Тип получателя
+    <select class="tt-input">
+      <option value="">Физическое лицо</option>
+      <option value="">Юридическое лицо</option>
+    </select>
+  </label>
+
+  <label for="" class="tt-control-label mb16">
+    Имя
+    <input class="tt-input" type="text" placeholder="Введите имя" />
+  </label>
+
+  <label for="" class="tt-control-label mb20">
+    Фамилия
+    <input class="tt-input" type="text" placeholder="Введите фамилию" />
+  </label>
+
+  <div>
+    <h4 class="h4 mb16">Адрес доставки</h4>
+
+    <div class="form-grid">
+      <label class="tt-control-label">
+        Город
+        <input type="text" class="tt-input" placeholder="Город" />
+      </label>
+
+      <label class="tt-control-label">
+        Улица
+        <input type="text" class="tt-input" placeholder="Улица" />
+      </label>
+
+      <label class="tt-control-label">
+        Дом
+        <input type="text" class="tt-input" placeholder="Дом" />
+      </label>
+      <label class="tt-control-label">
+        Квартира
+        <input type="text" class="tt-input" placeholder="Квартира" />
+      </label>
+    </div>
+  </div>
+
+  <button class="btn btn-shadow mt-20" type="submit">Подтвердить</button>
+</form>

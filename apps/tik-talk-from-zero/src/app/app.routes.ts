@@ -6,6 +6,7 @@ import { isLoggedInGuardFn } from '@tt/auth2';
 import { AccountPageComponent } from '@tt/accounts/accounts-pages';
 import { SettingsPageComponent } from '@tt/accounts/accounts-pages';
 import { chatsRoutes } from '@tt/chats/feature-chats-page';
+import { FormsExperimentalComponent } from '@tt/experimental';
 
 export const routes: Routes = [
   {
@@ -23,5 +24,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
+  },
+  {
+    path: 'forms',
+    component: FormsExperimentalComponent
   },
 ];

@@ -178,7 +178,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  font-family: "JetBrains Mono", sans-serif;
+  font-family: inherit;
   color: var(--light-color);
 }
 
@@ -232,4 +232,17 @@ body {
 .tt-form-label-textarea {
   height: 84px;
   resize: none;
+}
+
+.h4 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 32px;
+}
+
+.h6 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 800;
 }
