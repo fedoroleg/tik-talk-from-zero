@@ -1,47 +1,100 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <h4 class="h4 mb16">Информация о доставке</h4>
   <label class="tt-control-label mb16">
     Тип получателя
-    <select class="tt-input">
-      <option value="">Физическое лицо</option>
-      <option value="">Юридическое лицо</option>
+    <select class="tt-input" formControlName="type">
+      <option [value]="reciverType.PERSON">Физическое лицо</option>
+      <option [value]="reciverType.LEGAL">Юридическое лицо</option>
     </select>
   </label>
 
   <label for="" class="tt-control-label mb16">
     Имя
-    <input class="tt-input" type="text" placeholder="Введите имя" />
+    <input
+      class="tt-input"
+      type="text"
+      placeholder="Введите имя"
+      formControlName="name"
+    />
+    @if (this.form.controls.name.touched &&
+    this.form.controls.name.hasError('required')) {
+
+    <small class="error">Это поле обязательно!</small>
+    }
   </label>
 
-  <label for="" class="tt-control-label mb20">
-    Фамилия
-    <input class="tt-input" type="text" placeholder="Введите фамилию" />
+  @if (form.controls.type.value === 'LEGAL') {
+  <label class="tt-control-label mb20">
+    ИНН
+    <input
+      class="tt-input"
+      type="text"
+      placeholder="Введите ИНН"
+      formControlName="inn"
+    />
   </label>
+  } @else {
+  <label class="tt-control-label mb20">
+    Фамилия
+    <input
+      class="tt-input"
+      type="text"
+      placeholder="Введите фамилию"
+      formControlName="lastName"
+    />
+  </label>
+  }
 
   <div>
     <h4 class="h4 mb16">Адрес доставки</h4>
 
-    <div class="form-grid">
+    <div class="form-grid" formGroupName="address">
       <label class="tt-control-label">
         Город
-        <input type="text" class="tt-input" placeholder="Город" />
+        <input
+          type="text"
+          class="tt-input"
+          placeholder="Город"
+          formControlName="city"
+        />
       </label>
 
       <label class="tt-control-label">
         Улица
-        <input type="text" class="tt-input" placeholder="Улица" />
+        <input
+          type="text"
+          class="tt-input"
+          placeholder="Улица"
+          formControlName="street"
+        />
       </label>
 
       <label class="tt-control-label">
         Дом
-        <input type="text" class="tt-input" placeholder="Дом" />
+        <input
+          type="text"
+          class="tt-input"
+          placeholder="Дом"
+          formControlName="building"
+        />
       </label>
       <label class="tt-control-label">
         Квартира
-        <input type="text" class="tt-input" placeholder="Квартира" />
+        <input
+          type="text"
+          class="tt-input"
+          placeholder="Квартира"
+          formControlName="apartment"
+        />
       </label>
     </div>
   </div>
 
-  <button class="btn btn-shadow mt-20" type="submit">Подтвердить</button>
+  <button
+    class="btn btn-shadow mt-20"
+    type="submit"
+    [disabled]="this.form.invalid"
+  >
+    Подтвердить
+  </button>
 </form>
