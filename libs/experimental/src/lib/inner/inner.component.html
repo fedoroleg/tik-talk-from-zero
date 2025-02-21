@@ -1,0 +1,8 @@
+<p>inner works!</p>
+<h3>Text: {{ text.name }}</h3>
+<h4>Text: {{ text.address.city }}</h4>
+<p>Oleg: {{ oleg }}</p>
+<p>Count: {{ count }}</p>
+<p>Timer: {{ timer$ | async }}</p>
+
+<button (click)="changeText()">Изнутри меняем текст</button>

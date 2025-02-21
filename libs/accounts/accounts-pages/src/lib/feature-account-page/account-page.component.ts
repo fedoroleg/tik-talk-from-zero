@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { AccountHeaderComponent } from '@tt/common-ui';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -24,6 +24,7 @@ import { Store } from '@ngrx/store';
   ],
   templateUrl: './account-page.component.html',
   styleUrl: './account-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountPageComponent {
   private readonly route = inject(ActivatedRoute);

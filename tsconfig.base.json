@@ -34,12 +34,12 @@
       "@tt/common-models": ["libs/common-models/src/index.ts"],
       "@tt/common-ui": ["libs/common-ui/src/index.ts"],
       "@tt/environments": ["environments/environments.ts"],
+      "@tt/experimental": ["libs/experimental/src/index.ts"],
       "@tt/layout": ["libs/layout/src/index.ts"],
       "@tt/posts": ["libs/posts/src/index.ts"],
       "@tt/shared": ["libs/shared/src/index.ts"],
       "accounts-data-access": ["libs/accounts/data-access/src/index.ts"],
-      "accounts-pages": ["libs/accounts/accounts-pages/src/index.ts"],
-      "@tt/experimental": ["libs/experimental/src/index.ts"]
+      "accounts-pages": ["libs/accounts/accounts-pages/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

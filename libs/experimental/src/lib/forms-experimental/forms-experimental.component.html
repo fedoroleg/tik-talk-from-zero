@@ -19,7 +19,7 @@
     @if (this.form.controls.name.touched &&
     this.form.controls.name.hasError('required')) {
 
-    <small class="error">Это поле обязательно!</small>
+    <small small class="error">Это поле обязательно!</small>
     }
   </label>
 
@@ -46,9 +46,15 @@
   }
 
   <div>
-    <h4 class="h4 mb16">Адрес доставки</h4>
+    <div class="delivery-header">
+      <h4 class="h4 mb16">Адрес доставки</h4>
+      <button class="add-btn btn" (click)="onAddAddress()">+</button>
+    </div>
 
-    <div class="form-grid" formGroupName="address">
+    @for (address of form.controls.addresses.controls; track address; let i =
+    $index) {
+
+    <div class="form-grid mb32" [formGroup]="address">
       <label class="tt-control-label">
         Город
         <input
@@ -87,14 +93,14 @@
           formControlName="apartment"
         />
       </label>
+      <button class="delete-btn btn" (click)="onDeleteAddress(i)">
+        Удалить адрес
+      </button>
     </div>
+    }
   </div>
 
-  <button
-    class="btn btn-shadow mt-20"
-    type="submit"
-    [disabled]="this.form.invalid"
-  >
+  <button class="btn btn-shadow mt-20" type="submit" [disabled]="form.invalid">
     Подтвердить
   </button>
 </form>

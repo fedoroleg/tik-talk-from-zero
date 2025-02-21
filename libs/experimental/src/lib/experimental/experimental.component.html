@@ -1,1 +1,7 @@
-<p>experimental works!</p>
+<div style="margin-left: 30px; margin-top: 30px">
+  <p>experimental works!</p>
+  <button class="btn" style="width: 200px" (click)="onChangeText()">
+    Поменять текст
+  </button>
+  <app-inner [text]="text" [timeout]="timeout" />
+</div>

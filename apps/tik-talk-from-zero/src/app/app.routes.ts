@@ -7,6 +7,7 @@ import { AccountPageComponent } from '@tt/accounts/accounts-pages';
 import { SettingsPageComponent } from '@tt/accounts/accounts-pages';
 import { chatsRoutes } from '@tt/chats/feature-chats-page';
 import { FormsExperimentalComponent } from '@tt/experimental';
+import { ExperimentalComponent } from '@tt/experimental';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   },
   {
     path: 'forms',
-    component: FormsExperimentalComponent
+    component: FormsExperimentalComponent,
+  },
+  {
+    path: 'experimental',
+    component: ExperimentalComponent,
   },
 ];

@@ -13,6 +13,10 @@
   --message-color: #404040;
 }
 
+html {
+  scrollbar-gutter: sta;
+}
+
 *,
 *:before,
 *:after {
@@ -56,11 +60,14 @@ body {
 
   &:disabled {
     background-color: var(--grey-color);
-    cursor: not-allowed;
   }
 
   &:active {
     scale: 98%;
+  }
+
+  &:hover {
+    opacity: 90%;
   }
 }
 
@@ -77,7 +84,6 @@ body {
 
   &:disabled {
     background-color: var(--grey-color);
-    cursor: not-allowed;
   }
 
   &:active {
