@@ -12,6 +12,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MockService } from '../experimental/mock.service';
+import { NameValidator } from './name.validator';
 
 enum ReciverType {
   PERSON = 'PERSON',
@@ -82,13 +83,18 @@ const validateStartsWith: ValidatorFn = (
 export class FormsExperimentalComponent {
   public readonly reciverType = ReciverType;
   private readonly mockService = inject(MockService);
+  private readonly nameValidator = inject(NameValidator);
 
   public form = new FormGroup({
     type: new FormControl<ReciverType>(ReciverType.PERSON),
-    name: new FormControl<string>('', [
-      Validators.required,
-      customValidator('q'),
-    ]),
+    name: new FormControl<string>(
+      '',
+      [
+        Validators.required,
+        // customValidator('q'),
+      ],
+      [this.nameValidator.validate]
+    ),
     lastName: new FormControl<string>(''),
     inn: new FormControl<number | null>(null),
     addresses: new FormArray([this.getAddressForm()]),

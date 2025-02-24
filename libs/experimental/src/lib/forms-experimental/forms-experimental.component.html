@@ -24,6 +24,11 @@
       >{{ form.controls.name.getError("startsWith") }}==</small
     >
     }
+    @if (this.form.controls.name.hasError('invalidName')) {
+      <small small class="error"
+        >{{ form.controls.name.getError("invalidName").message }}==</small
+      >
+      }
   </label>
 
   @if (form.controls.type.value === 'LEGAL') {
