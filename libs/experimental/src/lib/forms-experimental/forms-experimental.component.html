@@ -18,8 +18,11 @@
     />
     @if (this.form.controls.name.touched &&
     this.form.controls.name.hasError('required')) {
-
     <small small class="error">Это поле обязательно!</small>
+    } @if (this.form.controls.name.hasError('startsWith')) {
+    <small small class="error"
+      >{{ form.controls.name.getError("startsWith") }}==</small
+    >
     }
   </label>
 
@@ -44,6 +47,37 @@
     />
   </label>
   }
+
+  <div class="delivery-header">
+    <h4 class="h4 mb16">Период доставки</h4>
+  </div>
+  <div class="form-grid mb32" formGroupName="dateRange">
+    <label class="tt-control-label">
+      От
+      <input
+        type="date"
+        class="tt-input"
+        placeholder="Город"
+        formControlName="from"
+      />
+    </label>
+
+    <label class="tt-control-label">
+      До
+      <input
+        type="date"
+        class="tt-input"
+        placeholder="Улица"
+        formControlName="to"
+      />
+    </label>
+    @if (this.form.controls.dateRange.touched &&
+    this.form.controls.dateRange.hasError('dateRangeError')) {
+    <small small class="error">{{
+      form.controls.dateRange.getError("dateRangeError")?.message
+    }}</small>
+    }
+  </div>
 
   <div>
     <div class="delivery-header">

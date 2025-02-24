@@ -25,11 +25,23 @@ form {
 }
 
 .add-btn {
-  width: min-content; 
+  width: min-content;
   font-size: 18px;
 }
 
 .delete-btn {
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.tt-input.ng-invalid.ng-touched {
+  border: 1px solid tomato;
+}
+
+.tt-input::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
