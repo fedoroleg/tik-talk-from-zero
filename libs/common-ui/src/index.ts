@@ -5,3 +5,4 @@ export { AvatarCircleComponent } from './lib/components/avatar-circle/avatar-cir
 export { ImgUrlPipe } from './lib/pipes/img-url.pipe';
 export { CustomDate } from './lib/pipes/custom-date.pipe';
 export { DragAndDropDirective } from './lib/directives/drag-and-drop.directive';
+export { TtInputComponent } from './lib/components/tt-input/tt-input.component'

@@ -1,7 +1,15 @@
 <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <h1 class="login-heading">Вход</h1>
 
-  <label class="tt-control-label">
+  <tt-input
+    type="text"
+    placeholder="введите юзернейм"
+    formControlName="username"
+  >
+    Telegram custom input
+  </tt-input>
+
+  <!-- <label class="tt-control-label">
     Telegram username
     <input
       class="tt-input"
@@ -9,7 +17,7 @@
       placeholder="Введите telegram username"
       formControlName="username"
     />
-  </label>
+  </label> -->
 
   <label class="tt-control-label">
     Пароль
@@ -46,4 +54,4 @@
   </button>
 </form>
 
-<img src="assets/svg/logo-big.svg" alt="" />
+<!-- <img src="assets/svg/logo-big.svg" alt="" /> -->

@@ -19,7 +19,7 @@ module.exports = [
         "error",
         {
           type: "element",
-          prefix: "app",
+          prefix: "",
           style: "kebab-case",
         },
       ],
