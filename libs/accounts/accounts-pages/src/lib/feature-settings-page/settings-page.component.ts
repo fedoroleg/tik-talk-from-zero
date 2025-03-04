@@ -3,10 +3,19 @@ import { Component, effect, inject, ViewChild } from '@angular/core';
 import { SvgIconComponent } from '@tt/common-ui';
 import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { RouterLink } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { StackInputComponent } from '@tt/common-ui';
+
+
 
 @Component({
   selector: 'app-settings-page',
@@ -16,6 +25,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     RouterLink,
     ReactiveFormsModule,
     AvatarUploadComponent,
+    StackInputComponent,
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
@@ -24,23 +34,25 @@ export class SettingsPageComponent {
   private readonly fb = inject(FormBuilder);
   public actualAvatar = 'assets/images/avatar-placeholder.png';
   private readonly store = inject(Store);
-  private readonly me = toSignal(this.store.select(accountsSelectors.selectMe));
+  me = toSignal(this.store.select(accountsSelectors.selectMe));
 
   @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
   public form = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    username: [{ value: 'пук', disabled: true }, Validators.required],
+    userName: [{ value: 'пук', disabled: true }, Validators.required],
     description: [''],
-    stack: [''],
+    stack: ['']
   });
 
   constructor() {
     effect(() => {
+      // @ts-ignore
       this.form.patchValue({
         ...this.me(),
-        stack: this.mergeStack(this.me()?.stack),
+        //stack: this.mergeStack(this.me()?.stack),
+        // stack: this.me()?.stack,
       });
     });
 
@@ -48,6 +60,8 @@ export class SettingsPageComponent {
   }
 
   onSubmit() {
+    console.log('submit: ', this.form.value);
+
     if (this.form.valid) {
       const patchedAccount = {
         ...this.form.value,
@@ -75,6 +89,7 @@ export class SettingsPageComponent {
 
   private mergeStack(stack: string[] | null | undefined): string {
     if (!stack) return '';
+
     return stack.join(', ');
   }
 }
