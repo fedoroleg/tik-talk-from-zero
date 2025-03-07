@@ -87,7 +87,7 @@ export class SettingsPageComponent {
       // @ts-ignore
       this.form.patchValue({
         ...this.me(),
-      });
+      }, {emitEvent: false});
     });
   }
 
@@ -96,7 +96,7 @@ export class SettingsPageComponent {
 
     if (this.form.valid) {
       const patchedAccount = {
-        ...this.form.value,
+        ...this.form.value
       };
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
