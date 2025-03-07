@@ -15,7 +15,7 @@ import {
 @Component({
   selector: 'tt-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './tt-input.component.html',
   styleUrl: './tt-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

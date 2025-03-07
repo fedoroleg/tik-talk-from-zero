@@ -7,3 +7,5 @@ export { CustomDate } from './lib/pipes/custom-date.pipe';
 export { DragAndDropDirective } from './lib/directives/drag-and-drop.directive';
 export { TtInputComponent } from './lib/components/tt-input/tt-input.component';
 export { StackInputComponent } from './lib/components/stack-input/stack-input.component';
+export { AddressInputComponent } from './lib/components/address-input/address-input.component';
+export {DadataService} from './lib/services/dadata.service'

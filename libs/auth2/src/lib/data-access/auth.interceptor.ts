@@ -18,6 +18,8 @@ import { CookieService } from 'ngx-cookie-service';
 let isRefreshing$ = new BehaviorSubject<boolean>(false);
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  if (req.url.includes('dadata.ru')) return next(req);
+
   const authService = inject(AuthService);
   const accessToken = authService.accessToken;
 

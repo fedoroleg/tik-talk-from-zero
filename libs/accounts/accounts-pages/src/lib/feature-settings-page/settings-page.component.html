@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
 <div>
   Header left
   <!-- @if (me()) {
@@ -33,7 +34,7 @@
         class="tt-form-label-input"
         type="text"
         placeholder="Введите telegram username"
-        formControlName="username"
+        formControlName="userName"
       />
     </label>
 
@@ -55,13 +56,45 @@
     <label class="tt-form-label">
       <span class="tt-form-label-title">Навыки и технологии</span>
       <app-stack-input formControlName="stack"></app-stack-input>
-      <input
-        class="tt-form-label-input"
-        type="text"
-        placeholder="Старый инпут: Технологии, которыми владеете"
-        formControlName="stack"
-      />
     </label>
+
+    <label class="tt-form-label">
+      <span class="tt-form-label-title"
+        >Город, обычный инпут из формы сразу</span
+      >
+      <input
+        formControlName="city"
+        class="tt-form-label-input address-input"
+        type="text"
+        placeholder="Начните вводить название города..."
+      />
+      <!-- <div class="suggestions-dropdown">
+        <a tabindex="0" class="suggestions-item">
+          Санкт-Петербурга, всякое разное
+        </a>
+
+        <a tabindex="0" class="suggestions-item">Москва</a>
+        <a tabindex="0" class="suggestions-item">
+          Санкт-Петербурга, всякое разное
+        </a>
+      </div> -->
+
+      @if (suggestions$ | async; as suggestions ) { @if (isDropdownOpened$ |
+      async) {
+      <div class="suggestions-dropdown">
+        @if (suggestions.length === 0) {
+        <div class="suggestions-item">К сожалению, ничего не нашлось...</div>
+        } @for (suggestion of suggestions; track suggestion) {
+        <button type="button" class="suggestions-item" (click)="onSelectCity(suggestion)">
+          {{ suggestion }}
+        </button>
+        }
+      </div>
+      } }
+    </label>
+
+    <!-- <p>=== ниже новый вариант ===</p>
+    <app-address-input formControlName="city"></app-address-input> -->
 
     <div class="form-buttons-wrapper">
       <div class="btn-section">

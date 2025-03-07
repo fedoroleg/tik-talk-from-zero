@@ -1,21 +1,27 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
 //import { AccountHeaderComponent } from '@tt/common-ui';
-import { SvgIconComponent } from '@tt/common-ui';
+import {
+  AddressInputComponent,
+  DadataService,
+  SvgIconComponent,
+  TtInputComponent,
+} from '@tt/common-ui';
 import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { RouterLink } from '@angular/router';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { StackInputComponent } from '@tt/common-ui';
-
-
+import {
+  BehaviorSubject,
+  debounceTime,
+  filter,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-settings-page',
@@ -26,6 +32,9 @@ import { StackInputComponent } from '@tt/common-ui';
     ReactiveFormsModule,
     AvatarUploadComponent,
     StackInputComponent,
+    TtInputComponent,
+    AddressInputComponent,
+    AsyncPipe,
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
@@ -36,27 +45,50 @@ export class SettingsPageComponent {
   private readonly store = inject(Store);
   me = toSignal(this.store.select(accountsSelectors.selectMe));
 
+  dadataService = inject(DadataService);
+
+  isDropdownOpened$ = new BehaviorSubject(false);
+
   @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
   public form = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    userName: [{ value: 'пук', disabled: true }, Validators.required],
+    userName: [{ value: '', disabled: true }, Validators.required],
     description: [''],
-    stack: ['']
+    stack: [''],
+    city: [''],
   });
+
+  suggestions$ = this.form.controls.city.valueChanges.pipe(
+    debounceTime(500),
+    filter((str) => typeof str === 'string'),
+    switchMap((str) =>
+      this.dadataService.getCitySuggestion(str).pipe(
+        tap((res) => console.log('res = ', res)),
+        tap((res) => this.isDropdownOpened$.next(!!res.length)),
+        map((suggestions) => {
+          const onlyCities = suggestions.map((suggestion) => suggestion.value);
+          const onlyUniqueCities = Array.from(new Set(onlyCities));
+          return onlyUniqueCities;
+        })
+      )
+    )
+  );
+
+  onSelectCity(city: string | null) {
+    this.form.controls.city.setValue(city, { emitEvent: false });
+    this.isDropdownOpened$.next(false);
+  }
 
   constructor() {
     effect(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this.form.patchValue({
         ...this.me(),
-        //stack: this.mergeStack(this.me()?.stack),
-        // stack: this.me()?.stack,
       });
     });
-
-    console.log('actualAvatar in settings', this.actualAvatar);
   }
 
   onSubmit() {
@@ -65,7 +97,6 @@ export class SettingsPageComponent {
     if (this.form.valid) {
       const patchedAccount = {
         ...this.form.value,
-        stack: this.splitStack(this.form.value.stack),
       };
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -78,18 +109,5 @@ export class SettingsPageComponent {
         );
       }
     }
-  }
-
-  private splitStack(stack: string | null | undefined): string[] {
-    if (!stack) return [];
-    if (Array.isArray(stack)) return stack;
-
-    return stack.split(',').map((item) => item.trim());
-  }
-
-  private mergeStack(stack: string[] | null | undefined): string {
-    if (!stack) return '';
-
-    return stack.join(', ');
   }
 }

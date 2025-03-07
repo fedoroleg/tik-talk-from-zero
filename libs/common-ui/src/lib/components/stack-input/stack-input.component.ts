@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -56,8 +57,6 @@ export class StackInputComponent implements ControlValueAccessor {
   }
 
   writeValue(skills: string[] | null): void {
-    console.log('wV skills: ', skills);
-    console.log('typeof ', typeof skills);
     this.skills$.next(skills);
   }
   registerOnChange(fn: any): void {
@@ -66,9 +65,9 @@ export class StackInputComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    console.log('setDisabledState non imlemented Oleg');
-  }
+  // setDisabledState?(isDisabled: boolean): void {
+  //   console.log('setDisabledState non imlemented Oleg');
+  // }
 
   onChange(skills: string[]) {}
   onTouched() {
