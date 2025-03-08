@@ -7,10 +7,12 @@ import {
 } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'tt-input',
@@ -36,10 +38,18 @@ export class TtInputComponent implements ControlValueAccessor {
   isDisabled = false;
 
   value: string | null = null;
+  value$ = new BehaviorSubject<string | null>(null)
+
+  ttInputControl = new FormControl()
 
   // этот метод нужен, чтобы модель отдала свое значение шаблону
   writeValue(val: string | null): void {
+    console.log('writeValue in tt-input: ', val);
+    
     this.value = val;
+    this.value$.next(val)
+    this.ttInputControl.patchValue(val)
+    console.log('value in tt-input: ', this.value);
   }
 
   registerOnChange(fn: any): void {
@@ -55,8 +65,6 @@ export class TtInputComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    console.log('setDisabled: ', isDisabled);
-
     this.isDisabled = isDisabled;
   }
 }

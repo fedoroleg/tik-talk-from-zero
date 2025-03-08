@@ -1,11 +1,26 @@
-<!-- <tt-input type="text" placeholder="Начните вводить название города..."
-  >Город</tt-input
-> -->
-<label class="tt-form-label">
+<tt-input type="text" placeholder="Новый инпут, отдельный" [formControl]="innerCitySearchInput"
+  >Город НОВЫЙ</tt-input
+>
+@if (suggestions$ | async; as suggestions ) { @if (isDropdownOpened$ |
+  async) {
+  <div class="suggestions-dropdown">
+    @if (suggestions.length === 0) {
+    <div class="suggestions-item">К сожалению, ничего не нашлось...</div>
+    } @for (suggestion of suggestions; track suggestion) {
+    <button type="button" class="suggestions-item" (click)="onSelectCity(suggestion)">
+      {{ suggestion }}
+    </button>
+    }
+  </div>
+  } }
+
+
+
+<!-- <label class="tt-form-label">
   <span class="tt-form-label-title">Город, обычный инпут</span>
   <input
     class="tt-form-label-input"
     type="text"
     placeholder="Начните вводить название города..."
   />
-</label>
+</label> -->

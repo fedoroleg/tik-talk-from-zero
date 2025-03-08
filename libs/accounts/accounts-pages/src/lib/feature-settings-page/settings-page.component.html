@@ -58,7 +58,7 @@
       <app-stack-input formControlName="stack"></app-stack-input>
     </label>
 
-    <label class="tt-form-label">
+    <!-- <label class="tt-form-label">
       <span class="tt-form-label-title"
         >Город, обычный инпут из формы сразу</span
       >
@@ -68,16 +68,7 @@
         type="text"
         placeholder="Начните вводить название города..."
       />
-      <!-- <div class="suggestions-dropdown">
-        <a tabindex="0" class="suggestions-item">
-          Санкт-Петербурга, всякое разное
-        </a>
 
-        <a tabindex="0" class="suggestions-item">Москва</a>
-        <a tabindex="0" class="suggestions-item">
-          Санкт-Петербурга, всякое разное
-        </a>
-      </div> -->
 
       @if (suggestions$ | async; as suggestions ) { @if (isDropdownOpened$ |
       async) {
@@ -91,10 +82,10 @@
         }
       </div>
       } }
-    </label>
+    </label> -->
 
-    <!-- <p>=== ниже новый вариант ===</p>
-    <app-address-input formControlName="city"></app-address-input> -->
+    <p>=== ниже новый вариант ===</p>
+    <app-address-input formControlName="city"></app-address-input>
 
     <div class="form-buttons-wrapper">
       <div class="btn-section">

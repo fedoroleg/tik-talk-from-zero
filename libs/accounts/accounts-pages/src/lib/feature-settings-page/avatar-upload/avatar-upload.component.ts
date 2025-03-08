@@ -17,15 +17,15 @@ export class AvatarUploadComponent implements OnInit {
   public avatar: File | null = null;
 
   constructor() {
-    console.log(
-      'actualAvatar in avatarComp constructor === ',
-      this.actualAvatar
-    );
+    // console.log(
+    //   'actualAvatar in avatarComp constructor === ',
+    //   this.actualAvatar
+    // );
   }
 
   ngOnInit(): void {
     this.preview.set(this.actualAvatar);
-    console.log('OI actualAvatar in avatarComp === ', this.actualAvatar);
+    // console.log('OI actualAvatar in avatarComp === ', this.actualAvatar);
   }
 
   fileBrowserHandler(event: Event) {
