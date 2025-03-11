@@ -1,6 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { map, timer } from 'rxjs';
+import {
+  debounce,
+  debounceTime,
+  delay,
+  fromEvent,
+  map,
+  Observable,
+  OperatorFunction,
+  Subscriber,
+  Subscription,
+  take,
+  tap,
+  timer,
+} from 'rxjs';
 import { InnerComponent } from '../inner/inner.component';
 
 @Component({
@@ -9,28 +22,37 @@ import { InnerComponent } from '../inner/inner.component';
   imports: [CommonModule, InnerComponent],
   templateUrl: './experimental.component.html',
   styleUrl: './experimental.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperimentalComponent {
-  // public random$ = timer(0, 5000).pipe(map(() => Math.random()));
-  text = {
-    name: 'Здесь имя будет',
-    address: {
-      city: 'Питер',
-    },
-  };
-
-  timeout = 'timeout'
+  sub!: Subscription;
 
   constructor() {
-    setTimeout(() => {
-      this.timeout = '+++++++++++';
-    }, 1000);
+    timer(0, 1000).pipe(
+      take(3),
+      tap(val => console.log(val)),
+      customMap((val) => 'Такое вот!' + val * 3)
+    )
+    .subscribe(val => {console.log('результат: ', val)})
   }
 
-  onChangeText() {
-    console.log('кликнул');
-    this.text.name = 'новое имя';
-    this.text.address.city = 'новое имя';
+  stopSubs() {
+    this.sub.unsubscribe();
   }
+}
+
+function customMap<T, R>(
+  fn: (val: T) => R
+): OperatorFunction<T, R> {
+  return (source: Observable<T>) =>
+    new Observable<R>((subscriber) => {
+      return source.subscribe({
+        next: (val) => {
+          subscriber.next(fn(val));
+        },
+        complete: () => {
+          console.log('complete');
+        },
+      });
+    });
 }
