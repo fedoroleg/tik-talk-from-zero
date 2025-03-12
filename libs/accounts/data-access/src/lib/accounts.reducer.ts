@@ -8,6 +8,8 @@ export type AccountsState = {
   account: Account | null;
   accounts: Account[];
   accountsFilters: Record<string, any>;
+  page: number;
+  size: number;
 };
 
 export const accountsInitialState: AccountsState = {
@@ -16,6 +18,8 @@ export const accountsInitialState: AccountsState = {
   account: null,
   accounts: [],
   accountsFilters: {},
+  page: 1,
+  size: 10,
 };
 
 export const accountsFeatureKey = 'accounts';
@@ -51,6 +55,11 @@ export const accountsFeature = createFeature({
     on(accountsActions.uploadAvatarSuccess, (state, { account }) => ({
       ...state,
       me: { ...account },
-    }))
+    })),
+    on(accountsActions.getSearchAccountsNextPage, (state ) => ({
+      ...state,
+      page: state.page + 1
+    })),
+    on(accountsActions.getSearchAccountsNextPageSuccess, (state, {accounts}) => ({...state, accounts: [...state.accounts, ...accounts]}))
   ),
 });

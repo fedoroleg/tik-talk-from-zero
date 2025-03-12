@@ -1,8 +1,17 @@
 <app-account-filters />
-@if(accounts$ | async; as accounts){ @for(account of accounts; track account.id)
-{
-<app-account-card [account]="account" />
-} } @else {
+@if(accounts$ | async; as accounts){ 
+  @for(account of accounts; track account.id; let last = $last) {
+    <app-account-card [account]="account" />
+
+    @if(last) {
+      @defer (on viewport) {
+        <app-infinite-scroll-trigger/>
+        } @placeholder {
+        <div>placeholder Oleg</div>
+        }
+    }
+  } 
+} @else {
 <h1>Загрузка...</h1>
 }
 
