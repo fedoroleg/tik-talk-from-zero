@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   OnInit,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -14,10 +15,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfiniteScrollTriggerComponent implements OnInit {
-  loaded = new EventEmitter();
-  ngOnInit(): void {
-    console.log('infcomp emit');
+  @Output() loaded = new EventEmitter();
 
+  ngOnInit(): void {
     this.loaded.emit();
   }
+
 }

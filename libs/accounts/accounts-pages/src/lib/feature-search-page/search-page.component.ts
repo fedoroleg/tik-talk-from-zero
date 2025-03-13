@@ -19,8 +19,6 @@ export class SearchPageComponent {
   public accounts$ = this.store.select(accountsSelectors.selectAccounts);
 
   fetchMoreAccounts() {
-    console.log('fetched')
     this.store.dispatch(accountsActions.getSearchAccountsNextPage())
-    
   }
 }
