@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { accountsActions } from '@tt/accounts/data-access';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-infinite-scroll-trigger',
@@ -8,14 +11,13 @@ import { accountsActions } from '@tt/accounts/data-access';
   imports: [],
   templateUrl: './infinite-scroll-trigger.component.html',
   styleUrl: './infinite-scroll-trigger.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfiniteScrollTriggerComponent implements OnInit {
-  store = inject(Store)
+  loaded = new EventEmitter();
   ngOnInit(): void {
-    console.log('InfiniteScrollTriggerComponent onInit')
-    
-    this.store.dispatch(accountsActions.getSearchAccountsNextPage())
-  }
+    console.log('infcomp emit');
 
+    this.loaded.emit();
+  }
 }

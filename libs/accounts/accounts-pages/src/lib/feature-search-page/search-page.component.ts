@@ -18,9 +18,7 @@ export class SearchPageComponent {
   private readonly store = inject(Store);
   public accounts$ = this.store.select(accountsSelectors.selectAccounts);
 
-  console = console
-
-  fetchMoreData() {
+  fetchMoreAccounts() {
     console.log('fetched')
     this.store.dispatch(accountsActions.getSearchAccountsNextPage())
     

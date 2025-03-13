@@ -5,7 +5,7 @@
 
     @if(last) {
       @defer (on viewport) {
-        <app-infinite-scroll-trigger/>
+        <app-infinite-scroll-trigger (loaded)="fetchMoreAccounts()"/>
         } @placeholder {
         <div>placeholder Oleg</div>
         }
