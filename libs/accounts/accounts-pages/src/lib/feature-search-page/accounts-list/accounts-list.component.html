@@ -1,0 +1,3 @@
+@for(account of accounts; track account.id; let last = $last) {
+<app-account-card [account]="account" />
+}

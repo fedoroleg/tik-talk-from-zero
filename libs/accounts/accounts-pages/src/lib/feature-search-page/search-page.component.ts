@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { accountsActions, accountsSelectors } from '@tt/accounts/data-access';
 import { InfiniteScrollTriggerComponent } from './infinite-scroll-trigger/infinite-scroll-trigger.component';
 import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { AccountsListComponent } from './accounts-list/accounts-list.component';
 
 @Component({
   selector: 'app-search-page',
@@ -16,6 +18,8 @@ import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
     AccountFiltersComponent,
     InfiniteScrollTriggerComponent,
     IntersectionObserverModule,
+    InfiniteScrollDirective,
+    AccountsListComponent,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
@@ -29,11 +33,8 @@ export class SearchPageComponent {
     this.store.dispatch(accountsActions.getSearchAccountsNextPage());
   }
 
-  onIntersection(entries: IntersectionObserverEntry[]) {
-    console.log(entries);
-
-    if (!entries.length) return;
-
-    if (entries[0].isIntersecting) this.fetchMoreAccounts();
+  onScroll() {
+    console.log('scroll');
+    this.fetchMoreAccounts();
   }
 }
