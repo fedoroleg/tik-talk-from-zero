@@ -1,19 +1,27 @@
 <app-account-filters />
-@if(accounts$ | async; as accounts){ 
-  @for(account of accounts; track account.id; let last = $last) {
-    <app-account-card [account]="account" />
+<div
+  class="accounts-wrapper"
+  waIntersectionObserver
+  waIntersectionThreshold="0.2"
+>
+  @if(accounts$ | async; as accounts){ @for(account of accounts; track
+  account.id; let last = $last) {
+  <app-account-card
+    (waIntersectionObservee)="last ? onIntersection($event) : null"
+    [account]="account"
+  />
+  } } @else {
+  <h1>Загрузка...</h1>
+  }
+</div>
 
-    @if(last) {
-      @defer (on viewport) {
-        <app-infinite-scroll-trigger (loaded)="fetchMoreAccounts()"/>
-        } @placeholder {
-        <div>placeholder Oleg</div>
-        }
+<!-- @if(last) {
+  @defer (on viewport) {
+    <app-infinite-scroll-trigger (loaded)="fetchMoreAccounts()"/>
+    } @placeholder {
+    <div>placeholder Oleg</div>
     }
-  } 
-} @else {
-<h1>Загрузка...</h1>
-}
+} -->
 
 <!-- *nfIf + *ngFor
 <ng-content *ngIf="(profiles$ | async) as profiles; else error">
