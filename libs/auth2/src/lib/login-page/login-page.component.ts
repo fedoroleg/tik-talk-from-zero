@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   public loginForm = new FormBuilder().group({
-    username: ['йцукен', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required],
   });
 
