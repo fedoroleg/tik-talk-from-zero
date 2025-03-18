@@ -4,12 +4,14 @@
   waIntersectionObserver
   waIntersectionThreshold="0.2"
 >
-  @if(accounts$ | async; as accounts){ @for(account of accounts; track
-  account.id; let last = $last) {
+  @if(accounts$ | async; as accounts){ @if (accounts.length > 0) { @for(account
+  of accounts; track account.id; let last = $last) {
   <app-account-card
     (waIntersectionObservee)="last ? onIntersection($event) : null"
     [account]="account"
   />
+  } } @else {
+  <h3>К сожалению, ничего не найдено, попробуйте изменить запрос</h3>
   } } @else {
   <h1>Загрузка...</h1>
   }
