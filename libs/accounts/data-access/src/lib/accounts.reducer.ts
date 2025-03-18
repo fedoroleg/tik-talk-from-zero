@@ -6,7 +6,7 @@ export type AccountsState = {
   me: Account | null;
   subscribers: Account[] | null;
   account: Account | null;
-  accounts: Account[];
+  accounts: Account[] | null;
   accountsFilters: Record<string, any>;
   page: number;
   size: number;
@@ -16,7 +16,7 @@ export const accountsInitialState: AccountsState = {
   me: null,
   subscribers: null,
   account: null,
-  accounts: [],
+  accounts: null,
   accountsFilters: {},
   page: 1,
   size: 10,
@@ -60,6 +60,9 @@ export const accountsFeature = createFeature({
       ...state,
       page: state.page + 1
     })),
-    on(accountsActions.getSearchAccountsNextPageSuccess, (state, {accounts}) => ({...state, accounts: [...state.accounts, ...accounts]}))
+    on(accountsActions.getSearchAccountsNextPageSuccess, (state, {accounts}) => {
+      if (state.accounts) return {...state, accounts: [...state.accounts, ...accounts]}
+      return {...state, accounts: [...accounts]}
+    })
   ),
 });
