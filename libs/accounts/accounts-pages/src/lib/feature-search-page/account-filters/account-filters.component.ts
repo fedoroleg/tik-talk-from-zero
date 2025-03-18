@@ -40,7 +40,6 @@ export class AccountFiltersComponent {
     this.searchFormFilters$
       .pipe(take(1), takeUntilDestroyed())
       .subscribe((value) => {
-        console.log('value in searchFormFilters$', value);
         this.searchForm.patchValue(value);
       });
   }

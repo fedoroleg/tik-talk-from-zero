@@ -30,8 +30,6 @@ export class SearchPageComponent {
   }
 
   onIntersection(entries: IntersectionObserverEntry[]) {
-    console.log(entries);
-
     if (!entries.length) return;
 
     if (entries[0].isIntersecting) this.fetchMoreAccounts();

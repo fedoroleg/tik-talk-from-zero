@@ -21,7 +21,6 @@ export const filterAccountsEffect = createEffect(
     return actions$.pipe(
       ofType(accountsActions.filterAccounts),
       withLatestFrom(store.select(selectAccountsPageable)),
-      tap((q) => console.log('filterAccountsEffect', q)),
       switchMap(([{ filters }, pageable]) => {
         return http
           .get<Pageble<Account>>(`${environments.api_url}account/accounts`, {
@@ -138,10 +137,7 @@ export const getSearchAccountsNextPageEffect = createEffect(
         store.select(selectAccountsFilters),
         store.select(selectAccountsPageable)
       ),
-      tap((q) => console.log('getSearchAccountsNextPageEffect', q)),
       switchMap(([action, filters, pageble]) => {
-        console.log(filters, pageble);
-
         return http
           .get<Pageble<Account>>(`${environments.api_url}account/accounts`, {
             params: { ...filters, ...pageble },
